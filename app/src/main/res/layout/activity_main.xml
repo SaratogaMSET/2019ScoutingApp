@@ -5,7 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#57d655"
+    android:background="#aae8ff"
     tools:context=".MainActivity">
 
     <Button
@@ -23,9 +23,9 @@
         android:id="@+id/teamNumber"
         android:layout_width="0dp"
         android:layout_height="70dp"
-        android:layout_marginEnd="80dp"
         android:layout_marginStart="80dp"
         android:layout_marginTop="100dp"
+        android:layout_marginEnd="80dp"
         android:ems="10"
         android:hint="Team number"
         android:inputType="number"

@@ -8,8 +8,51 @@
     android:background="#aae8ff"
     tools:context=".TeleOpActivity">
 
+    <TextView
+        android:id="@+id/P"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="-1dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/p1TO"
+        app:layout_constraintTop_toTopOf="@+id/m1TO" />
+
     <Button
-        android:id="@+id/C3R"
+        android:id="@+id/p1TO"
+        android:layout_width="60dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="-1dp"
+        android:onClick="penalty"
+        android:text="+1"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/m1TO"
+        app:layout_constraintTop_toTopOf="@+id/textView3" />
+
+    <Button
+        android:id="@+id/m1TO"
+        android:layout_width="60dp"
+        android:layout_height="53dp"
+        android:onClick="penalty"
+        android:text="-1"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="10dp"
+        android:text="Penalties:"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/TO_C3R"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="404dp"
@@ -44,7 +87,7 @@
         app:srcCompat="@drawable/frc2019field" />
 
     <Button
-        android:id="@+id/C3L"
+        android:id="@+id/TO_C3L"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="404dp"
@@ -56,61 +99,51 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/m1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@android:color/transparent"
-        android:onClick="selectPos"
-        android:text="M1"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="432dp" />
-
-    <Button
-        android:id="@+id/C2L"
+        android:id="@+id/TO_C2L"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="5dp"
         android:background="@android:color/holo_orange_dark"
         android:onClick="add"
         android:text="C2"
-        app:layout_constraintStart_toStartOf="@+id/C3L"
-        app:layout_constraintTop_toBottomOf="@+id/C3L" />
+        app:layout_constraintStart_toStartOf="@+id/TO_C3L"
+        app:layout_constraintTop_toBottomOf="@+id/TO_C3L" />
 
     <Button
-        android:id="@+id/C1L"
+        android:id="@+id/TO_C1L"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="5dp"
         android:background="@android:color/holo_orange_dark"
         android:onClick="add"
         android:text="C1"
-        app:layout_constraintStart_toStartOf="@+id/C2L"
-        app:layout_constraintTop_toBottomOf="@+id/C2L" />
+        app:layout_constraintStart_toStartOf="@+id/TO_C2L"
+        app:layout_constraintTop_toBottomOf="@+id/TO_C2L" />
 
     <Button
-        android:id="@+id/C2R"
+        android:id="@+id/TO_C2R"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginBottom="5dp"
         android:background="@android:color/holo_orange_dark"
         android:onClick="add"
         android:text="C2"
-        app:layout_constraintBottom_toTopOf="@+id/C3R"
-        app:layout_constraintEnd_toEndOf="@+id/C3R" />
+        app:layout_constraintBottom_toTopOf="@+id/TO_C3R"
+        app:layout_constraintEnd_toEndOf="@+id/TO_C3R" />
 
     <Button
-        android:id="@+id/C1R"
+        android:id="@+id/TO_C1R"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginBottom="5dp"
         android:background="@android:color/holo_orange_dark"
         android:onClick="add"
         android:text="C1"
-        app:layout_constraintBottom_toTopOf="@+id/C2R"
-        app:layout_constraintEnd_toEndOf="@+id/C2R" />
+        app:layout_constraintBottom_toTopOf="@+id/TO_C2R"
+        app:layout_constraintEnd_toEndOf="@+id/TO_C2R" />
 
     <Button
-        android:id="@+id/H3R_L"
+        android:id="@+id/TO_H3RL"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="345dp"
@@ -122,7 +155,7 @@
         app:layout_constraintStart_toStartOf="@+id/imageView" />
 
     <Button
-        android:id="@+id/H3R_R"
+        android:id="@+id/TO_H3RR"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="460dp"
@@ -134,7 +167,7 @@
         app:layout_constraintStart_toStartOf="@+id/imageView" />
 
     <Button
-        android:id="@+id/H2R_R"
+        android:id="@+id/TO_H2RR"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="460dp"
@@ -142,11 +175,11 @@
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
         android:text="H2"
-        app:layout_constraintBottom_toTopOf="@+id/H3R_R"
+        app:layout_constraintBottom_toTopOf="@+id/TO_H3RR"
         app:layout_constraintStart_toStartOf="@+id/imageView" />
 
     <Button
-        android:id="@+id/H1R_R"
+        android:id="@+id/TO_H1RR"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="460dp"
@@ -154,33 +187,33 @@
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
         android:text="H1"
-        app:layout_constraintBottom_toTopOf="@+id/H2R_R"
+        app:layout_constraintBottom_toTopOf="@+id/TO_H2RR"
         app:layout_constraintStart_toStartOf="@+id/imageView" />
 
     <Button
-        android:id="@+id/H2R_L"
+        android:id="@+id/TO_H2RL"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginBottom="5dp"
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
         android:text="H2"
-        app:layout_constraintBottom_toTopOf="@+id/H3R_L"
-        app:layout_constraintStart_toStartOf="@+id/H3R_L" />
+        app:layout_constraintBottom_toTopOf="@+id/TO_H3RL"
+        app:layout_constraintStart_toStartOf="@+id/TO_H3RL" />
 
     <Button
-        android:id="@+id/H1R_L"
+        android:id="@+id/TO_H1RL"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginBottom="5dp"
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
         android:text="H1"
-        app:layout_constraintBottom_toTopOf="@+id/H2R_L"
-        app:layout_constraintStart_toStartOf="@+id/H2R_L" />
+        app:layout_constraintBottom_toTopOf="@+id/TO_H2RL"
+        app:layout_constraintStart_toStartOf="@+id/TO_H2RL" />
 
     <Button
-        android:id="@+id/H3L_L"
+        android:id="@+id/TO_H3LL"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="345dp"
@@ -192,7 +225,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/H3L_R"
+        android:id="@+id/TO_H3LR"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="462dp"
@@ -200,51 +233,51 @@
         android:onClick="add"
         android:text="H3"
         app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/H3L_L" />
+        app:layout_constraintTop_toTopOf="@+id/TO_H3LL" />
 
     <Button
-        android:id="@+id/H2L_R"
+        android:id="@+id/TO_H2LR"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="5dp"
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
         android:text="H2"
-        app:layout_constraintStart_toStartOf="@+id/H3L_R"
-        app:layout_constraintTop_toBottomOf="@+id/H3L_R" />
+        app:layout_constraintStart_toStartOf="@+id/TO_H3LR"
+        app:layout_constraintTop_toBottomOf="@+id/TO_H3LR" />
 
     <Button
-        android:id="@+id/H2L_L"
+        android:id="@+id/TO_H2LL"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="5dp"
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
         android:text="H2"
-        app:layout_constraintStart_toStartOf="@+id/H3L_L"
-        app:layout_constraintTop_toBottomOf="@+id/H3L_L" />
+        app:layout_constraintStart_toStartOf="@+id/TO_H3LL"
+        app:layout_constraintTop_toBottomOf="@+id/TO_H3LL" />
 
     <Button
-        android:id="@+id/H1L_L"
+        android:id="@+id/TO_H1LL"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="5dp"
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
         android:text="H1"
-        app:layout_constraintStart_toStartOf="@+id/H3L_L"
-        app:layout_constraintTop_toBottomOf="@+id/H2L_L" />
+        app:layout_constraintStart_toStartOf="@+id/TO_H3LL"
+        app:layout_constraintTop_toBottomOf="@+id/TO_H2LL" />
 
     <Button
-        android:id="@+id/H1L_R"
+        android:id="@+id/TO_H1LR"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="5dp"
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
         android:text="H1"
-        app:layout_constraintStart_toStartOf="@+id/H3L_R"
-        app:layout_constraintTop_toBottomOf="@+id/H2L_R" />
+        app:layout_constraintStart_toStartOf="@+id/TO_H3LR"
+        app:layout_constraintTop_toBottomOf="@+id/TO_H2LR" />
 
     <TextView
         android:id="@+id/moves"

@@ -23,17 +23,25 @@ public class MainActivity extends AppCompatActivity {
     public static int [] CargoshipScoredSS = new int[2];
     public static String startedWithSS;
     public static String robotMovesSS;
+    public static int penaltiesSS;
 
     //teleop
     public static int [] rocketScoredTO = new int[20];
     public static int [] CargoshipScoredTO = new int[2];
     public static String robotMovesTO;
+    public static int penaltiesTO;
+
 
     //endgame
-    public static String egPos;
-    public static int [] rocketScoredEG = new int[20];
-    public static int [] CargoshipScoredEG = new int[2];
-    public static String robotMovesEG;
+    public static String driving = "";
+    public static String accuracy = "";
+    public static String defense = "";
+    public static int unsupportedClimb = 5;
+    public static int support = 0;
+    public static String myNotes;
+    public static boolean checked;
+
+    //notes
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         alliance = "";
 
         //sandstorm
-        ssPos = "";
+        ssPos = "L1";
         for(int x = 0; x < 20; x++){
             rocketScoredSS[x] = 0;
         }
@@ -56,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         }
         startedWithSS = "";
         robotMovesSS = "Robot moves: ";
+        penaltiesSS = 0;
 
         //teleop
         for(int x = 0; x < 20; x++){
@@ -65,16 +74,23 @@ public class MainActivity extends AppCompatActivity {
             CargoshipScoredTO[x] = 0;
         }
         robotMovesTO = "Robot moves: ";
+        penaltiesTO = 0;
 
         //endgame
-        egPos = "";
-        for(int x = 0; x < 20; x++){
-            rocketScoredEG[x] = 0;
-        }
-        for(int x = 0; x < 2; x++){
-            CargoshipScoredEG[x] = 0;
-        }
-        robotMovesEG = "Robot moves: ";
+//        for(int x = 0; x < 20; x++){
+//            rocketScoredEG[x] = 0;
+//        }
+//        for(int x = 0; x < 2; x++){
+//            CargoshipScoredEG[x] = 0;
+//        }
+//        robotMovesEG = "Robot moves: ";
+//        penaltiesEG = 0;
+        driving = "";
+        accuracy = "";
+        defense = "";
+        unsupportedClimb = 0;
+        myNotes = "";
+        checked = false;
 
 
 

@@ -33,10 +33,15 @@ public class TeleOpActivity extends AppCompatActivity {
                     TO.setClass(getApplicationContext(), TeleOpActivity.class);
                     startActivity(TO);
                     return true;
-                case R.id.navigation_notifications:
-                    Intent EG = new Intent();
-                    EG.setClass(getApplicationContext(), EndgameActivity.class);
-                    startActivity(EG);
+//                case R.id.navigation_notifications:
+//                    Intent EG = new Intent();
+//                    EG.setClass(getApplicationContext(), EndgameActivity.class);
+//                    startActivity(EG);
+//                    return true;
+                case R.id.navigation_header_container:
+                    Intent N = new Intent();
+                    N.setClass(getApplicationContext(), NotesActivity.class);
+                    startActivity(N);
                     return true;
             }
             return false;
@@ -50,6 +55,9 @@ public class TeleOpActivity extends AppCompatActivity {
 
 
         TextView moves = findViewById(R.id.moves);
+        TextView P = findViewById(R.id.P);
+
+        P.setText(Integer.toString(MainActivity.penaltiesSS + MainActivity.penaltiesTO));
         moves.setText(MainActivity.robotMovesTO);
 
         mTextMessage = (TextView) findViewById(R.id.message);
@@ -57,15 +65,27 @@ public class TeleOpActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
+    public void penalty(View v){
+        Button b = (Button) v;
+        if(b.getId() == R.id.p1TO)
+            MainActivity.penaltiesTO++;
+        else
+        if(MainActivity.penaltiesTO > 0)
+            MainActivity.penaltiesTO--;
+
+        TextView P = findViewById(R.id.P);
+        P.setText(Integer.toString(MainActivity.penaltiesSS + MainActivity.penaltiesTO));
+    }
+
     public void CargoshipAdd(View v){
         Button b = (Button) v;
         TextView moves = findViewById(R.id.moves);
 
         moves.setText(moves.getText().toString() + b.getText().toString() + " ");
-        if(b.getText().toString() == "C"){
+        if(b.getText().toString().equals("C")){
             MainActivity.CargoshipScoredTO[0]++;
         }
-        if(b.getText().toString() == "H"){
+        if(b.getText().toString().equals("H")){
             MainActivity.CargoshipScoredTO[1]++;
         }
     }
@@ -90,86 +110,81 @@ public class TeleOpActivity extends AppCompatActivity {
     }
 
     @SuppressLint("ResourceType")
+    //TODO fix something?!
     public void add (View v){
         TextView moves = findViewById(R.id.moves);
         Button b = (Button) v;
-        if((b.getId()%20) == 0){
+        if(b.getId() == R.id.TO_H3RR){
             moves.setText(moves.getText().toString() + "H3RR ");
-            MainActivity.rocketScoredTO[0]++;
+            MainActivity.rocketScoredSS[0]++;
         }
-        if((b.getId()%20) == 1){
+        if(b.getId() == R.id.TO_C1L){
             moves.setText(moves.getText().toString() + "C1L ");
-            MainActivity.rocketScoredTO[1]++;
+            MainActivity.rocketScoredSS[1]++;
         }
-        if((b.getId()%20) == 2){
+        if(b.getId() == R.id.TO_C1R){
             moves.setText(moves.getText().toString() + "C1R ");
-            MainActivity.rocketScoredTO[2]++;
+            MainActivity.rocketScoredSS[2]++;
         }
-        if((b.getId()%20) == 3){
+        if(b.getId() == R.id.TO_C2L){
             moves.setText(moves.getText().toString() + "C2L ");
-            MainActivity.rocketScoredTO[3]++;
+            MainActivity.rocketScoredSS[3]++;
         }
-        if((b.getId()%20) == 4){
+        if(b.getId() == R.id.TO_C2R){
             moves.setText(moves.getText().toString() + "C2R ");
-            MainActivity.rocketScoredTO[4]++;
+            MainActivity.rocketScoredSS[4]++;
         }
-        if((b.getId()%20) == 5){
+        if(b.getId() == R.id.TO_C3L){
             moves.setText(moves.getText().toString() + "C3L ");
-            MainActivity.rocketScoredTO[5]++;
+            MainActivity.rocketScoredSS[5]++;
         }
-        if((b.getId()%20) == 6){
+        if(b.getId() == R.id.TO_C3R){
             moves.setText(moves.getText().toString() + "C3R ");
-            MainActivity.rocketScoredTO[6]++;
+            MainActivity.rocketScoredSS[6]++;
         }
-//        if((b.getId()%20) == 7){
-//            moves.setText(moves.getText().toString() + "C1L ");
-//        }
-//        if((b.getId()%20) == 8){
-//            moves.setText(moves.getText().toString() + "C1L ");
-//        }
-        if((b.getId()%20) == 9){
+        if(b.getId() == R.id.TO_H1LL){
             moves.setText(moves.getText().toString() + "H1LL ");
-            MainActivity.rocketScoredTO[9]++;
+            MainActivity.rocketScoredSS[9]++;
         }
-        if((b.getId()%20) == 10){
+        if(b.getId() == R.id.TO_H1LR){
             moves.setText(moves.getText().toString() + "H1LR ");
-            MainActivity.rocketScoredTO[10]++;
+            MainActivity.rocketScoredSS[10]++;
         }
-        if((b.getId()%20) == 11){
+        if(b.getId() == R.id.TO_H1RL){
             moves.setText(moves.getText().toString() + "H1RL ");
-            MainActivity.rocketScoredTO[11]++;
+            MainActivity.rocketScoredSS[11]++;
         }
-        if((b.getId()%20) == 12){
+        if(b.getId() == R.id.TO_H1RR){
             moves.setText(moves.getText().toString() + "H1RR ");
-            MainActivity.rocketScoredTO[12]++;
+            MainActivity.rocketScoredSS[12]++;
         }
-        if((b.getId()%20) == 13){
+        if(b.getId() == R.id.TO_H2LL){
             moves.setText(moves.getText().toString() + "H2LL ");
-            MainActivity.rocketScoredTO[13]++;
+            MainActivity.rocketScoredSS[13]++;
         }
-        if((b.getId()%20) == 14){
+        if(b.getId() == R.id.TO_H2LR){
             moves.setText(moves.getText().toString() + "H2LR ");
-            MainActivity.rocketScoredTO[14]++;
+            MainActivity.rocketScoredSS[14]++;
         }
-        if((b.getId()%20) == 15){
+        if(b.getId() == R.id.TO_H2RL){
             moves.setText(moves.getText().toString() + "H2RL ");
-            MainActivity.rocketScoredTO[15]++;
+            MainActivity.rocketScoredSS[15]++;
         }
-        if((b.getId()%20) == 16){
+        if(b.getId() == R.id.TO_H2RR){
             moves.setText(moves.getText().toString() + "H2RR ");
-            MainActivity.rocketScoredTO[16]++;
+            MainActivity.rocketScoredSS[16]++;
         }
-        if((b.getId()%20) == 17){
+        if(b.getId() == R.id.TO_H3LL){
             moves.setText(moves.getText().toString() + "H3LL ");
-            MainActivity.rocketScoredTO[17]++;
+            MainActivity.rocketScoredSS[17]++;
         }
-        if((b.getId()%20) == 18){
+        if(b.getId() == R.id.TO_H3LR){
             moves.setText(moves.getText().toString() + "H3LR ");
-            MainActivity.rocketScoredTO[18]++;
+            MainActivity.rocketScoredSS[18]++;
         }
-        if((b.getId()%20) == 19){
+        if(b.getId() == R.id.TO_H3RL){
             moves.setText(moves.getText().toString() + "H3RL ");
-            MainActivity.rocketScoredTO[19]++;
+            MainActivity.rocketScoredSS[19]++;
         }
 
         //moves.setText(moves.getText().toString() + Integer.toString((b.getId()%20)) + " ");
