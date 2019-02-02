@@ -91,13 +91,13 @@ public class SandstormActivity extends AppCompatActivity {
         if(MainActivity.ssPos.equals("M1")){
             selectPos(m1);
         }
-//        if(MainActivity.startedWithSS == "C"){
-//            C.setBackgroundColor(Color.GREEN);
-//        }else if(MainActivity.startedWithSS == "H"){
-//            H.setBackgroundColor((Color.GREEN));
-//        } else if (MainActivity.startedWithSS == "--"){
-//            Null.setBackgroundColor(Color.GREEN);
-//        }
+        if(MainActivity.startedWithSS == "C"){
+            C.setBackgroundColor(Color.GREEN);
+        }else if(MainActivity.startedWithSS == "H"){
+            H.setBackgroundColor((Color.GREEN));
+        } else if (MainActivity.startedWithSS == "--"){
+            Null.setBackgroundColor(Color.GREEN);
+        }
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -116,123 +116,201 @@ public class SandstormActivity extends AppCompatActivity {
     }
 
     @SuppressLint("ResourceType")
-    //TODO fix something?!
     public void add (View v){
         TextView moves = findViewById(R.id.moves);
         Button b = (Button) v;
         int id = b.getId();
 
-        if(b.getId() == R.id.SS_H3RR){
-            moves.setText(moves.getText().toString() + "H3RR ");
-            MainActivity.rocketScoredSS[0]++;
+        if(b.getId() == R.id.SS_H3RR) {
+            if ((MainActivity.rocketScoredSS[0] + MainActivity.rocketScoredTO[0]) < 1){
+                moves.setText(moves.getText().toString() + "H3RR ");
+                MainActivity.rocketScoredSS[0]++;
+            }
+            findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
         }
         if(b.getId() == R.id.SS_C1L){
-            moves.setText(moves.getText().toString() + "C1L ");
-            MainActivity.rocketScoredSS[1]++;
+            if ((MainActivity.rocketScoredSS[1] + MainActivity.rocketScoredTO[1]) < 2) {
+                moves.setText(moves.getText().toString() + "C1L ");
+                MainActivity.rocketScoredSS[1]++;
+            }
+            if((MainActivity.rocketScoredSS[1] + MainActivity.rocketScoredTO[1]) == 2){
+                findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
+            }
         }
         if(b.getId() == R.id.SS_C1R){
-            moves.setText(moves.getText().toString() + "C1R ");
-            MainActivity.rocketScoredSS[2]++;
+            if ((MainActivity.rocketScoredSS[2] + MainActivity.rocketScoredTO[2]) < 2){
+                moves.setText(moves.getText().toString() + "C1R ");
+                MainActivity.rocketScoredSS[2]++;
+            }
+            if((MainActivity.rocketScoredSS[2] + MainActivity.rocketScoredTO[2]) == 2){
+                findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
+            }
         }
         if(b.getId() == R.id.SS_C2L){
-            moves.setText(moves.getText().toString() + "C2L ");
-            MainActivity.rocketScoredSS[3]++;
+            if ((MainActivity.rocketScoredSS[3] + MainActivity.rocketScoredTO[3]) < 2) {
+                moves.setText(moves.getText().toString() + "C2L ");
+                MainActivity.rocketScoredSS[3]++;
+            }
+            if((MainActivity.rocketScoredSS[3] + MainActivity.rocketScoredTO[3]) == 2){
+                findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
+            }
         }
         if(b.getId() == R.id.SS_C2R){
-            moves.setText(moves.getText().toString() + "C2R ");
-            MainActivity.rocketScoredSS[4]++;
+            if ((MainActivity.rocketScoredSS[4] + MainActivity.rocketScoredTO[4]) < 2){
+                moves.setText(moves.getText().toString() + "C2R ");
+                MainActivity.rocketScoredSS[4]++;
+            }
+            if((MainActivity.rocketScoredSS[4] + MainActivity.rocketScoredTO[4]) == 2){
+                findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
+            }
         }
         if(b.getId() == R.id.SS_C3L){
-            moves.setText(moves.getText().toString() + "C3L ");
-            MainActivity.rocketScoredSS[5]++;
+            if ((MainActivity.rocketScoredSS[5] + MainActivity.rocketScoredTO[5]) < 2){
+                moves.setText(moves.getText().toString() + "C3L ");
+                MainActivity.rocketScoredSS[5]++;
+            }
+            if((MainActivity.rocketScoredSS[5] + MainActivity.rocketScoredTO[5]) == 2){
+                findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
+            }
         }
         if(b.getId() == R.id.SS_C3R){
-            moves.setText(moves.getText().toString() + "C3R ");
-            MainActivity.rocketScoredSS[6]++;
+            if ((MainActivity.rocketScoredSS[6] + MainActivity.rocketScoredTO[6]) < 2){
+                moves.setText(moves.getText().toString() + "C3R ");
+                MainActivity.rocketScoredSS[6]++;
+            }
+            if((MainActivity.rocketScoredSS[6] + MainActivity.rocketScoredTO[6]) == 2){
+                findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
+            }
         }
         if(b.getId() == R.id.SS_H1LL){
-            moves.setText(moves.getText().toString() + "H1LL ");
-            MainActivity.rocketScoredSS[9]++;
+            if ((MainActivity.rocketScoredSS[9] + MainActivity.rocketScoredTO[9]) < 1){
+                moves.setText(moves.getText().toString() + "H1LL ");
+                MainActivity.rocketScoredSS[9]++;
+            }
+            findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
         }
         if(b.getId() == R.id.SS_H1LR){
-            moves.setText(moves.getText().toString() + "H1LR ");
-            MainActivity.rocketScoredSS[10]++;
+            if ((MainActivity.rocketScoredSS[10] + MainActivity.rocketScoredTO[10]) < 1){
+                moves.setText(moves.getText().toString() + "H1LR ");
+                MainActivity.rocketScoredSS[10]++;
+            }
+            findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
         }
         if(b.getId() == R.id.SS_H1RL){
-            moves.setText(moves.getText().toString() + "H1RL ");
-            MainActivity.rocketScoredSS[11]++;
+            if ((MainActivity.rocketScoredSS[11] + MainActivity.rocketScoredTO[11]) < 1){
+                moves.setText(moves.getText().toString() + "H1RL ");
+                MainActivity.rocketScoredSS[11]++;
+            }
+            findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
         }
         if(b.getId() == R.id.SS_H1RR){
-            moves.setText(moves.getText().toString() + "H1RR ");
-            MainActivity.rocketScoredSS[12]++;
+            if ((MainActivity.rocketScoredSS[12] + MainActivity.rocketScoredTO[12]) < 1){
+                moves.setText(moves.getText().toString() + "H1RR ");
+                MainActivity.rocketScoredSS[12]++;
+            }
+            findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
         }
         if(b.getId() == R.id.SS_H2LL){
-            moves.setText(moves.getText().toString() + "H2LL ");
-            MainActivity.rocketScoredSS[13]++;
+            if ((MainActivity.rocketScoredSS[13] + MainActivity.rocketScoredTO[13]) < 1){
+                moves.setText(moves.getText().toString() + "H2LL ");
+                MainActivity.rocketScoredSS[13]++;
+            }
+            findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
         }
         if(b.getId() == R.id.SS_H2LR){
-            moves.setText(moves.getText().toString() + "H2LR ");
-            MainActivity.rocketScoredSS[14]++;
+            if ((MainActivity.rocketScoredSS[14] + MainActivity.rocketScoredTO[14]) < 1){
+                moves.setText(moves.getText().toString() + "H2LR ");
+                MainActivity.rocketScoredSS[14]++;
+            }
+            findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
         }
         if(b.getId() == R.id.SS_H2RL){
-            moves.setText(moves.getText().toString() + "H2RL ");
-            MainActivity.rocketScoredSS[15]++;
+            if ((MainActivity.rocketScoredSS[15] + MainActivity.rocketScoredTO[15]) < 1){
+                moves.setText(moves.getText().toString() + "H2RL ");
+                MainActivity.rocketScoredSS[15]++;
+            }
+            findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
         }
         if(b.getId() == R.id.SS_H2RR){
-            moves.setText(moves.getText().toString() + "H2RR ");
-            MainActivity.rocketScoredSS[16]++;
+            if ((MainActivity.rocketScoredSS[16] + MainActivity.rocketScoredTO[16]) < 1){
+                moves.setText(moves.getText().toString() + "H2RR ");
+                MainActivity.rocketScoredSS[16]++;
+            }
+            findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
         }
         if(b.getId() == R.id.SS_H3LL){
-            moves.setText(moves.getText().toString() + "H3LL ");
-            MainActivity.rocketScoredSS[17]++;
+            if ((MainActivity.rocketScoredSS[17] + MainActivity.rocketScoredTO[17]) < 1){
+                moves.setText(moves.getText().toString() + "H3LL ");
+                MainActivity.rocketScoredSS[17]++;
+            }
+            findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
         }
         if(b.getId() == R.id.SS_H3LR){
-            moves.setText(moves.getText().toString() + "H3LR ");
-            MainActivity.rocketScoredSS[18]++;
+            if ((MainActivity.rocketScoredSS[18] + MainActivity.rocketScoredTO[18]) < 1){
+                moves.setText(moves.getText().toString() + "H3LR ");
+                MainActivity.rocketScoredSS[18]++;
+            }
+            findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
         }
         if(b.getId() == R.id.SS_H3RL){
-            moves.setText(moves.getText().toString() + "H3RL ");
-            MainActivity.rocketScoredSS[19]++;
+            if ((MainActivity.rocketScoredSS[19] + MainActivity.rocketScoredTO[19]) < 1){
+                moves.setText(moves.getText().toString() + "H3RL ");
+                MainActivity.rocketScoredSS[19]++;
+            }
+            findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
         }
 
         //moves.setText(moves.getText().toString() + Integer.toString((b.getId()%20)) + " ");
     }
 
     public void loaded (View v){
-//        Button b = (Button) v;
-//        Button H = findViewById(R.id.H);
-//        Button C = findViewById(R.id.C);
-//        Button Null = findViewById(R.id.Null);
-//        if(b.getId() == R.id.C){
-//            b.setBackgroundColor(Color.GREEN);
-//            H.setBackgroundColor(Color.rgb(255,187,51));
-//            Null.setBackgroundColor(Color.rgb(192,192,192));
-//            MainActivity.startedWithSS = "C";
-//        }
-//        if(b.getId() == R.id.H){
-//            b.setBackgroundColor(Color.GREEN);
-//            C.setBackgroundColor(Color.rgb(255,136,0));
-//            Null.setBackgroundColor(Color.rgb(192,192,192));
-//            MainActivity.startedWithSS = "H";
-//        }
-//        if(b.getId() == R.id.Null){
-//            b.setBackgroundColor(Color.GREEN);
-//            H.setBackgroundColor(Color.rgb(255,187,51));
-//            C.setBackgroundColor(Color.rgb(255,136,0));
-//            MainActivity.startedWithSS = "--";
-//        }
+        Button b = (Button) v;
+        Button H = findViewById(R.id.H);
+        Button C = findViewById(R.id.C);
+        Button Null = findViewById(R.id.Null);
+        if(b.getId() == R.id.C){
+            b.setBackgroundColor(Color.GREEN);
+            H.setBackgroundColor(Color.rgb(255,187,51));
+            Null.setBackgroundColor(Color.rgb(192,192,192));
+            MainActivity.startedWithSS = "C";
+        }
+        if(b.getId() == R.id.H){
+            b.setBackgroundColor(Color.GREEN);
+            C.setBackgroundColor(Color.rgb(255,136,0));
+            Null.setBackgroundColor(Color.rgb(192,192,192));
+            MainActivity.startedWithSS = "H";
+        }
+        if(b.getId() == R.id.Null){
+            b.setBackgroundColor(Color.GREEN);
+            H.setBackgroundColor(Color.rgb(255,187,51));
+            C.setBackgroundColor(Color.rgb(255,136,0));
+            MainActivity.startedWithSS = "--";
+        }
     }
 
     public void CargoshipAdd(View v){
         Button b = (Button) v;
+        Button CSC = findViewById(R.id.CSC);
+        Button CSH = findViewById(R.id.CSH);
         TextView moves = findViewById(R.id.moves);
 
-        moves.setText(moves.getText().toString() + b.getText().toString() + " ");
         if(b.getText().toString().equals("C")){
-            MainActivity.CargoshipScoredSS[0]++;
+            if(MainActivity.CargoshipScoredSS[0] + MainActivity.CargoshipScoredTO[0] < 8) {
+                MainActivity.CargoshipScoredSS[0]++;
+                moves.setText(moves.getText().toString() + b.getText().toString() + " ");
+            }
+        }
+        if(MainActivity.CargoshipScoredSS[0] + MainActivity.CargoshipScoredTO[0] == 8){
+            CSC.setBackgroundColor(Color.DKGRAY);
         }
         if(b.getText().toString().equals("H")){
-            MainActivity.CargoshipScoredSS[1]++;
+            if(MainActivity.CargoshipScoredSS[1] + MainActivity.CargoshipScoredTO[1] < 8) {
+                MainActivity.CargoshipScoredSS[1]++;
+                moves.setText(moves.getText().toString() + b.getText().toString() + " ");
+            }
+        }
+        if(MainActivity.CargoshipScoredSS[1] + MainActivity.CargoshipScoredTO[1] == 8){
+            CSH.setBackgroundColor(Color.DKGRAY);
         }
     }
 
@@ -262,9 +340,9 @@ public class SandstormActivity extends AppCompatActivity {
         Button r2 = findViewById(R.id.r2);
         Button m1 = findViewById(R.id.m1);
         v.setBackgroundColor(Color.GREEN);
-//        Button H = findViewById(R.id.H);
-//        Button C = findViewById(R.id.C);
-//        Button Null = findViewById(R.id.Null);
+        Button H = findViewById(R.id.H);
+        Button C = findViewById(R.id.C);
+        Button Null = findViewById(R.id.Null);
 
         Button b = (Button) v;
         MainActivity.ssPos = b.getText().toString();
@@ -280,9 +358,9 @@ public class SandstormActivity extends AppCompatActivity {
 //            C.setY(H.getY());
 //            Null.setX(C.getX() + 85);
 //            Null.setY(C.getY());
-//            H.setVisibility(View.VISIBLE);
-//            C.setVisibility(View.VISIBLE);
-//            Null.setVisibility(View.VISIBLE);
+            H.setVisibility(View.VISIBLE);
+            C.setVisibility(View.VISIBLE);
+            Null.setVisibility(View.VISIBLE);
         }
         if(v.getId() == R.id.l2){
             l1.setBackgroundColor(Color.TRANSPARENT);
@@ -295,9 +373,9 @@ public class SandstormActivity extends AppCompatActivity {
 //            C.setY(H.getY());
 //            Null.setX(C.getX() + 85);
 //            Null.setY(C.getY());
-//            H.setVisibility(View.VISIBLE);
-//            C.setVisibility(View.VISIBLE);
-//            Null.setVisibility(View.VISIBLE);
+            H.setVisibility(View.VISIBLE);
+            C.setVisibility(View.VISIBLE);
+            Null.setVisibility(View.VISIBLE);
         }
         if(v.getId() == R.id.r2){
             l1.setBackgroundColor(Color.TRANSPARENT);
@@ -310,9 +388,9 @@ public class SandstormActivity extends AppCompatActivity {
 //            C.setY(H.getY());
 //            Null.setX(C.getX() + 85);
 //            Null.setY(C.getY());
-//            H.setVisibility(View.VISIBLE);
-//            C.setVisibility(View.VISIBLE);
-//            Null.setVisibility(View.VISIBLE);
+            H.setVisibility(View.VISIBLE);
+            C.setVisibility(View.VISIBLE);
+            Null.setVisibility(View.VISIBLE);
 
         }
         if(v.getId() == R.id.r1){
@@ -326,9 +404,9 @@ public class SandstormActivity extends AppCompatActivity {
 //            C.setY(H.getY());
 //            Null.setX(C.getX() + 85);
 //            Null.setY(C.getY());
-//            H.setVisibility(View.VISIBLE);
-//            C.setVisibility(View.VISIBLE);
-//            Null.setVisibility(View.VISIBLE);
+            H.setVisibility(View.VISIBLE);
+            C.setVisibility(View.VISIBLE);
+            Null.setVisibility(View.VISIBLE);
         }
         if(v.getId() == R.id.m1){
             l1.setBackgroundColor(Color.TRANSPARENT);
@@ -341,9 +419,9 @@ public class SandstormActivity extends AppCompatActivity {
 //            C.setY(H.getY());
 //            Null.setX(C.getX() + 85);
 //            Null.setY(C.getY());
-//            H.setVisibility(View.VISIBLE);
-//            C.setVisibility(View.VISIBLE);
-//            Null.setVisibility(View.VISIBLE);
+            H.setVisibility(View.VISIBLE);
+            C.setVisibility(View.VISIBLE);
+            Null.setVisibility(View.VISIBLE);
         }
     }
 

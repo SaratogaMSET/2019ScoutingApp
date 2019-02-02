@@ -20,6 +20,17 @@
         app:layout_constraintTop_toBottomOf="@+id/red" />
 
     <EditText
+        android:id="@+id/matchNumber"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:ems="10"
+        android:hint="Match number"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/teamNumber"
+        app:layout_constraintEnd_toEndOf="@+id/teamNumber"
+        app:layout_constraintStart_toStartOf="@+id/teamNumber" />
+
+    <EditText
         android:id="@+id/teamNumber"
         android:layout_width="0dp"
         android:layout_height="70dp"
@@ -32,17 +43,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/matchNumber"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:ems="10"
-        android:hint="Match number"
-        android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/teamNumber"
-        app:layout_constraintEnd_toEndOf="@+id/teamNumber"
-        app:layout_constraintStart_toStartOf="@+id/teamNumber" />
 
     <EditText
         android:id="@+id/scouterName"

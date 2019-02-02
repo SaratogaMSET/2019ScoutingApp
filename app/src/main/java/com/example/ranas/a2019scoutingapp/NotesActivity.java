@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
@@ -66,6 +67,12 @@ public class NotesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
+        EditText notes = findViewById(R.id.notes);
+        notes.setText(MainActivity.myNotes);
+
         Button badDrive = findViewById(R.id.badDrive);
         Button AveDrive = findViewById(R.id.AveDrive);
         Button GoodDrive = findViewById(R.id.GoodDrive);
@@ -78,13 +85,15 @@ public class NotesActivity extends AppCompatActivity {
         Button AveDef = findViewById(R.id.AveDef);
         Button GoodDef = findViewById(R.id.GoodDef);
 
-        Switch rocketScores = findViewById(R.id.rocketScores);
-        if(MainActivity.checked){
-            rocketScores.setChecked(true);
-            toggle(rocketScores);
+        Button rocketScoreNo = findViewById(R.id.rocketScoreNo);
+        Button rocketScoreYes = findViewById(R.id.rocketScoreYes);
+        if(!MainActivity.checked){
+            rocketScoreYes.setBackgroundColor(Color.GRAY);
+            rocketScoreNo.setBackgroundColor(Color.GREEN);
         } else {
-            rocketScores.setChecked(false);
-            toggle(rocketScores);
+            MainActivity.checked = true;
+            rocketScoreYes.setBackgroundColor(Color.GREEN);
+            rocketScoreNo.setBackgroundColor(Color.GRAY);
         }
 
         if(MainActivity.driving.equals("Bad")){
@@ -276,13 +285,16 @@ public class NotesActivity extends AppCompatActivity {
     }
 
     public void toggle(View v){
-        Switch s = (Switch)v;
-        if(s.isChecked()){
-            MainActivity.checked = true;
-            s.setText("Yes");
-        } else {
+        Button rocketScoreNo = findViewById(R.id.rocketScoreNo);
+        Button rocketScoreYes = findViewById(R.id.rocketScoreYes);
+        if(v.getId() == rocketScoreNo.getId()){
             MainActivity.checked = false;
-            s.setText("No");
+            rocketScoreYes.setBackgroundColor(Color.GRAY);
+            rocketScoreNo.setBackgroundColor(Color.GREEN);
+        } else {
+            MainActivity.checked = true;
+            rocketScoreYes.setBackgroundColor(Color.GREEN);
+            rocketScoreNo.setBackgroundColor(Color.GRAY);
         }
     }
 
@@ -299,7 +311,6 @@ public class NotesActivity extends AppCompatActivity {
         String filename = "ScoutingData_" + android_id + ".txt";
 
         try {
-            Switch rocketScores = findViewById(R.id.rocketScores);
             File entry = new File(directory, filename);
             if(!entry.exists()){
                 entry.createNewFile();
@@ -339,7 +350,7 @@ public class NotesActivity extends AppCompatActivity {
             item.put("Scored Cargo in the cargo ship", MainActivity.CargoshipScoredSS[0] + MainActivity.CargoshipScoredTO[0]);
             item.put("Scored Hatch on the cargo ship", MainActivity.CargoshipScoredSS[1] + MainActivity.CargoshipScoredTO[1]);
             item.put("Penalties", (MainActivity.penaltiesSS + MainActivity.penaltiesTO));
-            if(rocketScores.isChecked()){
+            if(MainActivity.checked){
                 item.put("Scored in both sides of a rocket", 1);
             } else {
                 item.put("Scored in both sides of a rocket", 0);

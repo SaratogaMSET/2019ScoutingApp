@@ -306,7 +306,7 @@
         android:layout_marginTop="720dp"
         android:text="Robot moves: "
         android:textColor="@android:color/background_dark"
-        android:textSize="21sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -319,7 +319,7 @@
         android:background="@android:color/holo_orange_light"
         android:onClick="loaded"
         android:text="H"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -330,8 +330,8 @@
         android:background="@android:color/holo_orange_dark"
         android:onClick="loaded"
         android:text="C"
-        app:layout_constraintStart_toEndOf="@+id/H"
-        app:layout_constraintTop_toTopOf="@+id/H" />
+        app:layout_constraintBottom_toBottomOf="@+id/H"
+        app:layout_constraintStart_toEndOf="@+id/H" />
 
     <Button
         android:id="@+id/Null"
@@ -341,8 +341,8 @@
         android:background="@android:color/darker_gray"
         android:onClick="loaded"
         android:text="--"
-        app:layout_constraintStart_toEndOf="@+id/C"
-        app:layout_constraintTop_toTopOf="@+id/C" />
+        app:layout_constraintBottom_toBottomOf="@+id/C"
+        app:layout_constraintStart_toEndOf="@+id/C" />
 
     <Button
         android:id="@+id/CSC"
@@ -366,16 +366,16 @@
         app:layout_constraintStart_toEndOf="@+id/CSC"
         app:layout_constraintTop_toTopOf="@+id/CSC" />
 
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="90dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="111dp"
-        android:background="@android:color/holo_blue_dark"
-        android:onClick="undo"
-        android:text="Undo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+    <!--<Button-->
+        <!--android:id="@+id/button6"-->
+        <!--android:layout_width="90dp"-->
+        <!--android:layout_height="100dp"-->
+        <!--android:layout_marginBottom="111dp"-->
+        <!--android:background="@android:color/holo_blue_dark"-->
+        <!--android:onClick="undo"-->
+        <!--android:text="Undo"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent" />-->
 
     <TextView
         android:id="@+id/textView"
