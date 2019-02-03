@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import static com.example.ranas.a2019scoutingapp.MainActivity.groundC;
+
 public class SandstormActivity extends AppCompatActivity {
 
 
@@ -98,6 +100,11 @@ public class SandstormActivity extends AppCompatActivity {
         } else if (MainActivity.startedWithSS == "--"){
             Null.setBackgroundColor(Color.GREEN);
         }
+
+        TextView C1 = findViewById(R.id.groundCcount);
+        C1.setText(Integer.toString(MainActivity.groundC));
+        TextView H1 = findViewById(R.id.groundHcount);
+        H1.setText(Integer.toString(MainActivity.groundH));
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -311,6 +318,19 @@ public class SandstormActivity extends AppCompatActivity {
         }
         if(MainActivity.CargoshipScoredSS[1] + MainActivity.CargoshipScoredTO[1] == 8){
             CSH.setBackgroundColor(Color.DKGRAY);
+        }
+    }
+
+    public void ground (View v){
+        if (v.getId() == R.id.groundC){
+            MainActivity.groundC++;
+            TextView C = findViewById(R.id.groundCcount);
+            C.setText(Integer.toString(MainActivity.groundC));
+        }
+        if (v.getId() == R.id.groundH){
+            MainActivity.groundH++;
+            TextView H = findViewById(R.id.groundHcount);
+            H.setText(Integer.toString(MainActivity.groundH));
         }
     }
 

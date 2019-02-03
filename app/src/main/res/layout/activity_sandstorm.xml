@@ -29,19 +29,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/navigation" />
+        app:menu=
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/navigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/frc2019field" />
+
+
+            "@menu/navigation" />
 
     <Button
         android:id="@+id/SS_C3L"
@@ -418,5 +410,70 @@
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/p1SS"
         app:layout_constraintTop_toTopOf="@+id/p1SS" />
+
+    <Button
+        android:id="@+id/groundC"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:background="@android:color/holo_orange_dark"
+        android:onClick="ground"
+        android:text="C"
+        app:layout_constraintBottom_toBottomOf="@+id/CSC"
+        app:layout_constraintStart_toEndOf="@+id/m1"
+        app:layout_constraintTop_toTopOf="@+id/CSC" />
+
+    <Button
+        android:id="@+id/groundH"
+        android:layout_width="50dp"
+        android:layout_height="0dp"
+        android:background="@android:color/holo_orange_light"
+        android:onClick="ground"
+        android:text="H"
+        app:layout_constraintBottom_toBottomOf="@+id/groundC"
+        app:layout_constraintStart_toEndOf="@+id/groundC"
+        app:layout_constraintTop_toTopOf="@+id/groundC" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/frc2019field" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ground Pickup"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/groundC"
+        app:layout_constraintStart_toStartOf="@+id/groundC" />
+
+    <TextView
+        android:id="@+id/groundCcount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/groundC"
+        app:layout_constraintTop_toBottomOf="@+id/groundC" />
+
+    <TextView
+        android:id="@+id/groundHcount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/groundH"
+        app:layout_constraintTop_toBottomOf="@+id/groundH" />
 
 </android.support.constraint.ConstraintLayout>

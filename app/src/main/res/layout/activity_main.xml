@@ -85,4 +85,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scoutMatch" />
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="50dp"
+        android:layout_height="60dp"
+        android:background="@android:color/holo_green_dark"
+        android:onClick="refresh"
+        android:text="↻"
+        android:textColor="@android:color/black"
+        android:textSize="36sp"
+        app:layout_constraintStart_toEndOf="@+id/matchNumber"
+        app:layout_constraintTop_toTopOf="@+id/matchNumber" />
+
 </android.support.constraint.ConstraintLayout>

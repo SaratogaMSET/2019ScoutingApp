@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     public static String startedWithSS;
     public static String robotMovesSS;
     public static int penaltiesSS;
+    public static int groundC, groundH;
 
     //teleop
     public static int [] rocketScoredTO = new int[20];
@@ -65,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
         startedWithSS = "";
         robotMovesSS = "Robot moves: ";
         penaltiesSS = 0;
+        groundC = 0;
+        groundH = 0;
 
         //teleop
         for(int x = 0; x < 20; x++){
@@ -92,8 +98,6 @@ public class MainActivity extends AppCompatActivity {
         myNotes = "";
         checked = false;
 
-
-
         final EditText teamNumber = findViewById(R.id.teamNumber);
         final EditText matchNumber = findViewById(R.id.matchNumber);
         final EditText scouterName = findViewById(R.id.scouterName);
@@ -102,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
         final Button blue = findViewById(R.id.blue);
         final TextView Path = findViewById(R.id.Path);
         Path.setText("Path is: " + getIntent().getStringExtra("path"));
+
 
         scoutMatch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,18 +124,55 @@ public class MainActivity extends AppCompatActivity {
         red.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                blue.setBackgroundColor(Color.GRAY);
-                red.setBackgroundColor(Color.RED);
-                alliance = "red";
+            blue.setBackgroundColor(Color.GRAY);
+            red.setBackgroundColor(Color.RED);
+            alliance = "red";
             }
         });
         blue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                blue.setBackgroundColor(Color.BLUE);
-                red.setBackgroundColor(Color.GRAY);
-                alliance = "blue";
+            blue.setBackgroundColor(Color.BLUE);
+            red.setBackgroundColor(Color.GRAY);
+            alliance = "blue";
             }
         });
+    }
+
+    public void refresh(View v){
+
+        final EditText teamNumber = findViewById(R.id.teamNumber);
+        final EditText matchNumber = findViewById(R.id.matchNumber);
+        final Button red = findViewById(R.id.red);
+        final Button blue = findViewById(R.id.blue);
+
+        //Toast.makeText(getApplicationContext(), "refreshing..." + matchNumber.getText(), Toast.LENGTH_SHORT).show();
+        Log.d("myRefresh", "refreshing..." + matchNumber.getText());
+        try {
+            Matches matchList = new Matches(getResources().getString(R.string.matches));
+            int[][] list = matchList.getMatchList();
+            int tabNum = 0;
+            if (matchNumber.getText().toString().length() > 0 && Integer.valueOf(matchNumber.getText().toString()) - 1 <= matchList.ctr) {
+                teamNumber.setText(Integer.toString(list[Integer.valueOf(matchNumber.getText().toString()) - 1][tabNum]));
+                if (tabNum <= 2){
+                    blue.setBackgroundColor(Color.GRAY);
+                    red.setBackgroundColor(Color.RED);
+                    alliance = "red";
+
+                } else {
+                    blue.setBackgroundColor(Color.BLUE);
+                    red.setBackgroundColor(Color.GRAY);
+                    alliance = "blue";
+
+                }
+                return;
+            }
+            //Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
+            Log.d("myRefresh", "error..." + matchNumber.getText());
+        } catch (IOException e) {
+            e.printStackTrace();
+            //Toast.makeText(getApplicationContext(), "exception", Toast.LENGTH_SHORT).show();
+            Log.d("myRefresh", e.toString() + matchNumber.getText());
+        }
     }
 }

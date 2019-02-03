@@ -61,9 +61,27 @@ public class TeleOpActivity extends AppCompatActivity {
         P.setText(Integer.toString(MainActivity.penaltiesSS + MainActivity.penaltiesTO));
         moves.setText(MainActivity.robotMovesTO);
 
+        TextView C = findViewById(R.id.groundCcount);
+        C.setText(Integer.toString(MainActivity.groundC));
+        TextView H = findViewById(R.id.groundHcount);
+        H.setText(Integer.toString(MainActivity.groundH));
+
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    }
+
+    public void ground (View v){
+        if (v.getId() == R.id.groundC){
+            MainActivity.groundC++;
+            TextView C = findViewById(R.id.groundCcount);
+            C.setText(Integer.toString(MainActivity.groundC));
+        }
+        if (v.getId() == R.id.groundH){
+            MainActivity.groundH++;
+            TextView H = findViewById(R.id.groundHcount);
+            H.setText(Integer.toString(MainActivity.groundH));
+        }
     }
 
     public void penalty(View v){
