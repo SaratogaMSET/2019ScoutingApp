@@ -35,7 +35,7 @@
         android:layout_width="0dp"
         android:layout_height="70dp"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="80dp"
         android:ems="10"
         android:hint="Team number"
@@ -96,5 +96,25 @@
         android:textSize="36sp"
         app:layout_constraintStart_toEndOf="@+id/matchNumber"
         app:layout_constraintTop_toTopOf="@+id/matchNumber" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:spinnerMode="dropdown"
+        android:background="@android:drawable/btn_dropdown"
+        app:layout_constraintBottom_toTopOf="@+id/matchNumber"
+        app:layout_constraintEnd_toEndOf="@+id/teamNumber"
+        app:layout_constraintStart_toStartOf="@+id/teamNumber" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tablet Number:"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/spinner"
+        app:layout_constraintStart_toStartOf="@+id/spinner" />
 
 </android.support.constraint.ConstraintLayout>
