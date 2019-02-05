@@ -93,11 +93,11 @@ public class SandstormActivity extends AppCompatActivity {
         if(MainActivity.ssPos.equals("M1")){
             selectPos(m1);
         }
-        if(MainActivity.startedWithSS == "C"){
+        if(MainActivity.startedWithSS == "Cargo"){
             C.setBackgroundColor(Color.GREEN);
-        }else if(MainActivity.startedWithSS == "H"){
+        }else if(MainActivity.startedWithSS == "Hatch"){
             H.setBackgroundColor((Color.GREEN));
-        } else if (MainActivity.startedWithSS == "--"){
+        } else if (MainActivity.startedWithSS == "NaN"){
             Null.setBackgroundColor(Color.GREEN);
         }
 
@@ -279,19 +279,19 @@ public class SandstormActivity extends AppCompatActivity {
             b.setBackgroundColor(Color.GREEN);
             H.setBackgroundColor(Color.rgb(255,187,51));
             Null.setBackgroundColor(Color.rgb(192,192,192));
-            MainActivity.startedWithSS = "C";
+            MainActivity.startedWithSS = "Cargo";
         }
         if(b.getId() == R.id.H){
             b.setBackgroundColor(Color.GREEN);
             C.setBackgroundColor(Color.rgb(255,136,0));
             Null.setBackgroundColor(Color.rgb(192,192,192));
-            MainActivity.startedWithSS = "H";
+            MainActivity.startedWithSS = "Hatch";
         }
         if(b.getId() == R.id.Null){
             b.setBackgroundColor(Color.GREEN);
             H.setBackgroundColor(Color.rgb(255,187,51));
             C.setBackgroundColor(Color.rgb(255,136,0));
-            MainActivity.startedWithSS = "--";
+            MainActivity.startedWithSS = "NaN";
         }
     }
 

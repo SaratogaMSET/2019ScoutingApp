@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         for(int x = 0; x < 2; x++){
             CargoshipScoredSS[x] = 0;
         }
-        startedWithSS = "";
+        startedWithSS = "NaN";
         robotMovesSS = "Robot moves: ";
         penaltiesSS = 0;
         groundC = 0;

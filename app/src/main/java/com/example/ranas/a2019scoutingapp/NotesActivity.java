@@ -310,6 +310,11 @@ public class NotesActivity extends AppCompatActivity {
 
         String filename = "ScoutingData_" + android_id + ".txt";
 
+        if(MainActivity.driving.equals("") || MainActivity.accuracy.equals("") || MainActivity.defense.equals("") || myNotes.getText().toString().equals("")){
+            Toast.makeText(getApplicationContext(), "Fill all fields!", Toast.LENGTH_LONG).show();
+            return;
+        }
+
         try {
             File entry = new File(directory, filename);
             if(!entry.exists()){
@@ -319,58 +324,99 @@ public class NotesActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "file exists", Toast.LENGTH_LONG).show();
             }
             JSONObject item = new JSONObject();
-            Toast.makeText(getApplicationContext(), "Created JSON", Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(), "Created JSON", Toast.LENGTH_LONG).show();
 
-            item.put("Team Number", Integer.valueOf(MainActivity.myTeamNumber));
-            item.put("Match Number", Integer.valueOf(MainActivity.myMatchNumber));
-            item.put("Scouter", MainActivity.myScouterName);
+            item.put("Team_#", Integer.valueOf(MainActivity.myTeamNumber));
+            item.put("Match_#", Integer.valueOf(MainActivity.myMatchNumber));
             item.put("Alliance", MainActivity.alliance);
+            int temp = 0;
+            int temp2 = 0;
+            for(int x = 0; x < 7; x++){
+                temp += MainActivity.rocketScoredSS[x];
+            }
+            for(int x = 0; x < MainActivity.rocketScoredSS.length; x++){
+                temp2 += MainActivity.rocketScoredSS[x];
+            }
+            item.put("Crg_scrd in SS in rkt", temp);
+            item.put("Hch_scrd in SS on rkt", temp2 - temp);
             //Toast.makeText(getApplicationContext(), "part 1a", Toast.LENGTH_LONG).show();
 
-            item.put("Starting position", MainActivity.ssPos);
-
             //Toast.makeText(getApplicationContext(), "part 1", Toast.LENGTH_LONG).show();
-            if(MainActivity.ssPos.charAt(1) == '2'){
-                item.put("Starting on HAB lvl 2", 1);
-            } else {
-                item.put("Starting on HAB lvl 2", 0);
-            }
-            item.put("Scored Cargo in the rocket lvl 1", (MainActivity.rocketScoredSS[1] + MainActivity.rocketScoredSS[2] +
+
+            item.put("Crg_scrd in the rkt_lvl_1", (MainActivity.rocketScoredSS[1] + MainActivity.rocketScoredSS[2] +
                     MainActivity.rocketScoredTO[1] + MainActivity.rocketScoredTO[2]));
-            item.put("Scored Hatch on the rocket lvl 1", (MainActivity.rocketScoredSS[9] + MainActivity.rocketScoredSS[10] + MainActivity.rocketScoredSS[11] + MainActivity.rocketScoredSS[12] +
+            item.put("Hch_scrd on the rkt_lvl_1", (MainActivity.rocketScoredSS[9] + MainActivity.rocketScoredSS[10] + MainActivity.rocketScoredSS[11] + MainActivity.rocketScoredSS[12] +
                     MainActivity.rocketScoredTO[9] + MainActivity.rocketScoredTO[10] + MainActivity.rocketScoredTO[11] + MainActivity.rocketScoredTO[12]));
-            item.put("Scored Cargo in the rocket lvl 2", (MainActivity.rocketScoredSS[3] + MainActivity.rocketScoredSS[4] +
+            item.put("Crg_scrd in the rkt_lvl_2", (MainActivity.rocketScoredSS[3] + MainActivity.rocketScoredSS[4] +
                     MainActivity.rocketScoredTO[3] + MainActivity.rocketScoredTO[4]));
-            item.put("Scored Hatch on the rocket lvl 2", (MainActivity.rocketScoredSS[13] + MainActivity.rocketScoredSS[14] + MainActivity.rocketScoredSS[15] + MainActivity.rocketScoredSS[16] +
+            item.put("Hch_scrd on the rkt_lvl_2", (MainActivity.rocketScoredSS[13] + MainActivity.rocketScoredSS[14] + MainActivity.rocketScoredSS[15] + MainActivity.rocketScoredSS[16] +
                     MainActivity.rocketScoredTO[13] + MainActivity.rocketScoredTO[14] + MainActivity.rocketScoredTO[15] + MainActivity.rocketScoredTO[16]));
-            item.put("Scored Cargo in the rocket lvl 3", (MainActivity.rocketScoredSS[5] + MainActivity.rocketScoredSS[6] +
+            item.put("Crg_scrd in the rkt_lvl_3", (MainActivity.rocketScoredSS[5] + MainActivity.rocketScoredSS[6] +
                     MainActivity.rocketScoredTO[5] + MainActivity.rocketScoredTO[6]));
-            item.put("Scored Hatch on the rocket lvl 3", (MainActivity.rocketScoredSS[17] + MainActivity.rocketScoredSS[18] + MainActivity.rocketScoredSS[19] + MainActivity.rocketScoredSS[0] +
+            item.put("Hch_scrd on the rkt_lvl_3", (MainActivity.rocketScoredSS[17] + MainActivity.rocketScoredSS[18] + MainActivity.rocketScoredSS[19] + MainActivity.rocketScoredSS[0] +
                     MainActivity.rocketScoredTO[17] + MainActivity.rocketScoredTO[18] + MainActivity.rocketScoredTO[19] + MainActivity.rocketScoredTO[0]));
-            item.put("Scored Cargo in the cargo ship", MainActivity.CargoshipScoredSS[0] + MainActivity.CargoshipScoredTO[0]);
-            item.put("Scored Hatch on the cargo ship", MainActivity.CargoshipScoredSS[1] + MainActivity.CargoshipScoredTO[1]);
-            item.put("Penalties", (MainActivity.penaltiesSS + MainActivity.penaltiesTO));
+            //TODO "Crg_shp sctn scrd_in_SS": "S1, S2",
+            item.put("Crg_shp sctn scrd_in_SS", "DO SOMETHING!!!!!!!!!!!!!!!!!!!!!!!");
+
+
+            item.put("Ttl_crg scrd in crg_shp", MainActivity.CargoshipScoredSS[0] + MainActivity.CargoshipScoredTO[0]);
+            item.put("Ttl_hch scrd on crg_shp", MainActivity.CargoshipScoredSS[1] + MainActivity.CargoshipScoredTO[1]);
+            item.put("Ttl_# of grnd_pkups", MainActivity.groundC+MainActivity.groundH);
+
             if(MainActivity.checked){
-                item.put("Scored in both sides of a rocket", 1);
+                item.put("Scrd_both sides_of_rkt", 1);
             } else {
-                item.put("Scored in both sides of a rocket", 0);
+                item.put("Scrd_both sides_of_rkt", 0);
             }
-            if(MainActivity.unsupportedClimb != 0){
-                item.put("Performed an unsupported climb (0-No, 1-Yes)", 1);
+            item.put("Starting position", MainActivity.ssPos);
+            item.put("Preloaded game_piece", MainActivity.startedWithSS);
+            if(MainActivity.ssPos.charAt(1) == '2'){
+                item.put("Starting on HAB_lvl_2", 1);
             } else {
-                item.put("Performed an unsupported climb (0-No, 1-Yes)", 0);
+                item.put("Starting on HAB_lvl_2", 0);
             }
-            item.put("Unsupported what level?", MainActivity.unsupportedClimb);
-            if(MainActivity.support != 0){
-                item.put("Supported another robot (0-No, 1-Yes)", 1);
-            } else {
-                item.put("Supported another robot (0-No, 1-Yes)", 0);
+
+//            if(MainActivity.unsupportedClimb != 0){
+//                item.put("Performed an unsupported climb (0-No, 1-Yes)", 1);
+//            } else {
+//                item.put("Performed an unsupported climb (0-No, 1-Yes)", 0);
+//            }
+//            item.put("Unsupported what level?", MainActivity.unsupportedClimb);
+//            if(MainActivity.support != 0){
+//                item.put("Supported another robot (0-No, 1-Yes)", 1);
+//            } else {
+//                item.put("Supported another robot (0-No, 1-Yes)", 0);
+//            }
+            //item.put("Supported what level?", MainActivity.support);
+
+            if(MainActivity.unsupportedClimb == 0){
+                item.put("Ended on HAB_lvl_1", 0);
+                item.put("Ended on HAB_lvl_2", 0);
+                item.put("Ended on HAB_lvl_3", 0);
+            } else
+            if(MainActivity.unsupportedClimb == 1){
+                item.put("Ended on HAB_lvl_1", 1);
+                item.put("Ended on HAB_lvl_2", 0);
+                item.put("Ended on HAB_lvl_3", 0);
+            } else
+            if(MainActivity.unsupportedClimb == 2){
+                item.put("Ended on HAB_lvl_1", 0);
+                item.put("Ended on HAB_lvl_2", 1);
+                item.put("Ended on HAB_lvl_3", 0);
+            } else
+            if(MainActivity.unsupportedClimb == 3){
+                item.put("Ended on HAB_lvl_1", 0);
+                item.put("Ended on HAB_lvl_2", 0);
+                item.put("Ended on HAB_lvl_3", 1);
             }
-            item.put("Supported what level?", MainActivity.support);
+
+
+            item.put("Penalties", (MainActivity.penaltiesSS + MainActivity.penaltiesTO));
             item.put("Driving", MainActivity.driving);
             item.put("Deployment Accuracy", MainActivity.accuracy);
             item.put("Defense", MainActivity.defense);
             item.put("Notes", MainActivity.myNotes);
+            item.put("Scouter", MainActivity.myScouterName);
             //Toast.makeText(getApplicationContext(), "part 2", Toast.LENGTH_LONG).show();
 
             FileOutputStream fos = new FileOutputStream(entry, true);
