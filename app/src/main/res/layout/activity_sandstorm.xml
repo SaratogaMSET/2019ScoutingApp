@@ -14,11 +14,11 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="400dp"
-        android:layout_marginBottom="164dp"
+        android:layout_marginBottom="204dp"
         android:background="@android:color/holo_orange_dark"
         android:onClick="add"
         android:text="C3"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <android.support.design.widget.BottomNavigationView
@@ -29,11 +29,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu=
-
-
-
-            "@menu/navigation" />
+        app:menu="@menu/navigation" />
 
     <Button
         android:id="@+id/SS_C3L"
@@ -44,7 +40,7 @@
         android:background="@android:color/holo_orange_dark"
         android:onClick="add"
         android:text="C3"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -77,36 +73,39 @@
         android:id="@+id/l1"
         android:layout_width="65dp"
         android:layout_height="72dp"
+        android:layout_marginStart="98dp"
         android:background="@android:color/transparent"
         android:onClick="selectPos"
         android:text="L1"
         android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toBottomOf="@+id/l2"
-        app:layout_constraintStart_toEndOf="@+id/l2"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/l2" />
 
     <Button
         android:id="@+id/r1"
         android:layout_width="65dp"
         android:layout_height="72dp"
+        android:layout_marginStart="98dp"
         android:background="@android:color/transparent"
         android:onClick="selectPos"
         android:text="R1"
         android:textColor="@android:color/background_light"
-        app:layout_constraintStart_toEndOf="@+id/r2"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/r2" />
 
     <Button
         android:id="@+id/m1"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="98dp"
         android:background="@android:color/transparent"
         android:onClick="selectPos"
         android:text="M1"
         android:textColor="@android:color/background_light"
         app:layout_constraintBottom_toTopOf="@+id/r1"
         app:layout_constraintEnd_toEndOf="@+id/r1"
-        app:layout_constraintStart_toStartOf="@+id/l1"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/l1" />
 
     <Button
@@ -163,7 +162,7 @@
         android:onClick="add"
         android:text="H3"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/imageView" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/SS_H3RR"
@@ -175,7 +174,7 @@
         android:onClick="add"
         android:text="H3"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/imageView" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/SS_H2RR"
@@ -187,7 +186,7 @@
         android:onClick="add"
         android:text="H2"
         app:layout_constraintBottom_toTopOf="@+id/SS_H3RR"
-        app:layout_constraintStart_toStartOf="@+id/imageView" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/SS_H1RR"
@@ -199,7 +198,7 @@
         android:onClick="add"
         android:text="H1"
         app:layout_constraintBottom_toTopOf="@+id/SS_H2RR"
-        app:layout_constraintStart_toStartOf="@+id/imageView" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/SS_H2RL"
@@ -233,7 +232,7 @@
         android:onClick="add"
         android:text="H3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/SS_H3LR"
@@ -243,7 +242,7 @@
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
         android:text="H3"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/SS_H3LL" />
 
     <Button
@@ -311,7 +310,7 @@
         android:background="@android:color/holo_orange_light"
         android:onClick="loaded"
         android:text="H"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
