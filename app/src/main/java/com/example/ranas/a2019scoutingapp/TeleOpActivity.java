@@ -13,6 +13,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import static com.example.ranas.a2019scoutingapp.MainActivity.stackCSMovesSS;
+import static com.example.ranas.a2019scoutingapp.MainActivity.stackCSMovesTO;
+import static com.example.ranas.a2019scoutingapp.MainActivity.stackMovesSS;
+
 public class TeleOpActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
@@ -120,6 +124,7 @@ public class TeleOpActivity extends AppCompatActivity {
             if(MainActivity.CargoshipScoredSS[0] + MainActivity.CargoshipScoredTO[0] < 8) {
                 MainActivity.CargoshipScoredTO[0]++;
                 moves.setText(moves.getText().toString() + b.getText().toString() + " ");
+                stackCSMovesTO.add(0);
             }
         }
         if(MainActivity.CargoshipScoredSS[0] + MainActivity.CargoshipScoredTO[0] == 8){
@@ -129,6 +134,7 @@ public class TeleOpActivity extends AppCompatActivity {
             if(MainActivity.CargoshipScoredSS[1] + MainActivity.CargoshipScoredTO[1] < 8) {
                 MainActivity.CargoshipScoredTO[1]++;
                 moves.setText(moves.getText().toString() + b.getText().toString() + " ");
+                stackCSMovesTO.add(1);
             }
         }
         if(MainActivity.CargoshipScoredSS[1] + MainActivity.CargoshipScoredTO[1] == 8){
@@ -138,6 +144,31 @@ public class TeleOpActivity extends AppCompatActivity {
 
     public void undo (View v){
         TextView moves = findViewById(R.id.moves);
+        if(!MainActivity.stackMovesTO.empty())
+            MainActivity.rocketScoredTO[MainActivity.stackMovesTO.pop()]--;
+
+        while(true){
+            if(moves.getText().toString().charAt(moves.getText().toString().length()-2) == ':'){
+                break;
+            }
+            String str = moves.getText().toString();
+            str = str.substring(0, str.length() - 1);
+            moves.setText(str);
+
+            int x = moves.getText().toString().length()-1;
+
+            if(moves.getText().toString().charAt(x) == ' ') {
+                break;
+            }
+        }
+    }
+
+    public void undo2 (View v){
+        TextView moves = findViewById(R.id.moves);
+        if(!stackCSMovesTO.empty()) {
+            int x = stackCSMovesTO.pop();
+            MainActivity.CargoshipScoredTO[x]--;
+        }
 
         while(true){
             if(moves.getText().toString().charAt(moves.getText().toString().length()-2) == ':'){
@@ -165,6 +196,8 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((MainActivity.rocketScoredSS[0] + MainActivity.rocketScoredTO[0]) < 1){
                 moves.setText(moves.getText().toString() + "H3RR ");
                 MainActivity.rocketScoredTO[0]++;
+                MainActivity.stackUsedUpTO.add(b.getId());
+                MainActivity.stackMovesTO.add(9);
             }
             findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
         }
@@ -172,6 +205,8 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((MainActivity.rocketScoredSS[1] + MainActivity.rocketScoredTO[1]) < 2) {
                 moves.setText(moves.getText().toString() + "C1L ");
                 MainActivity.rocketScoredTO[1]++;
+                MainActivity.stackUsedUpTO.add(b.getId());
+                MainActivity.stackMovesTO.add(1);
             }
             if((MainActivity.rocketScoredSS[1] + MainActivity.rocketScoredTO[1]) == 2){
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
@@ -181,6 +216,8 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((MainActivity.rocketScoredSS[2] + MainActivity.rocketScoredTO[2]) < 2){
                 moves.setText(moves.getText().toString() + "C1R ");
                 MainActivity.rocketScoredTO[2]++;
+                MainActivity.stackUsedUpTO.add(b.getId());
+                MainActivity.stackMovesTO.add(2);
             }
             if((MainActivity.rocketScoredSS[2] + MainActivity.rocketScoredTO[2]) == 2){
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
@@ -190,6 +227,8 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((MainActivity.rocketScoredSS[3] + MainActivity.rocketScoredTO[3]) < 2) {
                 moves.setText(moves.getText().toString() + "C2L ");
                 MainActivity.rocketScoredTO[3]++;
+                MainActivity.stackUsedUpTO.add(b.getId());
+                MainActivity.stackMovesTO.add(3);
             }
             if((MainActivity.rocketScoredSS[3] + MainActivity.rocketScoredTO[3]) == 2){
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
@@ -199,6 +238,8 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((MainActivity.rocketScoredSS[4] + MainActivity.rocketScoredTO[4]) < 2){
                 moves.setText(moves.getText().toString() + "C2R ");
                 MainActivity.rocketScoredTO[4]++;
+                MainActivity.stackUsedUpTO.add(b.getId());
+                MainActivity.stackMovesTO.add(4);
             }
             if((MainActivity.rocketScoredSS[4] + MainActivity.rocketScoredTO[4]) == 2){
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
@@ -208,6 +249,8 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((MainActivity.rocketScoredSS[5] + MainActivity.rocketScoredTO[5]) < 2){
                 moves.setText(moves.getText().toString() + "C3L ");
                 MainActivity.rocketScoredTO[5]++;
+                MainActivity.stackUsedUpTO.add(b.getId());
+                MainActivity.stackMovesTO.add(5);
             }
             if((MainActivity.rocketScoredSS[5] + MainActivity.rocketScoredTO[5]) == 2){
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
@@ -217,6 +260,8 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((MainActivity.rocketScoredSS[6] + MainActivity.rocketScoredTO[6]) < 2){
                 moves.setText(moves.getText().toString() + "C3R ");
                 MainActivity.rocketScoredTO[6]++;
+                MainActivity.stackUsedUpTO.add(b.getId());
+                MainActivity.stackMovesTO.add(6);
             }
             if((MainActivity.rocketScoredSS[6] + MainActivity.rocketScoredTO[6]) == 2){
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
@@ -226,6 +271,8 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((MainActivity.rocketScoredSS[9] + MainActivity.rocketScoredTO[9]) < 1){
                 moves.setText(moves.getText().toString() + "H1LL ");
                 MainActivity.rocketScoredTO[9]++;
+                MainActivity.stackUsedUpTO.add(b.getId());
+                MainActivity.stackMovesTO.add(9);
             }
             findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
         }
@@ -233,6 +280,8 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((MainActivity.rocketScoredSS[10] + MainActivity.rocketScoredTO[10]) < 1){
                 moves.setText(moves.getText().toString() + "H1LR ");
                 MainActivity.rocketScoredTO[10]++;
+                MainActivity.stackUsedUpTO.add(b.getId());
+                MainActivity.stackMovesTO.add(10);
             }
             findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
         }
@@ -240,6 +289,8 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((MainActivity.rocketScoredSS[11] + MainActivity.rocketScoredTO[11]) < 1){
                 moves.setText(moves.getText().toString() + "H1RL ");
                 MainActivity.rocketScoredTO[11]++;
+                MainActivity.stackUsedUpTO.add(b.getId());
+                MainActivity.stackMovesTO.add(11);
             }
             findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
         }
@@ -247,6 +298,8 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((MainActivity.rocketScoredSS[12] + MainActivity.rocketScoredTO[12]) < 1){
                 moves.setText(moves.getText().toString() + "H1RR ");
                 MainActivity.rocketScoredTO[12]++;
+                MainActivity.stackUsedUpTO.add(b.getId());
+                MainActivity.stackMovesTO.add(12);
             }
             findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
         }
@@ -254,6 +307,8 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((MainActivity.rocketScoredSS[13] + MainActivity.rocketScoredTO[13]) < 1){
                 moves.setText(moves.getText().toString() + "H2LL ");
                 MainActivity.rocketScoredTO[13]++;
+                MainActivity.stackUsedUpTO.add(b.getId());
+                MainActivity.stackMovesTO.add(13);
             }
             findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
         }
@@ -261,6 +316,8 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((MainActivity.rocketScoredSS[14] + MainActivity.rocketScoredTO[14]) < 1){
                 moves.setText(moves.getText().toString() + "H2LR ");
                 MainActivity.rocketScoredTO[14]++;
+                MainActivity.stackUsedUpTO.add(b.getId());
+                MainActivity.stackMovesTO.add(14);
             }
             findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
         }
@@ -268,6 +325,8 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((MainActivity.rocketScoredSS[15] + MainActivity.rocketScoredTO[15]) < 1){
                 moves.setText(moves.getText().toString() + "H2RL ");
                 MainActivity.rocketScoredTO[15]++;
+                MainActivity.stackUsedUpTO.add(b.getId());
+                MainActivity.stackMovesTO.add(15);
             }
             findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
         }
@@ -275,6 +334,8 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((MainActivity.rocketScoredSS[16] + MainActivity.rocketScoredTO[16]) < 1){
                 moves.setText(moves.getText().toString() + "H2RR ");
                 MainActivity.rocketScoredTO[16]++;
+                MainActivity.stackUsedUpTO.add(b.getId());
+                MainActivity.stackMovesTO.add(16);
             }
             findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
         }
@@ -282,6 +343,8 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((MainActivity.rocketScoredSS[17] + MainActivity.rocketScoredTO[17]) < 1){
                 moves.setText(moves.getText().toString() + "H3LL ");
                 MainActivity.rocketScoredTO[17]++;
+                MainActivity.stackUsedUpTO.add(b.getId());
+                MainActivity.stackMovesTO.add(17);
             }
             findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
         }
@@ -289,6 +352,8 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((MainActivity.rocketScoredSS[18] + MainActivity.rocketScoredTO[18]) < 1){
                 moves.setText(moves.getText().toString() + "H3LR ");
                 MainActivity.rocketScoredTO[18]++;
+                MainActivity.stackUsedUpTO.add(b.getId());
+                MainActivity.stackMovesTO.add(18);
             }
             findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
         }
@@ -296,6 +361,8 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((MainActivity.rocketScoredSS[19] + MainActivity.rocketScoredTO[19]) < 1){
                 moves.setText(moves.getText().toString() + "H3RL ");
                 MainActivity.rocketScoredTO[19]++;
+                MainActivity.stackUsedUpTO.add(b.getId());
+                MainActivity.stackMovesTO.add(19);
             }
             findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
         }

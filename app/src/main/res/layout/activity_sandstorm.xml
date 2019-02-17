@@ -475,4 +475,26 @@
         app:layout_constraintStart_toStartOf="@+id/groundH"
         app:layout_constraintTop_toBottomOf="@+id/groundH" />
 
+    <Button
+        android:id="@+id/undo"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:background="@android:color/holo_green_dark"
+        android:onClick="undo"
+        android:text="Undo"
+        app:layout_constraintBottom_toBottomOf="@+id/SS_H3RR"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="50dp"
+        android:layout_height="0dp"
+        android:background="@android:color/holo_green_dark"
+        android:onClick="undo2"
+        android:text="U"
+        app:layout_constraintBottom_toBottomOf="@+id/CSH"
+        app:layout_constraintStart_toEndOf="@+id/CSH"
+        app:layout_constraintTop_toTopOf="@+id/CSH"
+        app:layout_constraintVertical_bias="0.0" />
+
 </android.support.constraint.ConstraintLayout>

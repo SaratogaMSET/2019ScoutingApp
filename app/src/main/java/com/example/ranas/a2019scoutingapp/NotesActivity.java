@@ -135,47 +135,10 @@ public class NotesActivity extends AppCompatActivity {
             unsupportedClimb(climb3);
         }
 
-        Button noSupport = findViewById(R.id.noSupport);
-        Button support2 = findViewById(R.id.support2);
-        Button support3 = findViewById(R.id.support3);
 
-        if(MainActivity.support == 0){
-            support(noSupport);
-        } else if(MainActivity.support == 2){
-            support(support2);
-        } else if(MainActivity.support == 3){
-            support(support3);
-        }
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-    }
-
-    public void support (View v){
-        Button noSupport = findViewById(R.id.noSupport);
-        Button support2 = findViewById(R.id.support2);
-        Button support3 = findViewById(R.id.support3);
-        Button b = (Button) v;
-
-        if(v.getId() == R.id.noSupport){
-            noSupport.setBackgroundColor(Color.GREEN);
-            support2.setBackgroundColor(Color.GRAY);
-            support3.setBackgroundColor(Color.GRAY);
-            MainActivity.support = 0;
-        }
-        if(v.getId() == R.id.support2){
-            noSupport.setBackgroundColor(Color.GRAY);
-            support2.setBackgroundColor(Color.GREEN);
-            support3.setBackgroundColor(Color.GRAY);
-            MainActivity.support = 2;
-
-        }
-        if(v.getId() == R.id.support3){
-            noSupport.setBackgroundColor(Color.GRAY);
-            support2.setBackgroundColor(Color.GRAY);
-            support3.setBackgroundColor(Color.GREEN);
-            MainActivity.support = 3;
-        }
     }
 
     public void unsupportedClimb (View v){

@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,12 +34,18 @@ public class MainActivity extends AppCompatActivity {
     public static String robotMovesSS;
     public static int penaltiesSS;
     public static int groundC, groundH;
+    public static Stack<Integer> stackMovesSS = new Stack<Integer>();
+    public static Stack<Integer> stackCSMovesSS = new Stack<Integer>();
+    public static Stack<Integer> stackUsedUpSS = new Stack<Integer>();
 
     //teleop
     public static int [] rocketScoredTO = new int[20];
     public static int [] CargoshipScoredTO = new int[2];
     public static String robotMovesTO;
     public static int penaltiesTO;
+    public static Stack<Integer> stackMovesTO = new Stack<Integer>();
+    public static Stack<Integer> stackCSMovesTO = new Stack<Integer>();
+    public static Stack<Integer> stackUsedUpTO = new Stack<Integer>();
 
 
     //endgame/notes
@@ -49,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
     public static int support = 0;
     public static String myNotes;
     public static boolean checked;
-
     public static Spinner dropdown;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

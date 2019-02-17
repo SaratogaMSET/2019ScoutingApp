@@ -16,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import static com.example.ranas.a2019scoutingapp.MainActivity.groundC;
+import static com.example.ranas.a2019scoutingapp.MainActivity.stackCSMovesSS;
+import static com.example.ranas.a2019scoutingapp.MainActivity.stackMovesSS;
 
 public class SandstormActivity extends AppCompatActivity {
 
@@ -151,6 +153,8 @@ public class SandstormActivity extends AppCompatActivity {
                 if ((MainActivity.rocketScoredSS[0] + MainActivity.rocketScoredTO[0]) < 1){
                     moves.setText(moves.getText().toString() + "H3RR ");
                     MainActivity.rocketScoredSS[0]++;
+                    stackMovesSS.add(0);
+                    MainActivity.stackUsedUpSS.add(b.getId());
                 }
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 break;
@@ -158,6 +162,8 @@ public class SandstormActivity extends AppCompatActivity {
                 if ((MainActivity.rocketScoredSS[1] + MainActivity.rocketScoredTO[1]) < 2) {
                     moves.setText(moves.getText().toString() + "C1L ");
                     MainActivity.rocketScoredSS[1]++;
+                    stackMovesSS.add(1);
+                    MainActivity.stackUsedUpSS.add(b.getId());
                 }
                 if((MainActivity.rocketScoredSS[1] + MainActivity.rocketScoredTO[1]) == 2){
                     findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
@@ -167,6 +173,8 @@ public class SandstormActivity extends AppCompatActivity {
                 if ((MainActivity.rocketScoredSS[2] + MainActivity.rocketScoredTO[2]) < 2){
                     moves.setText(moves.getText().toString() + "C1R ");
                     MainActivity.rocketScoredSS[2]++;
+                    MainActivity.stackUsedUpSS.add(b.getId());
+                    stackMovesSS.add(2);
                 }
                 if((MainActivity.rocketScoredSS[2] + MainActivity.rocketScoredTO[2]) == 2){
                     findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
@@ -176,6 +184,8 @@ public class SandstormActivity extends AppCompatActivity {
                 if ((MainActivity.rocketScoredSS[3] + MainActivity.rocketScoredTO[3]) < 2) {
                     moves.setText(moves.getText().toString() + "C2L ");
                     MainActivity.rocketScoredSS[3]++;
+                    MainActivity.stackUsedUpSS.add(b.getId());
+                    stackMovesSS.add(3);
                 }
                 if((MainActivity.rocketScoredSS[3] + MainActivity.rocketScoredTO[3]) == 2){
                     findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
@@ -185,6 +195,8 @@ public class SandstormActivity extends AppCompatActivity {
                 if ((MainActivity.rocketScoredSS[4] + MainActivity.rocketScoredTO[4]) < 2){
                     moves.setText(moves.getText().toString() + "C2R ");
                     MainActivity.rocketScoredSS[4]++;
+                    MainActivity.stackUsedUpSS.add(b.getId());
+                    stackMovesSS.add(4);
                 }
                 if((MainActivity.rocketScoredSS[4] + MainActivity.rocketScoredTO[4]) == 2){
                     findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
@@ -194,6 +206,8 @@ public class SandstormActivity extends AppCompatActivity {
                 if ((MainActivity.rocketScoredSS[5] + MainActivity.rocketScoredTO[5]) < 2){
                     moves.setText(moves.getText().toString() + "C3L ");
                     MainActivity.rocketScoredSS[5]++;
+                    MainActivity.stackUsedUpSS.add(b.getId());
+                    stackMovesSS.add(5);
                 }
                 if((MainActivity.rocketScoredSS[5] + MainActivity.rocketScoredTO[5]) == 2){
                     findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
@@ -203,6 +217,8 @@ public class SandstormActivity extends AppCompatActivity {
                 if ((MainActivity.rocketScoredSS[6] + MainActivity.rocketScoredTO[6]) < 2){
                     moves.setText(moves.getText().toString() + "C3R ");
                     MainActivity.rocketScoredSS[6]++;
+                    MainActivity.stackUsedUpSS.add(b.getId());
+                    stackMovesSS.add(6);
                 }
                 if((MainActivity.rocketScoredSS[6] + MainActivity.rocketScoredTO[6]) == 2){
                     findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
@@ -212,6 +228,8 @@ public class SandstormActivity extends AppCompatActivity {
                 if ((MainActivity.rocketScoredSS[9] + MainActivity.rocketScoredTO[9]) < 1){
                     moves.setText(moves.getText().toString() + "H1LL ");
                     MainActivity.rocketScoredSS[9]++;
+                    MainActivity.stackUsedUpSS.add(b.getId());
+                    stackMovesSS.add(9);
                 }
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 break;
@@ -219,6 +237,8 @@ public class SandstormActivity extends AppCompatActivity {
                 if ((MainActivity.rocketScoredSS[10] + MainActivity.rocketScoredTO[10]) < 1){
                     moves.setText(moves.getText().toString() + "H1LR ");
                     MainActivity.rocketScoredSS[10]++;
+                    MainActivity.stackUsedUpSS.add(b.getId());
+                    stackMovesSS.add(10);
                 }
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 break;
@@ -226,6 +246,8 @@ public class SandstormActivity extends AppCompatActivity {
                 if ((MainActivity.rocketScoredSS[11] + MainActivity.rocketScoredTO[11]) < 1){
                     moves.setText(moves.getText().toString() + "H1RL ");
                     MainActivity.rocketScoredSS[11]++;
+                    MainActivity.stackUsedUpSS.add(b.getId());
+                    stackMovesSS.add(11);
                 }
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 break;
@@ -233,6 +255,8 @@ public class SandstormActivity extends AppCompatActivity {
                 if ((MainActivity.rocketScoredSS[12] + MainActivity.rocketScoredTO[12]) < 1){
                     moves.setText(moves.getText().toString() + "H1RR ");
                     MainActivity.rocketScoredSS[12]++;
+                    MainActivity.stackUsedUpSS.add(b.getId());
+                    stackMovesSS.add(12);
                 }
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 break;
@@ -240,6 +264,8 @@ public class SandstormActivity extends AppCompatActivity {
                 if ((MainActivity.rocketScoredSS[13] + MainActivity.rocketScoredTO[13]) < 1){
                     moves.setText(moves.getText().toString() + "H2LL ");
                     MainActivity.rocketScoredSS[13]++;
+                    MainActivity.stackUsedUpSS.add(b.getId());
+                    stackMovesSS.add(13);
                 }
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 break;
@@ -247,6 +273,8 @@ public class SandstormActivity extends AppCompatActivity {
                 if ((MainActivity.rocketScoredSS[14] + MainActivity.rocketScoredTO[14]) < 1){
                     moves.setText(moves.getText().toString() + "H2LR ");
                     MainActivity.rocketScoredSS[14]++;
+                    MainActivity.stackUsedUpSS.add(b.getId());
+                    stackMovesSS.add(14);
                 }
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 break;
@@ -254,6 +282,8 @@ public class SandstormActivity extends AppCompatActivity {
                 if ((MainActivity.rocketScoredSS[15] + MainActivity.rocketScoredTO[15]) < 1){
                     moves.setText(moves.getText().toString() + "H2RL ");
                     MainActivity.rocketScoredSS[15]++;
+                    MainActivity.stackUsedUpSS.add(b.getId());
+                    stackMovesSS.add(15);
                 }
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 break;
@@ -261,6 +291,9 @@ public class SandstormActivity extends AppCompatActivity {
                 if ((MainActivity.rocketScoredSS[16] + MainActivity.rocketScoredTO[16]) < 1){
                     moves.setText(moves.getText().toString() + "H2RR ");
                     MainActivity.rocketScoredSS[16]++;
+                    MainActivity.stackUsedUpSS.add(b.getId());
+                    stackMovesSS.add(16);
+
                 }
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 break;
@@ -268,6 +301,8 @@ public class SandstormActivity extends AppCompatActivity {
                 if ((MainActivity.rocketScoredSS[17] + MainActivity.rocketScoredTO[17]) < 1){
                     moves.setText(moves.getText().toString() + "H3LL ");
                     MainActivity.rocketScoredSS[17]++;
+                    MainActivity.stackUsedUpSS.add(b.getId());
+                    stackMovesSS.add(17);
                 }
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 break;
@@ -275,6 +310,8 @@ public class SandstormActivity extends AppCompatActivity {
                 if ((MainActivity.rocketScoredSS[18] + MainActivity.rocketScoredTO[18]) < 1){
                     moves.setText(moves.getText().toString() + "H3LR ");
                     MainActivity.rocketScoredSS[18]++;
+                    MainActivity.stackUsedUpSS.add(b.getId());
+                    stackMovesSS.add(18);
                 }
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 break;
@@ -282,6 +319,8 @@ public class SandstormActivity extends AppCompatActivity {
                 if ((MainActivity.rocketScoredSS[19] + MainActivity.rocketScoredTO[19]) < 1){
                     moves.setText(moves.getText().toString() + "H3RL ");
                     MainActivity.rocketScoredSS[19]++;
+                    MainActivity.stackUsedUpSS.add(b.getId());
+                    stackMovesSS.add(19);
                 }
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 break;
@@ -324,6 +363,7 @@ public class SandstormActivity extends AppCompatActivity {
         if(b.getText().toString().equals("C")){
             if(MainActivity.CargoshipScoredSS[0] + MainActivity.CargoshipScoredTO[0] < 8) {
                 MainActivity.CargoshipScoredSS[0]++;
+                stackCSMovesSS.add(0);
                 moves.setText(moves.getText().toString() + b.getText().toString() + " ");
             }
         }
@@ -333,6 +373,7 @@ public class SandstormActivity extends AppCompatActivity {
         if(b.getText().toString().equals("H")){
             if(MainActivity.CargoshipScoredSS[1] + MainActivity.CargoshipScoredTO[1] < 8) {
                 MainActivity.CargoshipScoredSS[1]++;
+                stackCSMovesSS.add(1);
                 moves.setText(moves.getText().toString() + b.getText().toString() + " ");
             }
         }
@@ -354,8 +395,39 @@ public class SandstormActivity extends AppCompatActivity {
         }
     }
 
+    public void undo2 (View v){
+        TextView moves = findViewById(R.id.moves);
+        if(!MainActivity.stackCSMovesSS.empty()) {
+            int x = MainActivity.stackCSMovesSS.pop();
+            MainActivity.CargoshipScoredSS[x]--;
+
+        }
+
+        while(true){
+            if(moves.getText().toString().charAt(moves.getText().toString().length()-2) == ':'){
+                break;
+            }
+            String str = moves.getText().toString();
+            str = str.substring(0, str.length() - 1);
+            moves.setText(str);
+
+            int x = moves.getText().toString().length()-1;
+
+            if(moves.getText().toString().charAt(x) == ' ') {
+                break;
+            }
+        }
+    }
+
+
     public void undo (View v){
         TextView moves = findViewById(R.id.moves);
+        if(!MainActivity.stackMovesSS.empty()) {
+            int x = MainActivity.stackMovesSS.pop();
+            int id = MainActivity.stackUsedUpSS.pop();
+            MainActivity.rocketScoredSS[x]-=2;
+            add(findViewById(id));
+        }
 
         while(true){
             if(moves.getText().toString().charAt(moves.getText().toString().length()-2) == ':'){
