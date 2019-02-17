@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class TeleOpActivity extends AppCompatActivity {
@@ -53,6 +54,19 @@ public class TeleOpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tele_op);
+        if (MainActivity.alliance == "red") {
+            //int width = getWindowManager().getDefaultDisplay().getWidth();
+            ImageView image = findViewById(R.id.imageView);
+            image.setImageResource(R.drawable.frc_field_red);
+            //l2.setText(l2.getX() + " " + l2.getY());
+//            Toast.makeText(getApplicationContext(), Integer.toString(l1.getLeft()), Toast.LENGTH_LONG).show();
+//            l1.setLeft(100 - (int) l1.getLeft());
+//            l2.setLeft(100 - (int) l2.getLeft());
+//            r1.setLeft(100 - (int) r1.getLeft());
+//            r2.setLeft(100 - (int) r2.getLeft());
+//            m1.setLeft(100 - (int) m1.getLeft());
+
+        }
 
 
         TextView moves = findViewById(R.id.moves);

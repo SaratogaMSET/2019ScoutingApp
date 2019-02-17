@@ -72,19 +72,19 @@ public class SandstormActivity extends AppCompatActivity {
         Button m1 = findViewById(R.id.m1);
         TextView P = findViewById(R.id.P);
 
-//        if (MainActivity.alliance == "red") {
-//            //int width = getWindowManager().getDefaultDisplay().getWidth();
-//            ImageView image = findViewById(R.id.imageView);
-//            image.setImageResource(R.drawable.frc_field_red);
-//            //l2.setText(l2.getX() + " " + l2.getY());
+        if (MainActivity.alliance == "red") {
+            //int width = getWindowManager().getDefaultDisplay().getWidth();
+            ImageView image = findViewById(R.id.imageView);
+            image.setImageResource(R.drawable.frc_field_red);
+            //l2.setText(l2.getX() + " " + l2.getY());
 //            Toast.makeText(getApplicationContext(), Integer.toString(l1.getLeft()), Toast.LENGTH_LONG).show();
 //            l1.setLeft(100 - (int) l1.getLeft());
 //            l2.setLeft(100 - (int) l2.getLeft());
 //            r1.setLeft(100 - (int) r1.getLeft());
 //            r2.setLeft(100 - (int) r2.getLeft());
 //            m1.setLeft(100 - (int) m1.getLeft());
-//
-//        }
+
+        }
 
         P.setText(Integer.toString(MainActivity.penaltiesSS + MainActivity.penaltiesTO));
         moves.setText(MainActivity.robotMovesSS);
@@ -207,6 +207,7 @@ public class SandstormActivity extends AppCompatActivity {
                 if((MainActivity.rocketScoredSS[6] + MainActivity.rocketScoredTO[6]) == 2){
                     findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 }
+                break;
             case R.id.SS_H1LL:
                 if ((MainActivity.rocketScoredSS[9] + MainActivity.rocketScoredTO[9]) < 1){
                     moves.setText(moves.getText().toString() + "H1LL ");
