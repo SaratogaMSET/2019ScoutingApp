@@ -55,6 +55,9 @@ public class TeleOpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tele_op);
+
+        check();
+
         if (Vars.alliance == "red") {
             //int width = getWindowManager().getDefaultDisplay().getWidth();
             ImageView image = findViewById(R.id.imageView);
@@ -183,6 +186,124 @@ public class TeleOpActivity extends AppCompatActivity {
         }
     }
 
+    public void check(){
+
+        if(Vars.CargoshipScoredSS[0] + Vars.CargoshipScoredTO[0] == 8){
+            findViewById(R.id.CSC).setBackgroundColor(Color.DKGRAY);
+        } else {
+            findViewById(R.id.CSC).setBackgroundColor(Color.parseColor("#ffffbb33"));
+        }
+        if(Vars.CargoshipScoredSS[1] + Vars.CargoshipScoredTO[1] == 8){
+            findViewById(R.id.CSH).setBackgroundColor(Color.DKGRAY);
+        } else {
+            findViewById(R.id.CSH).setBackgroundColor(Color.parseColor("#ffff8800"));
+        }
+
+        if(Vars.rocketScoredTO[0] + Vars.rocketScoredSS[0]== 1) {
+            findViewById(R.id.TO_H3RR).setBackgroundColor(Color.DKGRAY);
+        } else {
+            findViewById(R.id.TO_H3RR).setBackgroundColor(Color.parseColor("#ffffbb33"));
+        }
+        if(Vars.rocketScoredTO[1] + Vars.rocketScoredSS[1] == 2) {
+            findViewById(R.id.TO_C1L).setBackgroundColor(Color.DKGRAY);
+        } else {
+            findViewById(R.id.TO_C1L).setBackgroundColor(Color.parseColor("#ffff8800"));
+        }
+        if(Vars.rocketScoredTO[2] + Vars.rocketScoredSS[2] == 2) {
+            findViewById(R.id.TO_C1R).setBackgroundColor(Color.DKGRAY);
+        } else {
+            findViewById(R.id.TO_C1R).setBackgroundColor(Color.parseColor("#ffff8800"));
+        }
+        if(Vars.rocketScoredTO[3] + Vars.rocketScoredSS[3] == 2) {
+            findViewById(R.id.TO_C2L).setBackgroundColor(Color.DKGRAY);
+        } else {
+            findViewById(R.id.TO_C2L).setBackgroundColor(Color.parseColor("#ffff8800"));
+        }
+        if(Vars.rocketScoredTO[4] + Vars.rocketScoredSS[4] == 2) {
+            findViewById(R.id.TO_C2R).setBackgroundColor(Color.DKGRAY);
+        } else {
+            findViewById(R.id.TO_C2R).setBackgroundColor(Color.parseColor("#ffff8800"));
+        }
+
+        if(Vars.rocketScoredTO[5] + Vars.rocketScoredSS[5] == 2) {
+            findViewById(R.id.TO_C3L).setBackgroundColor(Color.DKGRAY);
+        } else {
+            findViewById(R.id.TO_C3L).setBackgroundColor(Color.parseColor("#ffff8800"));
+        }
+
+        if(Vars.rocketScoredTO[6] + Vars.rocketScoredSS[6] == 2) {
+            findViewById(R.id.TO_C3R).setBackgroundColor(Color.DKGRAY);
+        } else {
+            findViewById(R.id.TO_C3R).setBackgroundColor(Color.parseColor("#ffff8800"));
+        }
+
+        if(Vars.rocketScoredTO[9] + Vars.rocketScoredSS[9] == 1) {
+            findViewById(R.id.TO_H1LL).setBackgroundColor(Color.DKGRAY);
+        } else {
+            findViewById(R.id.TO_H1LL).setBackgroundColor(Color.parseColor("#ffffbb33"));
+        }
+
+        if(Vars.rocketScoredTO[10] + Vars.rocketScoredSS[10] == 1) {
+            findViewById(R.id.TO_H1LR).setBackgroundColor(Color.DKGRAY);
+        } else {
+            findViewById(R.id.TO_H1LR).setBackgroundColor(Color.parseColor("#ffffbb33"));
+        }
+
+        if(Vars.rocketScoredTO[11] + Vars.rocketScoredSS[11] == 1) {
+            findViewById(R.id.TO_H1RL).setBackgroundColor(Color.DKGRAY);
+        } else {
+            findViewById(R.id.TO_H1RL).setBackgroundColor(Color.parseColor("#ffffbb33"));
+        }
+
+        if(Vars.rocketScoredTO[12] + Vars.rocketScoredSS[12] == 1) {
+            findViewById(R.id.TO_H1RR).setBackgroundColor(Color.DKGRAY);
+        } else {
+            findViewById(R.id.TO_H1RR).setBackgroundColor(Color.parseColor("#ffffbb33"));
+        }
+
+        if(Vars.rocketScoredTO[13] + Vars.rocketScoredSS[13] == 1) {
+            findViewById(R.id.TO_H2LL).setBackgroundColor(Color.DKGRAY);
+        } else {
+            findViewById(R.id.TO_H2LL).setBackgroundColor(Color.parseColor("#ffffbb33"));
+        }
+
+        if(Vars.rocketScoredTO[14] + Vars.rocketScoredSS[14] == 1) {
+            findViewById(R.id.TO_H2LR).setBackgroundColor(Color.DKGRAY);
+        } else {
+            findViewById(R.id.TO_H2LR).setBackgroundColor(Color.parseColor("#ffffbb33"));
+        }
+
+        if(Vars.rocketScoredTO[15] + Vars.rocketScoredSS[15] == 1) {
+            findViewById(R.id.TO_H2RL).setBackgroundColor(Color.DKGRAY);
+        } else {
+            findViewById(R.id.TO_H2RL).setBackgroundColor(Color.parseColor("#ffffbb33"));
+        }
+
+        if(Vars.rocketScoredTO[16] + Vars.rocketScoredSS[16] == 1) {
+            findViewById(R.id.TO_H2RR).setBackgroundColor(Color.DKGRAY);
+        } else {
+            findViewById(R.id.TO_H2RR).setBackgroundColor(Color.parseColor("#ffffbb33"));
+        }
+
+        if(Vars.rocketScoredTO[17] + Vars.rocketScoredSS[17] == 1) {
+            findViewById(R.id.TO_H3LL).setBackgroundColor(Color.DKGRAY);
+        } else {
+            findViewById(R.id.TO_H3LL).setBackgroundColor(Color.parseColor("#ffffbb33"));
+        }
+
+        if(Vars.rocketScoredTO[18] + Vars.rocketScoredSS[18] == 1) {
+            findViewById(R.id.TO_H3LR).setBackgroundColor(Color.DKGRAY);
+        } else {
+            findViewById(R.id.TO_H3LR).setBackgroundColor(Color.parseColor("#ffffbb33"));
+        }
+
+        if(Vars.rocketScoredTO[19] + Vars.rocketScoredSS[19] == 1) {
+            findViewById(R.id.TO_H3RL).setBackgroundColor(Color.DKGRAY);
+        } else {
+            findViewById(R.id.TO_H3RL).setBackgroundColor(Color.parseColor("#ffffbb33"));
+        }
+    }
+
     @SuppressLint("ResourceType")
     public void add (View v){
         TextView moves = findViewById(R.id.moves);
@@ -194,7 +315,7 @@ public class TeleOpActivity extends AppCompatActivity {
                 moves.setText(moves.getText().toString() + "H3RR ");
                 Vars.rocketScoredTO[0]++;
                 Vars.stackUsedUpTO.add(b.getId());
-                Vars.stackMovesTO.add(9);
+                Vars.stackMovesTO.add(0);
             }
             findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
         }
