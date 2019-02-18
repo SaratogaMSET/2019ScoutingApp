@@ -16,47 +16,17 @@ import android.widget.TextView;
 import java.io.IOException;
 import java.util.Stack;
 
+import static com.example.ranas.a2019scoutingapp.Vars.CargoshipScoredSS;
+import static com.example.ranas.a2019scoutingapp.Vars.CargoshipScoredTO;
+import static com.example.ranas.a2019scoutingapp.Vars.myMatchNumber;
+import static com.example.ranas.a2019scoutingapp.Vars.myScouterName;
+import static com.example.ranas.a2019scoutingapp.Vars.rocketScoredSS;
+import static com.example.ranas.a2019scoutingapp.Vars.rocketScoredTO;
+import static com.example.ranas.a2019scoutingapp.Vars.tabNum;
+
 public class MainActivity extends AppCompatActivity {
-
     //main
-    public static String myTeamNumber = "";
-    public static String myMatchNumber = "0";
-    public static String myScouterName = "";
-    public static String alliance = "";
-    public static String tabNum = "";
 
-
-    //sandstorm
-    public static String ssPos;
-    public static int [] rocketScoredSS = new int[20];
-    public static int [] CargoshipScoredSS = new int[2];
-    public static String startedWithSS;
-    public static String robotMovesSS;
-    public static int penaltiesSS;
-    public static int groundC, groundH;
-    public static Stack<Integer> stackMovesSS = new Stack<Integer>();
-    public static Stack<Integer> stackCSMovesSS = new Stack<Integer>();
-    public static Stack<Integer> stackUsedUpSS = new Stack<Integer>();
-
-    //teleop
-    public static int [] rocketScoredTO = new int[20];
-    public static int [] CargoshipScoredTO = new int[2];
-    public static String robotMovesTO;
-    public static int penaltiesTO;
-    public static Stack<Integer> stackMovesTO = new Stack<Integer>();
-    public static Stack<Integer> stackCSMovesTO = new Stack<Integer>();
-    public static Stack<Integer> stackUsedUpTO = new Stack<Integer>();
-
-
-    //endgame/notes
-    public static String driving = "";
-    public static String accuracy = "";
-    public static String defense = "";
-    public static int unsupportedClimb = 5;
-    public static int support = 0;
-    public static String myNotes;
-    public static boolean checked;
-    public static Spinner dropdown;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,31 +42,33 @@ public class MainActivity extends AppCompatActivity {
         final Button button = findViewById(R.id.button);
 
         //get the spinner from the xml.
-        dropdown = findViewById(R.id.spinner);
+        Vars.dropdown = findViewById(R.id.spinner);
         //create a list of items for the spinner.
         String[] items = {"R1", "R2", "R3", "B1", "B2", "B3"};
         //create an adapter to describe how the items are displayed, adapters are used in several places    in android.
         //There are multiple variations of this, but this is the basic variant.
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         //set the spinners adapter to the previously created one.
-        dropdown.setAdapter(adapter);
+        Vars.dropdown.setAdapter(adapter);
+
+        Vars.slots = "";
 
         if(tabNum.equals("R1"))
-            dropdown.setSelection(0);
+            Vars.dropdown.setSelection(0);
         if(tabNum.equals("R2"))
-            dropdown.setSelection(1);
+            Vars.dropdown.setSelection(1);
         if(tabNum.equals("R3"))
-            dropdown.setSelection(2);
+            Vars.dropdown.setSelection(2);
         if(tabNum.equals("B1"))
-            dropdown.setSelection(3);
+            Vars.dropdown.setSelection(3);
         if(tabNum.equals("B2"))
-            dropdown.setSelection(4);
+            Vars.dropdown.setSelection(4);
         if(tabNum.equals("B3"))
-            dropdown.setSelection(5);
+            Vars.dropdown.setSelection(5);
 
         //main activity
-        myTeamNumber = "";
-        myMatchNumber = Integer.toString(Integer.valueOf(myMatchNumber)+1);
+        Vars.myTeamNumber = "";
+        Vars.myMatchNumber = Integer.toString(Integer.valueOf(myMatchNumber)+1);
         matchNumber.setText(myMatchNumber);
         View v = (View) button;
         refresh(v);
@@ -104,28 +76,28 @@ public class MainActivity extends AppCompatActivity {
         //alliance = "";
 
         //sandstorm
-        ssPos = "L1";
+        Vars.ssPos = "L1";
         for(int x = 0; x < 20; x++){
-            rocketScoredSS[x] = 0;
+            Vars.rocketScoredSS[x] = 0;
         }
         for(int x = 0; x < 2; x++){
-            CargoshipScoredSS[x] = 0;
+            Vars.CargoshipScoredSS[x] = 0;
         }
-        startedWithSS = "NaN";
-        robotMovesSS = "Robot moves: ";
-        penaltiesSS = 0;
-        groundC = 0;
-        groundH = 0;
+        Vars.startedWithSS = "NaN";
+        Vars.robotMovesSS = "Robot moves: ";
+        Vars.penaltiesSS = 0;
+        Vars.groundC = 0;
+        Vars.groundH = 0;
 
         //teleop
         for(int x = 0; x < 20; x++){
-            rocketScoredTO[x] = 0;
+            Vars.rocketScoredTO[x] = 0;
         }
         for(int x = 0; x < 2; x++){
-            CargoshipScoredTO[x] = 0;
+            Vars.CargoshipScoredTO[x] = 0;
         }
-        robotMovesTO = "Robot moves: ";
-        penaltiesTO = 0;
+        Vars.robotMovesTO = "Robot moves: ";
+        Vars.penaltiesTO = 0;
 
         //endgame
 //        for(int x = 0; x < 20; x++){
@@ -136,12 +108,12 @@ public class MainActivity extends AppCompatActivity {
 //        }
 //        robotMovesEG = "Robot moves: ";
 //        penaltiesEG = 0;
-        driving = "";
-        accuracy = "";
-        defense = "";
-        unsupportedClimb = 0;
-        myNotes = "";
-        checked = false;
+        Vars.driving = "";
+        Vars.accuracy = "";
+        Vars.defense = "";
+        Vars.unsupportedClimb = 0;
+        Vars.myNotes = "";
+        Vars.checked = false;
 
 
         Path.setText("Path is: " + getIntent().getStringExtra("path"));
@@ -150,10 +122,10 @@ public class MainActivity extends AppCompatActivity {
         scoutMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!alliance.matches("") && !scouterName.getText().toString().matches("") && !teamNumber.getText().toString().matches("") && !matchNumber.getText().toString().matches("") ){
+                if(!Vars.alliance.matches("") && !scouterName.getText().toString().matches("") && !teamNumber.getText().toString().matches("") && !matchNumber.getText().toString().matches("") ){
                     Intent goToAutonomous = new Intent();
                     goToAutonomous.setClass(getApplicationContext(), SandstormActivity.class);
-                    myTeamNumber = teamNumber.getText().toString();
+                    Vars.myTeamNumber = teamNumber.getText().toString();
                     myMatchNumber = matchNumber.getText().toString();
                     myScouterName = scouterName.getText().toString();
                     startActivity(goToAutonomous);
@@ -163,17 +135,17 @@ public class MainActivity extends AppCompatActivity {
         red.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            blue.setBackgroundColor(Color.GRAY);
-            red.setBackgroundColor(Color.RED);
-            alliance = "red";
+                blue.setBackgroundColor(Color.GRAY);
+                red.setBackgroundColor(Color.RED);
+                Vars.alliance = "red";
             }
         });
         blue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            blue.setBackgroundColor(Color.BLUE);
-            red.setBackgroundColor(Color.GRAY);
-            alliance = "blue";
+                blue.setBackgroundColor(Color.BLUE);
+                red.setBackgroundColor(Color.GRAY);
+                Vars.alliance = "blue";
             }
         });
     }
@@ -194,21 +166,21 @@ public class MainActivity extends AppCompatActivity {
             int[][] list = matchList.getMatchList();
             if (matchNumber.getText().toString().length() > 0 && Integer.valueOf(matchNumber.getText().toString()) - 1 <= matchList.ctr) {
                 //teamNumber.setText(Integer.toString(list[Integer.valueOf(matchNumber.getText().toString()) - 1][tabNum]));
-                if (dropdown.getSelectedItem().toString().equals("R1") || dropdown.getSelectedItem().toString().equals("R2") || dropdown.getSelectedItem().toString().equals("R3")){
-                    String s = dropdown.getSelectedItem().toString();
+                if (Vars.dropdown.getSelectedItem().toString().equals("R1") || Vars.dropdown.getSelectedItem().toString().equals("R2") || Vars.dropdown.getSelectedItem().toString().equals("R3")){
+                    String s = Vars.dropdown.getSelectedItem().toString();
                     tabNum = s;
                     blue.setBackgroundColor(Color.GRAY);
                     red.setBackgroundColor(Color.RED);
-                    alliance = "red";
+                    Vars.alliance = "red";
                     int x = Integer.valueOf(matchNumber.getText().toString()) - 1;
                     int y = Integer.valueOf(s.charAt(1))-49;
                     teamNumber.setText(Integer.toString(list[x][y]));
                 } else {
-                    String s = dropdown.getSelectedItem().toString();
+                    String s = Vars.dropdown.getSelectedItem().toString();
                     tabNum = s;
                     blue.setBackgroundColor(Color.BLUE);
                     red.setBackgroundColor(Color.GRAY);
-                    alliance = "blue";
+                    Vars.alliance = "blue";
                     int x = Integer.valueOf(matchNumber.getText().toString()) - 1;
                     int y = Integer.valueOf(s.charAt(1))-46;
                     teamNumber.setText(Integer.toString(list[x][y]));

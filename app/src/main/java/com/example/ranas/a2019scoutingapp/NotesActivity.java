@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,9 +21,7 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.charset.MalformedInputException;
 
-import static com.example.ranas.a2019scoutingapp.MainActivity.unsupportedClimb;
 
 public class NotesActivity extends AppCompatActivity {
 
@@ -36,7 +33,7 @@ public class NotesActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             EditText myNotes = findViewById(R.id.notes);
-            MainActivity.myNotes = myNotes.getText().toString();
+            Vars.myNotes = myNotes.getText().toString();
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     Intent SS = new Intent();
@@ -71,7 +68,7 @@ public class NotesActivity extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         EditText notes = findViewById(R.id.notes);
-        notes.setText(MainActivity.myNotes);
+        notes.setText(Vars.myNotes);
 
         Button badDrive = findViewById(R.id.badDrive);
         Button AveDrive = findViewById(R.id.AveDrive);
@@ -87,36 +84,36 @@ public class NotesActivity extends AppCompatActivity {
 
         Button rocketScoreNo = findViewById(R.id.rocketScoreNo);
         Button rocketScoreYes = findViewById(R.id.rocketScoreYes);
-        if(!MainActivity.checked){
+        if(!Vars.checked){
             rocketScoreYes.setBackgroundColor(Color.GRAY);
             rocketScoreNo.setBackgroundColor(Color.GREEN);
         } else {
-            MainActivity.checked = true;
+            Vars.checked = true;
             rocketScoreYes.setBackgroundColor(Color.GREEN);
             rocketScoreNo.setBackgroundColor(Color.GRAY);
         }
 
-        if(MainActivity.driving.equals("Bad")){
+        if(Vars.driving.equals("Bad")){
             driving(badDrive);
-        } else if(MainActivity.driving.equals("Average")){
+        } else if(Vars.driving.equals("Average")){
             driving(AveDrive);
-        } else if(MainActivity.driving.equals("Good")){
+        } else if(Vars.driving.equals("Good")){
             driving(GoodDrive);
         }
 
-        if(MainActivity.accuracy.equals("Bad")){
+        if(Vars.accuracy.equals("Bad")){
             acc(BadDep);
-        } else if(MainActivity.accuracy.equals("Average")){
+        } else if(Vars.accuracy.equals("Average")){
             acc(AveDep);
-        } else if(MainActivity.accuracy.equals("Good")){
+        } else if(Vars.accuracy.equals("Good")){
             acc(GoodDep);
         }
 
-        if(MainActivity.defense.equals("Bad")){
+        if(Vars.defense.equals("Bad")){
             defense(BadDef);
-        } else if(MainActivity.defense.equals("Average")){
+        } else if(Vars.defense.equals("Average")){
             defense(AveDef);
-        } else if(MainActivity.defense.equals("Good")){
+        } else if(Vars.defense.equals("Good")){
             defense(GoodDef);
         }
 
@@ -125,13 +122,13 @@ public class NotesActivity extends AppCompatActivity {
         Button climb2 = findViewById(R.id.climb2);
         Button climb3 = findViewById(R.id.climb3);
 
-        if(MainActivity.unsupportedClimb == 0){
+        if(Vars.unsupportedClimb == 0){
             unsupportedClimb(noClimb);
-        } else if(MainActivity.unsupportedClimb == 1){
+        } else if(Vars.unsupportedClimb == 1){
             unsupportedClimb(climb1);
-        } else if(MainActivity.unsupportedClimb == 2){
+        } else if(Vars.unsupportedClimb == 2){
             unsupportedClimb(climb2);
-        } else if(MainActivity.unsupportedClimb == 3){
+        } else if(Vars.unsupportedClimb == 3){
             unsupportedClimb(climb3);
         }
 
@@ -153,28 +150,28 @@ public class NotesActivity extends AppCompatActivity {
             climb1.setBackgroundColor(Color.GRAY);
             climb2.setBackgroundColor(Color.GRAY);
             climb3.setBackgroundColor(Color.GRAY);
-            unsupportedClimb = 0;
+            Vars.unsupportedClimb = 0;
         }
         if(v.getId() == R.id.climb1){
             noClimb.setBackgroundColor(Color.GRAY);
             climb1.setBackgroundColor(Color.GREEN);
             climb2.setBackgroundColor(Color.GRAY);
             climb3.setBackgroundColor(Color.GRAY);
-            unsupportedClimb = 1;
+            Vars.unsupportedClimb = 1;
         }
         if(v.getId() == R.id.climb2){
             noClimb.setBackgroundColor(Color.GRAY);
             climb1.setBackgroundColor(Color.GRAY);
             climb2.setBackgroundColor(Color.GREEN);
             climb3.setBackgroundColor(Color.GRAY);
-            unsupportedClimb = 2;
+            Vars.unsupportedClimb = 2;
         }
         if(v.getId() == R.id.climb3){
             noClimb.setBackgroundColor(Color.GRAY);
             climb1.setBackgroundColor(Color.GRAY);
             climb2.setBackgroundColor(Color.GRAY);
             climb3.setBackgroundColor(Color.GREEN);
-            unsupportedClimb = 3;
+            Vars.unsupportedClimb = 3;
         }
     }
 
@@ -183,7 +180,7 @@ public class NotesActivity extends AppCompatActivity {
         Button AveDrive = findViewById(R.id.AveDrive);
         Button GoodDrive = findViewById(R.id.GoodDrive);
         Button b = (Button)v;
-        MainActivity.driving = b.getText().toString();
+        Vars.driving = b.getText().toString();
         if(v.getId() == R.id.badDrive){
             badDrive.setBackgroundColor(Color.GREEN);
             AveDrive.setBackgroundColor(Color.GRAY);
@@ -206,7 +203,7 @@ public class NotesActivity extends AppCompatActivity {
         Button AveDep = findViewById(R.id.AveDep);
         Button GoodDep = findViewById(R.id.GoodDep);
         Button b = (Button)v;
-        MainActivity.accuracy = b.getText().toString();
+        Vars.accuracy = b.getText().toString();
         if(v.getId() == R.id.BadDep){
             BadDep.setBackgroundColor(Color.GREEN);
             AveDep.setBackgroundColor(Color.GRAY);
@@ -229,7 +226,7 @@ public class NotesActivity extends AppCompatActivity {
         Button AveDef = findViewById(R.id.AveDef);
         Button GoodDef = findViewById(R.id.GoodDef);
         Button b = (Button)v;
-        MainActivity.defense = b.getText().toString();
+        Vars.defense = b.getText().toString();
         if(v.getId() == R.id.BadDef){
             BadDef.setBackgroundColor(Color.GREEN);
             AveDef.setBackgroundColor(Color.GRAY);
@@ -251,11 +248,11 @@ public class NotesActivity extends AppCompatActivity {
         Button rocketScoreNo = findViewById(R.id.rocketScoreNo);
         Button rocketScoreYes = findViewById(R.id.rocketScoreYes);
         if(v.getId() == rocketScoreNo.getId()){
-            MainActivity.checked = false;
+            Vars.checked = false;
             rocketScoreYes.setBackgroundColor(Color.GRAY);
             rocketScoreNo.setBackgroundColor(Color.GREEN);
         } else {
-            MainActivity.checked = true;
+            Vars.checked = true;
             rocketScoreYes.setBackgroundColor(Color.GREEN);
             rocketScoreNo.setBackgroundColor(Color.GRAY);
         }
@@ -264,7 +261,7 @@ public class NotesActivity extends AppCompatActivity {
     public void send (View v) throws IOException {
         // ready to put all the data
         EditText myNotes = findViewById(R.id.notes);
-        MainActivity.myNotes = myNotes.getText().toString();
+        Vars.myNotes = myNotes.getText().toString();
 
         File directory = getExternalFilesDir(null);
         Log.d("sendScoutReports", "Directory is " + directory.getAbsolutePath());
@@ -273,7 +270,7 @@ public class NotesActivity extends AppCompatActivity {
 
         String filename = "ScoutingData_" + android_id + ".txt";
 
-        if(MainActivity.driving.equals("") || MainActivity.accuracy.equals("") || MainActivity.defense.equals("") || myNotes.getText().toString().equals("")){
+        if(Vars.driving.equals("") || Vars.accuracy.equals("") || Vars.defense.equals("") || myNotes.getText().toString().equals("")){
             Toast.makeText(getApplicationContext(), "Fill all fields!", Toast.LENGTH_LONG).show();
             return;
         }
@@ -289,16 +286,16 @@ public class NotesActivity extends AppCompatActivity {
             JSONObject item = new JSONObject();
             //Toast.makeText(getApplicationContext(), "Created JSON", Toast.LENGTH_LONG).show();
 
-            item.put("Team_#", Integer.valueOf(MainActivity.myTeamNumber));
-            item.put("Match_#", Integer.valueOf(MainActivity.myMatchNumber));
-            item.put("Alliance", MainActivity.alliance);
+            item.put("Team_#", Integer.valueOf(Vars.myTeamNumber));
+            item.put("Match_#", Integer.valueOf(Vars.myMatchNumber));
+            item.put("Alliance", Vars.alliance);
             int temp = 0;
             int temp2 = 0;
             for(int x = 0; x < 7; x++){
-                temp += MainActivity.rocketScoredSS[x];
+                temp += Vars.rocketScoredSS[x];
             }
-            for(int x = 0; x < MainActivity.rocketScoredSS.length; x++){
-                temp2 += MainActivity.rocketScoredSS[x];
+            for(int x = 0; x < Vars.rocketScoredSS.length; x++){
+                temp2 += Vars.rocketScoredSS[x];
             }
             item.put("Crg_scrd in SS in rkt", temp);
             item.put("Hch_scrd in SS on rkt", temp2 - temp);
@@ -306,80 +303,79 @@ public class NotesActivity extends AppCompatActivity {
 
             //Toast.makeText(getApplicationContext(), "part 1", Toast.LENGTH_LONG).show();
 
-            item.put("Crg_scrd in the rkt_lvl_1", (MainActivity.rocketScoredSS[1] + MainActivity.rocketScoredSS[2] +
-                    MainActivity.rocketScoredTO[1] + MainActivity.rocketScoredTO[2]));
-            item.put("Hch_scrd on the rkt_lvl_1", (MainActivity.rocketScoredSS[9] + MainActivity.rocketScoredSS[10] + MainActivity.rocketScoredSS[11] + MainActivity.rocketScoredSS[12] +
-                    MainActivity.rocketScoredTO[9] + MainActivity.rocketScoredTO[10] + MainActivity.rocketScoredTO[11] + MainActivity.rocketScoredTO[12]));
-            item.put("Crg_scrd in the rkt_lvl_2", (MainActivity.rocketScoredSS[3] + MainActivity.rocketScoredSS[4] +
-                    MainActivity.rocketScoredTO[3] + MainActivity.rocketScoredTO[4]));
-            item.put("Hch_scrd on the rkt_lvl_2", (MainActivity.rocketScoredSS[13] + MainActivity.rocketScoredSS[14] + MainActivity.rocketScoredSS[15] + MainActivity.rocketScoredSS[16] +
-                    MainActivity.rocketScoredTO[13] + MainActivity.rocketScoredTO[14] + MainActivity.rocketScoredTO[15] + MainActivity.rocketScoredTO[16]));
-            item.put("Crg_scrd in the rkt_lvl_3", (MainActivity.rocketScoredSS[5] + MainActivity.rocketScoredSS[6] +
-                    MainActivity.rocketScoredTO[5] + MainActivity.rocketScoredTO[6]));
-            item.put("Hch_scrd on the rkt_lvl_3", (MainActivity.rocketScoredSS[17] + MainActivity.rocketScoredSS[18] + MainActivity.rocketScoredSS[19] + MainActivity.rocketScoredSS[0] +
-                    MainActivity.rocketScoredTO[17] + MainActivity.rocketScoredTO[18] + MainActivity.rocketScoredTO[19] + MainActivity.rocketScoredTO[0]));
+            item.put("Crg_scrd in the rkt_lvl_1", (Vars.rocketScoredSS[1] + Vars.rocketScoredSS[2] +
+                    Vars.rocketScoredTO[1] + Vars.rocketScoredTO[2]));
+            item.put("Hch_scrd on the rkt_lvl_1", (Vars.rocketScoredSS[9] + Vars.rocketScoredSS[10] + Vars.rocketScoredSS[11] + Vars.rocketScoredSS[12] +
+                    Vars.rocketScoredTO[9] + Vars.rocketScoredTO[10] + Vars.rocketScoredTO[11] + Vars.rocketScoredTO[12]));
+            item.put("Crg_scrd in the rkt_lvl_2", (Vars.rocketScoredSS[3] + Vars.rocketScoredSS[4] +
+                    Vars.rocketScoredTO[3] + Vars.rocketScoredTO[4]));
+            item.put("Hch_scrd on the rkt_lvl_2", (Vars.rocketScoredSS[13] + Vars.rocketScoredSS[14] + Vars.rocketScoredSS[15] + Vars.rocketScoredSS[16] +
+                    Vars.rocketScoredTO[13] + Vars.rocketScoredTO[14] + Vars.rocketScoredTO[15] + Vars.rocketScoredTO[16]));
+            item.put("Crg_scrd in the rkt_lvl_3", (Vars.rocketScoredSS[5] + Vars.rocketScoredSS[6] +
+                    Vars.rocketScoredTO[5] + Vars.rocketScoredTO[6]));
+            item.put("Hch_scrd on the rkt_lvl_3", (Vars.rocketScoredSS[17] + Vars.rocketScoredSS[18] + Vars.rocketScoredSS[19] + Vars.rocketScoredSS[0] +
+                    Vars.rocketScoredTO[17] + Vars.rocketScoredTO[18] + Vars.rocketScoredTO[19] + Vars.rocketScoredTO[0]));
             //TODO "Crg_shp sctn scrd_in_SS": "S1, S2",
-            item.put("Crg_shp sctn scrd_in_SS", "DO SOMETHING!!!!!!!!!!!!!!!!!!!!!!!");
+            item.put("Crg_shp sctn scrd_in_SS", Vars.slots.substring(0, Vars.slots.length()-2));
 
+            item.put("Ttl_crg scrd in crg_shp", Vars.CargoshipScoredSS[0] + Vars.CargoshipScoredTO[0]);
+            item.put("Ttl_hch scrd on crg_shp", Vars.CargoshipScoredSS[1] + Vars.CargoshipScoredTO[1]);
+            item.put("Ttl_# of grnd_pkups", Vars.groundC+Vars.groundH);
 
-            item.put("Ttl_crg scrd in crg_shp", MainActivity.CargoshipScoredSS[0] + MainActivity.CargoshipScoredTO[0]);
-            item.put("Ttl_hch scrd on crg_shp", MainActivity.CargoshipScoredSS[1] + MainActivity.CargoshipScoredTO[1]);
-            item.put("Ttl_# of grnd_pkups", MainActivity.groundC+MainActivity.groundH);
-
-            if(MainActivity.checked){
+            if(Vars.checked){
                 item.put("Scrd_both sides_of_rkt", 1);
             } else {
                 item.put("Scrd_both sides_of_rkt", 0);
             }
-            item.put("Starting position", MainActivity.ssPos);
-            item.put("Preloaded game_piece", MainActivity.startedWithSS);
-            if(MainActivity.ssPos.charAt(1) == '2'){
+            item.put("Starting position", Vars.ssPos);
+            item.put("Preloaded game_piece", Vars.startedWithSS);
+            if(Vars.ssPos.charAt(1) == '2'){
                 item.put("Starting on HAB_lvl_2", 1);
             } else {
                 item.put("Starting on HAB_lvl_2", 0);
             }
 
-//            if(MainActivity.unsupportedClimb != 0){
+//            if(Vars.unsupportedClimb != 0){
 //                item.put("Performed an unsupported climb (0-No, 1-Yes)", 1);
 //            } else {
 //                item.put("Performed an unsupported climb (0-No, 1-Yes)", 0);
 //            }
-//            item.put("Unsupported what level?", MainActivity.unsupportedClimb);
-//            if(MainActivity.support != 0){
+//            item.put("Unsupported what level?", Vars.unsupportedClimb);
+//            if(Vars.support != 0){
 //                item.put("Supported another robot (0-No, 1-Yes)", 1);
 //            } else {
 //                item.put("Supported another robot (0-No, 1-Yes)", 0);
 //            }
-            //item.put("Supported what level?", MainActivity.support);
+            //item.put("Supported what level?", Vars.support);
 
-            if(MainActivity.unsupportedClimb == 0){
+            if(Vars.unsupportedClimb == 0){
                 item.put("Ended on HAB_lvl_1", 0);
                 item.put("Ended on HAB_lvl_2", 0);
                 item.put("Ended on HAB_lvl_3", 0);
             } else
-            if(MainActivity.unsupportedClimb == 1){
+            if(Vars.unsupportedClimb == 1){
                 item.put("Ended on HAB_lvl_1", 1);
                 item.put("Ended on HAB_lvl_2", 0);
                 item.put("Ended on HAB_lvl_3", 0);
             } else
-            if(MainActivity.unsupportedClimb == 2){
+            if(Vars.unsupportedClimb == 2){
                 item.put("Ended on HAB_lvl_1", 0);
                 item.put("Ended on HAB_lvl_2", 1);
                 item.put("Ended on HAB_lvl_3", 0);
             } else
-            if(MainActivity.unsupportedClimb == 3){
+            if(Vars.unsupportedClimb == 3){
                 item.put("Ended on HAB_lvl_1", 0);
                 item.put("Ended on HAB_lvl_2", 0);
                 item.put("Ended on HAB_lvl_3", 1);
             }
 
 
-            item.put("Penalties", (MainActivity.penaltiesSS + MainActivity.penaltiesTO));
-            item.put("Driving", MainActivity.driving);
-            item.put("Deployment Accuracy", MainActivity.accuracy);
-            item.put("Defense", MainActivity.defense);
-            item.put("Notes", MainActivity.myNotes);
-            item.put("Scouter", MainActivity.myScouterName);
+            item.put("Penalties", (Vars.penaltiesSS + Vars.penaltiesTO));
+            item.put("Driving", Vars.driving);
+            item.put("Deployment Accuracy", Vars.accuracy);
+            item.put("Defense", Vars.defense);
+            item.put("Notes", Vars.myNotes);
+            item.put("Scouter", Vars.myScouterName);
             //Toast.makeText(getApplicationContext(), "part 2", Toast.LENGTH_LONG).show();
 
             FileOutputStream fos = new FileOutputStream(entry, true);
@@ -387,7 +383,7 @@ public class NotesActivity extends AppCompatActivity {
             fos.write(",\n".getBytes());
             fos.close();
 
-            Toast.makeText(getApplicationContext(), "Thanks for scouting match number " + MainActivity.myMatchNumber + "!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Thanks for scouting match number " + Vars.myMatchNumber + "!", Toast.LENGTH_LONG).show();
             Intent returnHome = new Intent();
             returnHome.setClass(getApplicationContext(), MainActivity.class);
             returnHome.putExtra("path", directory.getAbsolutePath());

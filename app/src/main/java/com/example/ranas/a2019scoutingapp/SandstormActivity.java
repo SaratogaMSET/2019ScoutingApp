@@ -3,6 +3,7 @@ package com.example.ranas.a2019scoutingapp;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -15,9 +16,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import static com.example.ranas.a2019scoutingapp.MainActivity.groundC;
-import static com.example.ranas.a2019scoutingapp.MainActivity.stackCSMovesSS;
-import static com.example.ranas.a2019scoutingapp.MainActivity.stackMovesSS;
+import static com.example.ranas.a2019scoutingapp.Vars.groundC;
+import static com.example.ranas.a2019scoutingapp.Vars.stackCSMovesSS;
+import static com.example.ranas.a2019scoutingapp.Vars.stackMovesSS;
 
 public class SandstormActivity extends AppCompatActivity {
 
@@ -31,19 +32,19 @@ public class SandstormActivity extends AppCompatActivity {
             TextView moves = findViewById(R.id.moves);
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    MainActivity.robotMovesSS = moves.getText().toString();
+                    Vars.robotMovesSS = moves.getText().toString();
                     Intent SS = new Intent();
                     SS.setClass(getApplicationContext(), SandstormActivity.class);
                     startActivity(SS);
                     return true;
                 case R.id.navigation_dashboard:
-                    MainActivity.robotMovesSS = moves.getText().toString();
+                    Vars.robotMovesSS = moves.getText().toString();
                     Intent TO = new Intent();
                     TO.setClass(getApplicationContext(), TeleOpActivity.class);
                     startActivity(TO);
                     return true;
 //                case R.id.navigation_notifications:
-//                    MainActivity.robotMovesSS = moves.getText().toString();
+//                    Vars.robotMovesSS = moves.getText().toString();
 //                    Intent EG = new Intent();
 //                    EG.setClass(getApplicationContext(), EndgameActivity.class);
 //                    startActivity(EG);
@@ -74,7 +75,7 @@ public class SandstormActivity extends AppCompatActivity {
         Button m1 = findViewById(R.id.m1);
         TextView P = findViewById(R.id.P);
 
-        if (MainActivity.alliance == "red") {
+        if (Vars.alliance == "red") {
             //int width = getWindowManager().getDefaultDisplay().getWidth();
             ImageView image = findViewById(R.id.imageView);
             image.setImageResource(R.drawable.frc_field_red);
@@ -88,56 +89,64 @@ public class SandstormActivity extends AppCompatActivity {
 
         }
 
-        P.setText(Integer.toString(MainActivity.penaltiesSS + MainActivity.penaltiesTO));
-        moves.setText(MainActivity.robotMovesSS);
+        P.setText(Integer.toString(Vars.penaltiesSS + Vars.penaltiesTO));
+        moves.setText(Vars.robotMovesSS);
         H.setVisibility(View.INVISIBLE);
         C.setVisibility(View.INVISIBLE);
         Null.setVisibility(View.INVISIBLE);
 
-        Log.d("Stuff", MainActivity.ssPos);
+        Log.d("Stuff", Vars.ssPos);
 
-        if(MainActivity.ssPos.equals("L1")){
+        if(Vars.ssPos.equals("L1")){
             selectPos(l1);
         }
-        if(MainActivity.ssPos.equals("R1")){
+        if(Vars.ssPos.equals("R1")){
             selectPos(r1);
         }
-        if(MainActivity.ssPos.equals("L2")){
+        if(Vars.ssPos.equals("L2")){
             selectPos(l2);
         }
-        if(MainActivity.ssPos.equals("R2")){
+        if(Vars.ssPos.equals("R2")){
             selectPos(r2);
         }
-        if(MainActivity.ssPos.equals("M1")){
+        if(Vars.ssPos.equals("M1")){
             selectPos(m1);
         }
-        if(MainActivity.startedWithSS == "Cargo"){
+        if(Vars.startedWithSS == "Cargo"){
             C.setBackgroundColor(Color.GREEN);
-        }else if(MainActivity.startedWithSS == "Hatch"){
+        }else if(Vars.startedWithSS == "Hatch"){
             H.setBackgroundColor((Color.GREEN));
-        } else if (MainActivity.startedWithSS == "NaN"){
+        } else if (Vars.startedWithSS == "NaN"){
             Null.setBackgroundColor(Color.GREEN);
         }
 
         TextView C1 = findViewById(R.id.groundCcount);
-        C1.setText(Integer.toString(MainActivity.groundC));
+        C1.setText(Integer.toString(Vars.groundC));
         TextView H1 = findViewById(R.id.groundHcount);
-        H1.setText(Integer.toString(MainActivity.groundH));
+        H1.setText(Integer.toString(Vars.groundH));
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
+    public void side (View v) {
+        Button b = (Button) v;
+        if (((ColorDrawable) b.getBackground()).getColor() != Color.DKGRAY){
+            b.setBackgroundColor(Color.DKGRAY);
+            Vars.slots += b.getText() + ", ";
+        }
+    }
+
     public void penalty(View v){
         Button b = (Button) v;
         if(b.getId() == R.id.p1SS)
-            MainActivity.penaltiesSS++;
+            Vars.penaltiesSS++;
         else
-            if(MainActivity.penaltiesSS > 0)
-                MainActivity.penaltiesSS--;
+            if(Vars.penaltiesSS > 0)
+                Vars.penaltiesSS--;
 
         TextView P = findViewById(R.id.P);
-        P.setText(Integer.toString(MainActivity.penaltiesSS + MainActivity.penaltiesTO));
+        P.setText(Integer.toString(Vars.penaltiesSS + Vars.penaltiesTO));
     }
 
     @SuppressLint("ResourceType")
@@ -150,176 +159,176 @@ public class SandstormActivity extends AppCompatActivity {
 
         switch (b.getId()) {
             case R.id.SS_H3RR:
-                if ((MainActivity.rocketScoredSS[0] + MainActivity.rocketScoredTO[0]) < 1){
+                if ((Vars.rocketScoredSS[0] + Vars.rocketScoredTO[0]) < 1){
                     moves.setText(moves.getText().toString() + "H3RR ");
-                    MainActivity.rocketScoredSS[0]++;
-                    stackMovesSS.add(0);
-                    MainActivity.stackUsedUpSS.add(b.getId());
+                    Vars.rocketScoredSS[0]++;
+                    Vars.stackMovesSS.add(0);
+                    Vars.stackUsedUpSS.add(b.getId());
                 }
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 break;
             case R.id.SS_C1L:
-                if ((MainActivity.rocketScoredSS[1] + MainActivity.rocketScoredTO[1]) < 2) {
+                if ((Vars.rocketScoredSS[1] + Vars.rocketScoredTO[1]) < 2) {
                     moves.setText(moves.getText().toString() + "C1L ");
-                    MainActivity.rocketScoredSS[1]++;
-                    stackMovesSS.add(1);
-                    MainActivity.stackUsedUpSS.add(b.getId());
+                    Vars.rocketScoredSS[1]++;
+                    Vars.stackMovesSS.add(1);
+                    Vars.stackUsedUpSS.add(b.getId());
                 }
-                if((MainActivity.rocketScoredSS[1] + MainActivity.rocketScoredTO[1]) == 2){
+                if((Vars.rocketScoredSS[1] + Vars.rocketScoredTO[1]) == 2){
                     findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 }
                 break;
             case R.id.SS_C1R:
-                if ((MainActivity.rocketScoredSS[2] + MainActivity.rocketScoredTO[2]) < 2){
+                if ((Vars.rocketScoredSS[2] + Vars.rocketScoredTO[2]) < 2){
                     moves.setText(moves.getText().toString() + "C1R ");
-                    MainActivity.rocketScoredSS[2]++;
-                    MainActivity.stackUsedUpSS.add(b.getId());
+                    Vars.rocketScoredSS[2]++;
+                    Vars.stackUsedUpSS.add(b.getId());
                     stackMovesSS.add(2);
                 }
-                if((MainActivity.rocketScoredSS[2] + MainActivity.rocketScoredTO[2]) == 2){
+                if((Vars.rocketScoredSS[2] + Vars.rocketScoredTO[2]) == 2){
                     findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 }
                 break;
             case R.id.SS_C2L:
-                if ((MainActivity.rocketScoredSS[3] + MainActivity.rocketScoredTO[3]) < 2) {
+                if ((Vars.rocketScoredSS[3] + Vars.rocketScoredTO[3]) < 2) {
                     moves.setText(moves.getText().toString() + "C2L ");
-                    MainActivity.rocketScoredSS[3]++;
-                    MainActivity.stackUsedUpSS.add(b.getId());
+                    Vars.rocketScoredSS[3]++;
+                    Vars.stackUsedUpSS.add(b.getId());
                     stackMovesSS.add(3);
                 }
-                if((MainActivity.rocketScoredSS[3] + MainActivity.rocketScoredTO[3]) == 2){
+                if((Vars.rocketScoredSS[3] + Vars.rocketScoredTO[3]) == 2){
                     findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 }
                 break;
             case R.id.SS_C2R:
-                if ((MainActivity.rocketScoredSS[4] + MainActivity.rocketScoredTO[4]) < 2){
+                if ((Vars.rocketScoredSS[4] + Vars.rocketScoredTO[4]) < 2){
                     moves.setText(moves.getText().toString() + "C2R ");
-                    MainActivity.rocketScoredSS[4]++;
-                    MainActivity.stackUsedUpSS.add(b.getId());
+                    Vars.rocketScoredSS[4]++;
+                    Vars.stackUsedUpSS.add(b.getId());
                     stackMovesSS.add(4);
                 }
-                if((MainActivity.rocketScoredSS[4] + MainActivity.rocketScoredTO[4]) == 2){
+                if((Vars.rocketScoredSS[4] + Vars.rocketScoredTO[4]) == 2){
                     findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 }
                 break;
             case R.id.SS_C3L:
-                if ((MainActivity.rocketScoredSS[5] + MainActivity.rocketScoredTO[5]) < 2){
+                if ((Vars.rocketScoredSS[5] + Vars.rocketScoredTO[5]) < 2){
                     moves.setText(moves.getText().toString() + "C3L ");
-                    MainActivity.rocketScoredSS[5]++;
-                    MainActivity.stackUsedUpSS.add(b.getId());
+                    Vars.rocketScoredSS[5]++;
+                    Vars.stackUsedUpSS.add(b.getId());
                     stackMovesSS.add(5);
                 }
-                if((MainActivity.rocketScoredSS[5] + MainActivity.rocketScoredTO[5]) == 2){
+                if((Vars.rocketScoredSS[5] + Vars.rocketScoredTO[5]) == 2){
                     findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 }
                 break;
             case R.id.SS_C3R:
-                if ((MainActivity.rocketScoredSS[6] + MainActivity.rocketScoredTO[6]) < 2){
+                if ((Vars.rocketScoredSS[6] + Vars.rocketScoredTO[6]) < 2){
                     moves.setText(moves.getText().toString() + "C3R ");
-                    MainActivity.rocketScoredSS[6]++;
-                    MainActivity.stackUsedUpSS.add(b.getId());
+                    Vars.rocketScoredSS[6]++;
+                    Vars.stackUsedUpSS.add(b.getId());
                     stackMovesSS.add(6);
                 }
-                if((MainActivity.rocketScoredSS[6] + MainActivity.rocketScoredTO[6]) == 2){
+                if((Vars.rocketScoredSS[6] + Vars.rocketScoredTO[6]) == 2){
                     findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 }
                 break;
             case R.id.SS_H1LL:
-                if ((MainActivity.rocketScoredSS[9] + MainActivity.rocketScoredTO[9]) < 1){
+                if ((Vars.rocketScoredSS[9] + Vars.rocketScoredTO[9]) < 1){
                     moves.setText(moves.getText().toString() + "H1LL ");
-                    MainActivity.rocketScoredSS[9]++;
-                    MainActivity.stackUsedUpSS.add(b.getId());
+                    Vars.rocketScoredSS[9]++;
+                    Vars.stackUsedUpSS.add(b.getId());
                     stackMovesSS.add(9);
                 }
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 break;
             case R.id.SS_H1LR:
-                if ((MainActivity.rocketScoredSS[10] + MainActivity.rocketScoredTO[10]) < 1){
+                if ((Vars.rocketScoredSS[10] + Vars.rocketScoredTO[10]) < 1){
                     moves.setText(moves.getText().toString() + "H1LR ");
-                    MainActivity.rocketScoredSS[10]++;
-                    MainActivity.stackUsedUpSS.add(b.getId());
+                    Vars.rocketScoredSS[10]++;
+                    Vars.stackUsedUpSS.add(b.getId());
                     stackMovesSS.add(10);
                 }
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 break;
             case R.id.SS_H1RL:
-                if ((MainActivity.rocketScoredSS[11] + MainActivity.rocketScoredTO[11]) < 1){
+                if ((Vars.rocketScoredSS[11] + Vars.rocketScoredTO[11]) < 1){
                     moves.setText(moves.getText().toString() + "H1RL ");
-                    MainActivity.rocketScoredSS[11]++;
-                    MainActivity.stackUsedUpSS.add(b.getId());
+                    Vars.rocketScoredSS[11]++;
+                    Vars.stackUsedUpSS.add(b.getId());
                     stackMovesSS.add(11);
                 }
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 break;
             case R.id.SS_H1RR:
-                if ((MainActivity.rocketScoredSS[12] + MainActivity.rocketScoredTO[12]) < 1){
+                if ((Vars.rocketScoredSS[12] + Vars.rocketScoredTO[12]) < 1){
                     moves.setText(moves.getText().toString() + "H1RR ");
-                    MainActivity.rocketScoredSS[12]++;
-                    MainActivity.stackUsedUpSS.add(b.getId());
+                    Vars.rocketScoredSS[12]++;
+                    Vars.stackUsedUpSS.add(b.getId());
                     stackMovesSS.add(12);
                 }
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 break;
             case R.id.SS_H2LL:
-                if ((MainActivity.rocketScoredSS[13] + MainActivity.rocketScoredTO[13]) < 1){
+                if ((Vars.rocketScoredSS[13] + Vars.rocketScoredTO[13]) < 1){
                     moves.setText(moves.getText().toString() + "H2LL ");
-                    MainActivity.rocketScoredSS[13]++;
-                    MainActivity.stackUsedUpSS.add(b.getId());
+                    Vars.rocketScoredSS[13]++;
+                    Vars.stackUsedUpSS.add(b.getId());
                     stackMovesSS.add(13);
                 }
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 break;
             case R.id.SS_H2LR:
-                if ((MainActivity.rocketScoredSS[14] + MainActivity.rocketScoredTO[14]) < 1){
+                if ((Vars.rocketScoredSS[14] + Vars.rocketScoredTO[14]) < 1){
                     moves.setText(moves.getText().toString() + "H2LR ");
-                    MainActivity.rocketScoredSS[14]++;
-                    MainActivity.stackUsedUpSS.add(b.getId());
+                    Vars.rocketScoredSS[14]++;
+                    Vars.stackUsedUpSS.add(b.getId());
                     stackMovesSS.add(14);
                 }
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 break;
             case R.id.SS_H2RL:
-                if ((MainActivity.rocketScoredSS[15] + MainActivity.rocketScoredTO[15]) < 1){
+                if ((Vars.rocketScoredSS[15] + Vars.rocketScoredTO[15]) < 1){
                     moves.setText(moves.getText().toString() + "H2RL ");
-                    MainActivity.rocketScoredSS[15]++;
-                    MainActivity.stackUsedUpSS.add(b.getId());
+                    Vars.rocketScoredSS[15]++;
+                    Vars.stackUsedUpSS.add(b.getId());
                     stackMovesSS.add(15);
                 }
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 break;
             case R.id.SS_H2RR:
-                if ((MainActivity.rocketScoredSS[16] + MainActivity.rocketScoredTO[16]) < 1){
+                if ((Vars.rocketScoredSS[16] + Vars.rocketScoredTO[16]) < 1){
                     moves.setText(moves.getText().toString() + "H2RR ");
-                    MainActivity.rocketScoredSS[16]++;
-                    MainActivity.stackUsedUpSS.add(b.getId());
+                    Vars.rocketScoredSS[16]++;
+                    Vars.stackUsedUpSS.add(b.getId());
                     stackMovesSS.add(16);
 
                 }
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 break;
             case R.id.SS_H3LL:
-                if ((MainActivity.rocketScoredSS[17] + MainActivity.rocketScoredTO[17]) < 1){
+                if ((Vars.rocketScoredSS[17] + Vars.rocketScoredTO[17]) < 1){
                     moves.setText(moves.getText().toString() + "H3LL ");
-                    MainActivity.rocketScoredSS[17]++;
-                    MainActivity.stackUsedUpSS.add(b.getId());
+                    Vars.rocketScoredSS[17]++;
+                    Vars.stackUsedUpSS.add(b.getId());
                     stackMovesSS.add(17);
                 }
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 break;
             case R.id.SS_H3LR:
-                if ((MainActivity.rocketScoredSS[18] + MainActivity.rocketScoredTO[18]) < 1){
+                if ((Vars.rocketScoredSS[18] + Vars.rocketScoredTO[18]) < 1){
                     moves.setText(moves.getText().toString() + "H3LR ");
-                    MainActivity.rocketScoredSS[18]++;
-                    MainActivity.stackUsedUpSS.add(b.getId());
+                    Vars.rocketScoredSS[18]++;
+                    Vars.stackUsedUpSS.add(b.getId());
                     stackMovesSS.add(18);
                 }
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
                 break;
             case R.id.SS_H3RL:
-                if ((MainActivity.rocketScoredSS[19] + MainActivity.rocketScoredTO[19]) < 1){
+                if ((Vars.rocketScoredSS[19] + Vars.rocketScoredTO[19]) < 1){
                     moves.setText(moves.getText().toString() + "H3RL ");
-                    MainActivity.rocketScoredSS[19]++;
-                    MainActivity.stackUsedUpSS.add(b.getId());
+                    Vars.rocketScoredSS[19]++;
+                    Vars.stackUsedUpSS.add(b.getId());
                     stackMovesSS.add(19);
                 }
                 findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
@@ -338,19 +347,19 @@ public class SandstormActivity extends AppCompatActivity {
             b.setBackgroundColor(Color.GREEN);
             H.setBackgroundColor(Color.rgb(255,187,51));
             Null.setBackgroundColor(Color.rgb(192,192,192));
-            MainActivity.startedWithSS = "Cargo";
+            Vars.startedWithSS = "Cargo";
         }
         if(b.getId() == R.id.H){
             b.setBackgroundColor(Color.GREEN);
             C.setBackgroundColor(Color.rgb(255,136,0));
             Null.setBackgroundColor(Color.rgb(192,192,192));
-            MainActivity.startedWithSS = "Hatch";
+            Vars.startedWithSS = "Hatch";
         }
         if(b.getId() == R.id.Null){
             b.setBackgroundColor(Color.GREEN);
             H.setBackgroundColor(Color.rgb(255,187,51));
             C.setBackgroundColor(Color.rgb(255,136,0));
-            MainActivity.startedWithSS = "NaN";
+            Vars.startedWithSS = "NaN";
         }
     }
 
@@ -361,45 +370,45 @@ public class SandstormActivity extends AppCompatActivity {
         TextView moves = findViewById(R.id.moves);
 
         if(b.getText().toString().equals("C")){
-            if(MainActivity.CargoshipScoredSS[0] + MainActivity.CargoshipScoredTO[0] < 8) {
-                MainActivity.CargoshipScoredSS[0]++;
+            if(Vars.CargoshipScoredSS[0] + Vars.CargoshipScoredTO[0] < 8) {
+                Vars.CargoshipScoredSS[0]++;
                 stackCSMovesSS.add(0);
                 moves.setText(moves.getText().toString() + b.getText().toString() + " ");
             }
         }
-        if(MainActivity.CargoshipScoredSS[0] + MainActivity.CargoshipScoredTO[0] == 8){
+        if(Vars.CargoshipScoredSS[0] + Vars.CargoshipScoredTO[0] == 8){
             CSC.setBackgroundColor(Color.DKGRAY);
         }
         if(b.getText().toString().equals("H")){
-            if(MainActivity.CargoshipScoredSS[1] + MainActivity.CargoshipScoredTO[1] < 8) {
-                MainActivity.CargoshipScoredSS[1]++;
+            if(Vars.CargoshipScoredSS[1] + Vars.CargoshipScoredTO[1] < 8) {
+                Vars.CargoshipScoredSS[1]++;
                 stackCSMovesSS.add(1);
                 moves.setText(moves.getText().toString() + b.getText().toString() + " ");
             }
         }
-        if(MainActivity.CargoshipScoredSS[1] + MainActivity.CargoshipScoredTO[1] == 8){
+        if(Vars.CargoshipScoredSS[1] + Vars.CargoshipScoredTO[1] == 8){
             CSH.setBackgroundColor(Color.DKGRAY);
         }
     }
 
     public void ground (View v){
         if (v.getId() == R.id.groundC){
-            MainActivity.groundC++;
+            Vars.groundC++;
             TextView C = findViewById(R.id.groundCcount);
-            C.setText(Integer.toString(MainActivity.groundC));
+            C.setText(Integer.toString(Vars.groundC));
         }
         if (v.getId() == R.id.groundH){
-            MainActivity.groundH++;
+            Vars.groundH++;
             TextView H = findViewById(R.id.groundHcount);
-            H.setText(Integer.toString(MainActivity.groundH));
+            H.setText(Integer.toString(Vars.groundH));
         }
     }
 
     public void undo2 (View v){
         TextView moves = findViewById(R.id.moves);
-        if(!MainActivity.stackCSMovesSS.empty()) {
-            int x = MainActivity.stackCSMovesSS.pop();
-            MainActivity.CargoshipScoredSS[x]--;
+        if(!Vars.stackCSMovesSS.empty()) {
+            int x = Vars.stackCSMovesSS.pop();
+            Vars.CargoshipScoredSS[x]--;
 
         }
 
@@ -422,10 +431,10 @@ public class SandstormActivity extends AppCompatActivity {
 
     public void undo (View v){
         TextView moves = findViewById(R.id.moves);
-        if(!MainActivity.stackMovesSS.empty()) {
-            int x = MainActivity.stackMovesSS.pop();
-            int id = MainActivity.stackUsedUpSS.pop();
-            MainActivity.rocketScoredSS[x]-=2;
+        if(!Vars.stackMovesSS.empty()) {
+            int x = Vars.stackMovesSS.pop();
+            int id = Vars.stackUsedUpSS.pop();
+            Vars.rocketScoredSS[x]-=2;
             add(findViewById(id));
         }
 
@@ -457,7 +466,7 @@ public class SandstormActivity extends AppCompatActivity {
         Button Null = findViewById(R.id.Null);
 
         Button b = (Button) v;
-        MainActivity.ssPos = b.getText().toString();
+        Vars.ssPos = b.getText().toString();
 
         if(v.getId() == R.id.l1){
             l2.setBackgroundColor(Color.TRANSPARENT);

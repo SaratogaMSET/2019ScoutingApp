@@ -414,13 +414,13 @@
         android:id="@+id/groundC"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="80dp"
         android:background="@android:color/holo_orange_dark"
         android:onClick="ground"
         android:text="C"
-        app:layout_constraintBottom_toBottomOf="@+id/CSC"
-        app:layout_constraintStart_toEndOf="@+id/m1"
-        app:layout_constraintTop_toTopOf="@+id/CSC" />
+        app:layout_constraintStart_toStartOf="@+id/H"
+        app:layout_constraintTop_toBottomOf="@+id/H" />
 
     <Button
         android:id="@+id/groundH"
@@ -487,7 +487,7 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="50dp"
+        android:layout_width="40dp"
         android:layout_height="0dp"
         android:background="@android:color/holo_green_dark"
         android:onClick="undo2"
@@ -496,5 +496,91 @@
         app:layout_constraintStart_toEndOf="@+id/CSH"
         app:layout_constraintTop_toTopOf="@+id/CSH"
         app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/r3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="12dp"
+        android:background="@android:color/holo_blue_light"
+        android:onClick="side"
+        android:text="S3"
+        app:layout_constraintBottom_toTopOf="@+id/CSC"
+        app:layout_constraintEnd_toStartOf="@+id/CSH" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@android:color/holo_blue_light"
+        android:onClick="side"
+        android:text="S2"
+        app:layout_constraintBottom_toBottomOf="@+id/r3"
+        app:layout_constraintStart_toEndOf="@+id/r3" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@android:color/holo_blue_light"
+        android:onClick="side"
+        android:text="S1"
+        app:layout_constraintBottom_toBottomOf="@+id/button7"
+        app:layout_constraintStart_toEndOf="@+id/button7" />
+
+    <Button
+        android:id="@+id/r4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="15dp"
+        android:background="@android:color/holo_blue_light"
+        android:onClick="side"
+        android:text="S4"
+        app:layout_constraintEnd_toStartOf="@+id/r3"
+        app:layout_constraintTop_toTopOf="@+id/r3" />
+
+    <Button
+        android:id="@+id/r5"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="4dp"
+        android:background="@android:color/holo_blue_light"
+        android:onClick="side"
+        android:text="S5"
+        app:layout_constraintEnd_toEndOf="@+id/r4"
+        app:layout_constraintTop_toBottomOf="@+id/r4" />
+
+    <Button
+        android:id="@+id/r6"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:background="@android:color/holo_blue_light"
+        android:onClick="side"
+        android:text="S6"
+        app:layout_constraintStart_toStartOf="@+id/r3"
+        app:layout_constraintTop_toBottomOf="@+id/CSC" />
+
+    <Button
+        android:id="@+id/r7"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@android:color/holo_blue_light"
+        android:onClick="side"
+        android:text="S7"
+        app:layout_constraintStart_toEndOf="@+id/r6"
+        app:layout_constraintTop_toTopOf="@+id/r6" />
+
+    <Button
+        android:id="@+id/r8"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@android:color/holo_blue_light"
+        android:onClick="side"
+        android:text="S8"
+        app:layout_constraintStart_toEndOf="@+id/r7"
+        app:layout_constraintTop_toTopOf="@+id/r7" />
 
 </android.support.constraint.ConstraintLayout>
