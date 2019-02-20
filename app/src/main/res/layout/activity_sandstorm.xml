@@ -498,7 +498,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/r3"
+        android:id="@+id/R3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginEnd="8dp"
@@ -510,27 +510,27 @@
         app:layout_constraintEnd_toStartOf="@+id/CSH" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/R2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@android:color/holo_blue_light"
         android:onClick="side"
         android:text="S2"
-        app:layout_constraintBottom_toBottomOf="@+id/r3"
-        app:layout_constraintStart_toEndOf="@+id/r3" />
+        app:layout_constraintBottom_toBottomOf="@+id/R3"
+        app:layout_constraintStart_toEndOf="@+id/R3" />
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/R1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@android:color/holo_blue_light"
         android:onClick="side"
         android:text="S1"
-        app:layout_constraintBottom_toBottomOf="@+id/button7"
-        app:layout_constraintStart_toEndOf="@+id/button7" />
+        app:layout_constraintBottom_toBottomOf="@+id/R2"
+        app:layout_constraintStart_toEndOf="@+id/R2" />
 
     <Button
-        android:id="@+id/r4"
+        android:id="@+id/R4"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="40dp"
@@ -538,49 +538,49 @@
         android:background="@android:color/holo_blue_light"
         android:onClick="side"
         android:text="S4"
-        app:layout_constraintEnd_toStartOf="@+id/r3"
-        app:layout_constraintTop_toTopOf="@+id/r3" />
+        app:layout_constraintEnd_toStartOf="@+id/R3"
+        app:layout_constraintTop_toTopOf="@+id/R3" />
 
     <Button
-        android:id="@+id/r5"
+        android:id="@+id/R5"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="4dp"
         android:background="@android:color/holo_blue_light"
         android:onClick="side"
         android:text="S5"
-        app:layout_constraintEnd_toEndOf="@+id/r4"
-        app:layout_constraintTop_toBottomOf="@+id/r4" />
+        app:layout_constraintEnd_toEndOf="@+id/R4"
+        app:layout_constraintTop_toBottomOf="@+id/R4" />
 
     <Button
-        android:id="@+id/r6"
+        android:id="@+id/R6"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="12dp"
         android:background="@android:color/holo_blue_light"
         android:onClick="side"
         android:text="S6"
-        app:layout_constraintStart_toStartOf="@+id/r3"
+        app:layout_constraintStart_toStartOf="@+id/R3"
         app:layout_constraintTop_toBottomOf="@+id/CSC" />
 
     <Button
-        android:id="@+id/r7"
+        android:id="@+id/R7"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@android:color/holo_blue_light"
         android:onClick="side"
         android:text="S7"
-        app:layout_constraintStart_toEndOf="@+id/r6"
-        app:layout_constraintTop_toTopOf="@+id/r6" />
+        app:layout_constraintStart_toEndOf="@+id/R6"
+        app:layout_constraintTop_toTopOf="@+id/R6" />
 
     <Button
-        android:id="@+id/r8"
+        android:id="@+id/R8"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@android:color/holo_blue_light"
         android:onClick="side"
         android:text="S8"
-        app:layout_constraintStart_toEndOf="@+id/r7"
-        app:layout_constraintTop_toTopOf="@+id/r7" />
+        app:layout_constraintStart_toEndOf="@+id/R7"
+        app:layout_constraintTop_toTopOf="@+id/R7" />
 
 </android.support.constraint.ConstraintLayout>

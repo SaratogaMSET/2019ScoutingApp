@@ -62,13 +62,6 @@ public class TeleOpActivity extends AppCompatActivity {
             //int width = getWindowManager().getDefaultDisplay().getWidth();
             ImageView image = findViewById(R.id.imageView);
             image.setImageResource(R.drawable.frc_field_red);
-            //l2.setText(l2.getX() + " " + l2.getY());
-//            Toast.makeText(getApplicationContext(), Integer.toString(l1.getLeft()), Toast.LENGTH_LONG).show();
-//            l1.setLeft(100 - (int) l1.getLeft());
-//            l2.setLeft(100 - (int) l2.getLeft());
-//            r1.setLeft(100 - (int) r1.getLeft());
-//            r2.setLeft(100 - (int) r2.getLeft());
-//            m1.setLeft(100 - (int) m1.getLeft());
 
         }
 
@@ -144,8 +137,10 @@ public class TeleOpActivity extends AppCompatActivity {
 
     public void undo (View v){
         TextView moves = findViewById(R.id.moves);
-        if(!Vars.stackMovesTO.empty())
+        if(!Vars.stackMovesTO.empty()) {
             Vars.rocketScoredTO[Vars.stackMovesTO.pop()]--;
+            check();
+        }
 
         while(true){
             if(moves.getText().toString().charAt(moves.getText().toString().length()-2) == ':'){
@@ -168,6 +163,7 @@ public class TeleOpActivity extends AppCompatActivity {
         if(!Vars.stackCSMovesTO.empty()) {
             int x = Vars.stackCSMovesTO.pop();
             Vars.CargoshipScoredTO[x]--;
+            check();
         }
 
         while(true){
@@ -317,8 +313,8 @@ public class TeleOpActivity extends AppCompatActivity {
                 Vars.stackUsedUpTO.add(b.getId());
                 Vars.stackMovesTO.add(0);
             }
-            findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
-        }
+            b.setBackgroundColor(Color.DKGRAY);
+        } else
         if(b.getId() == R.id.TO_C1L){
             if ((Vars.rocketScoredSS[1] + Vars.rocketScoredTO[1]) < 2) {
                 moves.setText(moves.getText().toString() + "C1L ");
@@ -327,9 +323,9 @@ public class TeleOpActivity extends AppCompatActivity {
                 Vars.stackMovesTO.add(1);
             }
             if((Vars.rocketScoredSS[1] + Vars.rocketScoredTO[1]) == 2){
-                findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
+                b.setBackgroundColor(Color.DKGRAY);
             }
-        }
+        } else
         if(b.getId() == R.id.TO_C1R){
             if ((Vars.rocketScoredSS[2] + Vars.rocketScoredTO[2]) < 2){
                 moves.setText(moves.getText().toString() + "C1R ");
@@ -338,9 +334,9 @@ public class TeleOpActivity extends AppCompatActivity {
                 Vars.stackMovesTO.add(2);
             }
             if((Vars.rocketScoredSS[2] + Vars.rocketScoredTO[2]) == 2){
-                findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
+                b.setBackgroundColor(Color.DKGRAY);
             }
-        }
+        } else
         if(b.getId() == R.id.TO_C2L){
             if ((Vars.rocketScoredSS[3] + Vars.rocketScoredTO[3]) < 2) {
                 moves.setText(moves.getText().toString() + "C2L ");
@@ -349,9 +345,9 @@ public class TeleOpActivity extends AppCompatActivity {
                 Vars.stackMovesTO.add(3);
             }
             if((Vars.rocketScoredSS[3] + Vars.rocketScoredTO[3]) == 2){
-                findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
+                b.setBackgroundColor(Color.DKGRAY);
             }
-        }
+        } else
         if(b.getId() == R.id.TO_C2R){
             if ((Vars.rocketScoredSS[4] + Vars.rocketScoredTO[4]) < 2){
                 moves.setText(moves.getText().toString() + "C2R ");
@@ -360,9 +356,9 @@ public class TeleOpActivity extends AppCompatActivity {
                 Vars.stackMovesTO.add(4);
             }
             if((Vars.rocketScoredSS[4] + Vars.rocketScoredTO[4]) == 2){
-                findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
+                b.setBackgroundColor(Color.DKGRAY);
             }
-        }
+        } else
         if(b.getId() == R.id.TO_C3L){
             if ((Vars.rocketScoredSS[5] + Vars.rocketScoredTO[5]) < 2){
                 moves.setText(moves.getText().toString() + "C3L ");
@@ -371,9 +367,9 @@ public class TeleOpActivity extends AppCompatActivity {
                 Vars.stackMovesTO.add(5);
             }
             if((Vars.rocketScoredSS[5] + Vars.rocketScoredTO[5]) == 2){
-                findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
+                b.setBackgroundColor(Color.DKGRAY);
             }
-        }
+        } else
         if(b.getId() == R.id.TO_C3R){
             if ((Vars.rocketScoredSS[6] + Vars.rocketScoredTO[6]) < 2){
                 moves.setText(moves.getText().toString() + "C3R ");
@@ -382,9 +378,9 @@ public class TeleOpActivity extends AppCompatActivity {
                 Vars.stackMovesTO.add(6);
             }
             if((Vars.rocketScoredSS[6] + Vars.rocketScoredTO[6]) == 2){
-                findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
+                b.setBackgroundColor(Color.DKGRAY);
             }
-        }
+        } else
         if(b.getId() == R.id.TO_H1LL){
             if ((Vars.rocketScoredSS[9] + Vars.rocketScoredTO[9]) < 1){
                 moves.setText(moves.getText().toString() + "H1LL ");
@@ -392,8 +388,8 @@ public class TeleOpActivity extends AppCompatActivity {
                 Vars.stackUsedUpTO.add(b.getId());
                 Vars.stackMovesTO.add(9);
             }
-            findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
-        }
+            b.setBackgroundColor(Color.DKGRAY);
+        } else
         if(b.getId() == R.id.TO_H1LR){
             if ((Vars.rocketScoredSS[10] + Vars.rocketScoredTO[10]) < 1){
                 moves.setText(moves.getText().toString() + "H1LR ");
@@ -401,8 +397,8 @@ public class TeleOpActivity extends AppCompatActivity {
                 Vars.stackUsedUpTO.add(b.getId());
                 Vars.stackMovesTO.add(10);
             }
-            findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
-        }
+            b.setBackgroundColor(Color.DKGRAY);
+        } else
         if(b.getId() == R.id.TO_H1RL){
             if ((Vars.rocketScoredSS[11] + Vars.rocketScoredTO[11]) < 1){
                 moves.setText(moves.getText().toString() + "H1RL ");
@@ -410,8 +406,8 @@ public class TeleOpActivity extends AppCompatActivity {
                 Vars.stackUsedUpTO.add(b.getId());
                 Vars.stackMovesTO.add(11);
             }
-            findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
-        }
+            b.setBackgroundColor(Color.DKGRAY);
+        } else
         if(b.getId() == R.id.TO_H1RR){
             if ((Vars.rocketScoredSS[12] + Vars.rocketScoredTO[12]) < 1){
                 moves.setText(moves.getText().toString() + "H1RR ");
@@ -419,8 +415,8 @@ public class TeleOpActivity extends AppCompatActivity {
                 Vars.stackUsedUpTO.add(b.getId());
                 Vars.stackMovesTO.add(12);
             }
-            findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
-        }
+            b.setBackgroundColor(Color.DKGRAY);
+        } else
         if(b.getId() == R.id.TO_H2LL){
             if ((Vars.rocketScoredSS[13] + Vars.rocketScoredTO[13]) < 1){
                 moves.setText(moves.getText().toString() + "H2LL ");
@@ -428,8 +424,8 @@ public class TeleOpActivity extends AppCompatActivity {
                 Vars.stackUsedUpTO.add(b.getId());
                 Vars.stackMovesTO.add(13);
             }
-            findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
-        }
+            b.setBackgroundColor(Color.DKGRAY);
+        } else
         if(b.getId() == R.id.TO_H2LR){
             if ((Vars.rocketScoredSS[14] + Vars.rocketScoredTO[14]) < 1){
                 moves.setText(moves.getText().toString() + "H2LR ");
@@ -437,8 +433,8 @@ public class TeleOpActivity extends AppCompatActivity {
                 Vars.stackUsedUpTO.add(b.getId());
                 Vars.stackMovesTO.add(14);
             }
-            findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
-        }
+            b.setBackgroundColor(Color.DKGRAY);
+        } else
         if(b.getId() == R.id.TO_H2RL){
             if ((Vars.rocketScoredSS[15] + Vars.rocketScoredTO[15]) < 1){
                 moves.setText(moves.getText().toString() + "H2RL ");
@@ -446,8 +442,8 @@ public class TeleOpActivity extends AppCompatActivity {
                 Vars.stackUsedUpTO.add(b.getId());
                 Vars.stackMovesTO.add(15);
             }
-            findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
-        }
+            b.setBackgroundColor(Color.DKGRAY);
+        } else
         if(b.getId() == R.id.TO_H2RR){
             if ((Vars.rocketScoredSS[16] + Vars.rocketScoredTO[16]) < 1){
                 moves.setText(moves.getText().toString() + "H2RR ");
@@ -455,8 +451,8 @@ public class TeleOpActivity extends AppCompatActivity {
                 Vars.stackUsedUpTO.add(b.getId());
                 Vars.stackMovesTO.add(16);
             }
-            findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
-        }
+            b.setBackgroundColor(Color.DKGRAY);
+        } else
         if(b.getId() == R.id.TO_H3LL){
             if ((Vars.rocketScoredSS[17] + Vars.rocketScoredTO[17]) < 1){
                 moves.setText(moves.getText().toString() + "H3LL ");
@@ -464,8 +460,8 @@ public class TeleOpActivity extends AppCompatActivity {
                 Vars.stackUsedUpTO.add(b.getId());
                 Vars.stackMovesTO.add(17);
             }
-            findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
-        }
+            b.setBackgroundColor(Color.DKGRAY);
+        } else
         if(b.getId() == R.id.TO_H3LR){
             if ((Vars.rocketScoredSS[18] + Vars.rocketScoredTO[18]) < 1){
                 moves.setText(moves.getText().toString() + "H3LR ");
@@ -473,8 +469,8 @@ public class TeleOpActivity extends AppCompatActivity {
                 Vars.stackUsedUpTO.add(b.getId());
                 Vars.stackMovesTO.add(18);
             }
-            findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
-        }
+            b.setBackgroundColor(Color.DKGRAY);
+        } else
         if(b.getId() == R.id.TO_H3RL){
             if ((Vars.rocketScoredSS[19] + Vars.rocketScoredTO[19]) < 1){
                 moves.setText(moves.getText().toString() + "H3RL ");
@@ -482,7 +478,7 @@ public class TeleOpActivity extends AppCompatActivity {
                 Vars.stackUsedUpTO.add(b.getId());
                 Vars.stackMovesTO.add(19);
             }
-            findViewById(b.getId()).setBackgroundColor(Color.DKGRAY);
+            b.setBackgroundColor(Color.DKGRAY);
         }
 
         //moves.setText(moves.getText().toString() + Integer.toString((b.getId()%20)) + " ");
