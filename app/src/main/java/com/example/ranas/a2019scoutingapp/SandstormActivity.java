@@ -14,11 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import static com.example.ranas.a2019scoutingapp.Vars.groundC;
-import static com.example.ranas.a2019scoutingapp.Vars.myMatchNumber;
-import static com.example.ranas.a2019scoutingapp.Vars.myScouterName;
 import static com.example.ranas.a2019scoutingapp.Vars.stackCSMovesSS;
 import static com.example.ranas.a2019scoutingapp.Vars.stackMovesSS;
 
@@ -78,10 +74,10 @@ public class SandstormActivity extends AppCompatActivity {
         Button m1 = findViewById(R.id.m1);
         TextView P = findViewById(R.id.P);
 
-        if (Vars.alliance == "red") {
+        if (Vars.alliance == "blue") {
             //int width = getWindowManager().getDefaultDisplay().getWidth();
             ImageView image = findViewById(R.id.imageView);
-            image.setImageResource(R.drawable.frc_field_red);
+            image.setImageResource(R.drawable.fieldblue);
         }
 
         P.setText(Integer.toString(Vars.penaltiesSS + Vars.penaltiesTO));
@@ -540,6 +536,8 @@ public class SandstormActivity extends AppCompatActivity {
 
             Vars.CargoshipScoredSS[x]--;
             check();
+        } else {
+            return;
         }
 
         while(true){
@@ -566,6 +564,8 @@ public class SandstormActivity extends AppCompatActivity {
             int id = Vars.stackUsedUpSS.pop();
             Vars.rocketScoredSS[x]--;
             check();
+        } else {
+            return;
         }
 
         while(true){

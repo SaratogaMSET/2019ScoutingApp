@@ -58,10 +58,10 @@ public class TeleOpActivity extends AppCompatActivity {
 
         check();
 
-        if (Vars.alliance == "red") {
+        if (Vars.alliance == "blue") {
             //int width = getWindowManager().getDefaultDisplay().getWidth();
             ImageView image = findViewById(R.id.imageView);
-            image.setImageResource(R.drawable.frc_field_red);
+            image.setImageResource(R.drawable.fieldblue);
 
         }
 

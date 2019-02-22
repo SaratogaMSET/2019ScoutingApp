@@ -303,8 +303,8 @@
 
     <Button
         android:id="@+id/H"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@android:color/holo_orange_light"
@@ -315,8 +315,8 @@
 
     <Button
         android:id="@+id/C"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="5dp"
         android:background="@android:color/holo_orange_dark"
         android:onClick="loaded"
@@ -326,8 +326,8 @@
 
     <Button
         android:id="@+id/Null"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="5dp"
         android:background="@android:color/darker_gray"
         android:onClick="loaded"
@@ -443,7 +443,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/frc2019field" />
+        app:srcCompat="@drawable/frc_field_red" />
 
     <TextView
         android:id="@+id/textView2"

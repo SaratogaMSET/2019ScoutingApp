@@ -56,7 +56,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="400dp"
-        android:layout_marginBottom="160dp"
+        android:layout_marginBottom="210dp"
         android:background="@android:color/holo_orange_dark"
         android:onClick="add"
         android:text="C3"
@@ -85,7 +85,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/frc2019field" />
+        app:srcCompat="@drawable/frc_field_red" />
 
     <Button
         android:id="@+id/TO_C3L"
