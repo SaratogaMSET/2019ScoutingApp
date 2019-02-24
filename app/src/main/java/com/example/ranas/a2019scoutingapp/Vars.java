@@ -11,6 +11,7 @@ public class Vars {
     public static String myScouterName = "";
     public static String alliance = "";
     public static String tabNum = "";
+    public static Stack<Integer> universal = new Stack<Integer>();
 
     //sandstorm
     public static String ssPos;

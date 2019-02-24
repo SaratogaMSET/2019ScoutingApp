@@ -56,11 +56,11 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="400dp"
-        android:layout_marginBottom="210dp"
+        android:layout_marginBottom="5dp"
         android:background="@android:color/holo_orange_dark"
         android:onClick="add"
         android:text="C3"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/TO_C2R"
         app:layout_constraintStart_toStartOf="parent" />
 
     <android.support.design.widget.BottomNavigationView
@@ -129,18 +129,18 @@
         android:background="@android:color/holo_orange_dark"
         android:onClick="add"
         android:text="C2"
-        app:layout_constraintBottom_toTopOf="@+id/TO_C3R"
+        app:layout_constraintBottom_toTopOf="@+id/TO_C1R"
         app:layout_constraintEnd_toEndOf="@+id/TO_C3R" />
 
     <Button
         android:id="@+id/TO_C1R"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="210dp"
         android:background="@android:color/holo_orange_dark"
         android:onClick="add"
         android:text="C1"
-        app:layout_constraintBottom_toTopOf="@+id/TO_C2R"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/TO_C2R" />
 
     <Button
@@ -148,11 +148,11 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="340dp"
-        android:layout_marginBottom="190dp"
+        android:layout_marginBottom="5dp"
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
         android:text="H3"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/TO_H2RL"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -160,11 +160,11 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="455dp"
-        android:layout_marginBottom="190dp"
+        android:layout_marginBottom="5dp"
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
         android:text="H3"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/TO_H2RR"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -176,7 +176,7 @@
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
         android:text="H2"
-        app:layout_constraintBottom_toTopOf="@+id/TO_H3RR"
+        app:layout_constraintBottom_toTopOf="@+id/TO_H1RR"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -184,11 +184,11 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="455dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="185dp"
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
         android:text="H1"
-        app:layout_constraintBottom_toTopOf="@+id/TO_H2RR"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -199,18 +199,18 @@
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
         android:text="H2"
-        app:layout_constraintBottom_toTopOf="@+id/TO_H3RL"
+        app:layout_constraintBottom_toTopOf="@+id/TO_H1RL"
         app:layout_constraintStart_toStartOf="@+id/TO_H3RL" />
 
     <Button
         android:id="@+id/TO_H1RL"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="185dp"
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
         android:text="H1"
-        app:layout_constraintBottom_toTopOf="@+id/TO_H2RL"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/TO_H2RL" />
 
     <Button
@@ -317,14 +317,13 @@
     <Button
         android:id="@+id/groundC"
         android:layout_width="50dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="197dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="18dp"
         android:background="@android:color/holo_orange_dark"
         android:onClick="ground"
         android:text="C"
-        app:layout_constraintBottom_toBottomOf="@+id/CSC"
-        app:layout_constraintEnd_toStartOf="@+id/CSC"
-        app:layout_constraintTop_toTopOf="@+id/CSC" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <Button
         android:id="@+id/groundH"
@@ -335,17 +334,20 @@
         android:text="H"
         app:layout_constraintBottom_toBottomOf="@+id/groundC"
         app:layout_constraintStart_toEndOf="@+id/groundC"
-        app:layout_constraintTop_toTopOf="@+id/groundC" />
+        app:layout_constraintTop_toTopOf="@+id/groundC"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
         android:text="Ground Pickup"
         android:textColor="@android:color/background_dark"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/groundC"
-        app:layout_constraintStart_toStartOf="@+id/groundC" />
+        app:layout_constraintStart_toStartOf="@+id/groundC"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/groundCcount"
@@ -361,6 +363,7 @@
         android:id="@+id/groundHcount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
         android:text="0"
         android:textColor="@android:color/black"
         android:textSize="18sp"
@@ -374,7 +377,7 @@
         android:background="@android:color/holo_green_dark"
         android:onClick="undo"
         android:text="Undo"
-        app:layout_constraintBottom_toBottomOf="@+id/TO_H3RR"
+        app:layout_constraintBottom_toBottomOf="@+id/TO_H1RR"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button

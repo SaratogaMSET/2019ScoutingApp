@@ -316,16 +316,21 @@ public class NotesActivity extends AppCompatActivity {
             item.put("Hch_scrd on the rkt_lvl_3", (Vars.rocketScoredSS[17] + Vars.rocketScoredSS[18] + Vars.rocketScoredSS[19] + Vars.rocketScoredSS[0] +
                     Vars.rocketScoredTO[17] + Vars.rocketScoredTO[18] + Vars.rocketScoredTO[19] + Vars.rocketScoredTO[0]));
             //TODO "Crg_shp sctn scrd_in_SS": "S1, S2",
-            item.put("Crg_shp sctn scrd_in_SS", Vars.slots.substring(0, Vars.slots.length()-2));
+            if(Vars.slots.length() != 0){
+                item.put("Crg_shp sctn scrd_in_SS", Vars.slots.substring(0, Vars.slots.length()-2));
+            } else {
+                item.put("Crg_shp sctn scrd_in_SS", "none");
+            }
+
 
             item.put("Ttl_crg scrd in crg_shp", Vars.CargoshipScoredSS[0] + Vars.CargoshipScoredTO[0]);
             item.put("Ttl_hch scrd on crg_shp", Vars.CargoshipScoredSS[1] + Vars.CargoshipScoredTO[1]);
             item.put("Ttl_# of grnd_pkups", Vars.groundC+Vars.groundH);
 
             if(Vars.checked){
-                item.put("Scrd_both sides_of_rkt", 1);
+                item.put("Scrd_back side_of_rkt", 1);
             } else {
-                item.put("Scrd_both sides_of_rkt", 0);
+                item.put("Scrd_back side_of_rkt", 0);
             }
             item.put("Starting position", Vars.ssPos);
             item.put("Preloaded game_piece", Vars.startedWithSS);

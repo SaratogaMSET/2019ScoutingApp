@@ -14,11 +14,11 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="400dp"
-        android:layout_marginBottom="204dp"
+        android:layout_marginBottom="5dp"
         android:background="@android:color/holo_orange_dark"
         android:onClick="add"
         android:text="C3"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/SS_C2R"
         app:layout_constraintStart_toStartOf="parent" />
 
     <android.support.design.widget.BottomNavigationView
@@ -138,18 +138,18 @@
         android:background="@android:color/holo_orange_dark"
         android:onClick="add"
         android:text="C2"
-        app:layout_constraintBottom_toTopOf="@+id/SS_C3R"
+        app:layout_constraintBottom_toTopOf="@+id/SS_C1R"
         app:layout_constraintEnd_toEndOf="@+id/SS_C3R" />
 
     <Button
         android:id="@+id/SS_C1R"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="210dp"
         android:background="@android:color/holo_orange_dark"
         android:onClick="add"
         android:text="C1"
-        app:layout_constraintBottom_toTopOf="@+id/SS_C2R"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/SS_C2R" />
 
     <Button
@@ -157,11 +157,11 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="340dp"
-        android:layout_marginBottom="185dp"
+        android:layout_marginBottom="5dp"
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
         android:text="H3"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/SS_H2RL"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -169,11 +169,11 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="460dp"
-        android:layout_marginBottom="185dp"
+        android:layout_marginBottom="5dp"
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
         android:text="H3"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/SS_H2RR"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -185,7 +185,7 @@
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
         android:text="H2"
-        app:layout_constraintBottom_toTopOf="@+id/SS_H3RR"
+        app:layout_constraintBottom_toTopOf="@+id/SS_H1RR"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -193,11 +193,11 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="460dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="185dp"
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
         android:text="H1"
-        app:layout_constraintBottom_toTopOf="@+id/SS_H2RR"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -208,18 +208,18 @@
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
         android:text="H2"
-        app:layout_constraintBottom_toTopOf="@+id/SS_H3RL"
+        app:layout_constraintBottom_toTopOf="@+id/SS_H1RL"
         app:layout_constraintStart_toStartOf="@+id/SS_H3RL" />
 
     <Button
         android:id="@+id/SS_H1RL"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="185dp"
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
         android:text="H1"
-        app:layout_constraintBottom_toTopOf="@+id/SS_H2RL"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/SS_H2RL" />
 
     <Button
@@ -482,7 +482,7 @@
         android:background="@android:color/holo_green_dark"
         android:onClick="undo"
         android:text="Undo"
-        app:layout_constraintBottom_toBottomOf="@+id/SS_H3RR"
+        app:layout_constraintBottom_toBottomOf="@+id/SS_H1RR"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button

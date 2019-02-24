@@ -140,6 +140,8 @@ public class TeleOpActivity extends AppCompatActivity {
         if(!Vars.stackMovesTO.empty()) {
             Vars.rocketScoredTO[Vars.stackMovesTO.pop()]--;
             check();
+        } else {
+            return;
         }
 
         while(true){
@@ -164,6 +166,8 @@ public class TeleOpActivity extends AppCompatActivity {
             int x = Vars.stackCSMovesTO.pop();
             Vars.CargoshipScoredTO[x]--;
             check();
+        } else {
+            return;
         }
 
         while(true){
@@ -200,37 +204,53 @@ public class TeleOpActivity extends AppCompatActivity {
         } else {
             findViewById(R.id.TO_H3RR).setBackgroundColor(Color.parseColor("#ffffbb33"));
         }
+
         if(Vars.rocketScoredTO[1] + Vars.rocketScoredSS[1] == 2) {
             findViewById(R.id.TO_C1L).setBackgroundColor(Color.DKGRAY);
-        } else {
+        } else if(Vars.rocketScoredTO[1] + Vars.rocketScoredSS[1] == 0) {
             findViewById(R.id.TO_C1L).setBackgroundColor(Color.parseColor("#ffff8800"));
+        } else {
+            findViewById(R.id.TO_C1L).setBackgroundColor(Color.GRAY);
         }
+
         if(Vars.rocketScoredTO[2] + Vars.rocketScoredSS[2] == 2) {
             findViewById(R.id.TO_C1R).setBackgroundColor(Color.DKGRAY);
-        } else {
+        } else if(Vars.rocketScoredTO[2] + Vars.rocketScoredSS[2] == 0) {
             findViewById(R.id.TO_C1R).setBackgroundColor(Color.parseColor("#ffff8800"));
+        } else {
+            findViewById(R.id.TO_C1R).setBackgroundColor(Color.GRAY);
         }
+
         if(Vars.rocketScoredTO[3] + Vars.rocketScoredSS[3] == 2) {
             findViewById(R.id.TO_C2L).setBackgroundColor(Color.DKGRAY);
-        } else {
+        } else if(Vars.rocketScoredTO[3] + Vars.rocketScoredSS[3] == 0) {
             findViewById(R.id.TO_C2L).setBackgroundColor(Color.parseColor("#ffff8800"));
+        } else {
+            findViewById(R.id.TO_C2L).setBackgroundColor(Color.GRAY);
         }
+
         if(Vars.rocketScoredTO[4] + Vars.rocketScoredSS[4] == 2) {
             findViewById(R.id.TO_C2R).setBackgroundColor(Color.DKGRAY);
-        } else {
+        } else if(Vars.rocketScoredTO[4] + Vars.rocketScoredSS[4] == 0) {
             findViewById(R.id.TO_C2R).setBackgroundColor(Color.parseColor("#ffff8800"));
+        } else {
+            findViewById(R.id.TO_C2R).setBackgroundColor(Color.GRAY);
         }
 
         if(Vars.rocketScoredTO[5] + Vars.rocketScoredSS[5] == 2) {
             findViewById(R.id.TO_C3L).setBackgroundColor(Color.DKGRAY);
-        } else {
+        } else if(Vars.rocketScoredTO[5] + Vars.rocketScoredSS[5] == 0) {
             findViewById(R.id.TO_C3L).setBackgroundColor(Color.parseColor("#ffff8800"));
+        } else {
+            findViewById(R.id.TO_C3L).setBackgroundColor(Color.GRAY);
         }
 
         if(Vars.rocketScoredTO[6] + Vars.rocketScoredSS[6] == 2) {
             findViewById(R.id.TO_C3R).setBackgroundColor(Color.DKGRAY);
-        } else {
+        } else if(Vars.rocketScoredTO[6] + Vars.rocketScoredSS[6] == 0) {
             findViewById(R.id.TO_C3R).setBackgroundColor(Color.parseColor("#ffff8800"));
+        } else {
+            findViewById(R.id.TO_C3R).setBackgroundColor(Color.GRAY);
         }
 
         if(Vars.rocketScoredTO[9] + Vars.rocketScoredSS[9] == 1) {
@@ -324,6 +344,8 @@ public class TeleOpActivity extends AppCompatActivity {
             }
             if((Vars.rocketScoredSS[1] + Vars.rocketScoredTO[1]) == 2){
                 b.setBackgroundColor(Color.DKGRAY);
+            } else {
+                b.setBackgroundColor(Color.GRAY);
             }
         } else
         if(b.getId() == R.id.TO_C1R){
@@ -335,6 +357,8 @@ public class TeleOpActivity extends AppCompatActivity {
             }
             if((Vars.rocketScoredSS[2] + Vars.rocketScoredTO[2]) == 2){
                 b.setBackgroundColor(Color.DKGRAY);
+            } else {
+                b.setBackgroundColor(Color.GRAY);
             }
         } else
         if(b.getId() == R.id.TO_C2L){
@@ -346,6 +370,8 @@ public class TeleOpActivity extends AppCompatActivity {
             }
             if((Vars.rocketScoredSS[3] + Vars.rocketScoredTO[3]) == 2){
                 b.setBackgroundColor(Color.DKGRAY);
+            } else {
+                b.setBackgroundColor(Color.GRAY);
             }
         } else
         if(b.getId() == R.id.TO_C2R){
@@ -357,6 +383,8 @@ public class TeleOpActivity extends AppCompatActivity {
             }
             if((Vars.rocketScoredSS[4] + Vars.rocketScoredTO[4]) == 2){
                 b.setBackgroundColor(Color.DKGRAY);
+            } else {
+                b.setBackgroundColor(Color.GRAY);
             }
         } else
         if(b.getId() == R.id.TO_C3L){
@@ -368,6 +396,8 @@ public class TeleOpActivity extends AppCompatActivity {
             }
             if((Vars.rocketScoredSS[5] + Vars.rocketScoredTO[5]) == 2){
                 b.setBackgroundColor(Color.DKGRAY);
+            } else {
+                b.setBackgroundColor(Color.GRAY);
             }
         } else
         if(b.getId() == R.id.TO_C3R){
@@ -379,6 +409,8 @@ public class TeleOpActivity extends AppCompatActivity {
             }
             if((Vars.rocketScoredSS[6] + Vars.rocketScoredTO[6]) == 2){
                 b.setBackgroundColor(Color.DKGRAY);
+            } else {
+                b.setBackgroundColor(Color.GRAY);
             }
         } else
         if(b.getId() == R.id.TO_H1LL){

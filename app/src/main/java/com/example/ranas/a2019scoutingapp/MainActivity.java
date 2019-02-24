@@ -118,7 +118,6 @@ public class MainActivity extends AppCompatActivity {
 
         Path.setText("Path is: " + getIntent().getStringExtra("path"));
 
-
         scoutMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
