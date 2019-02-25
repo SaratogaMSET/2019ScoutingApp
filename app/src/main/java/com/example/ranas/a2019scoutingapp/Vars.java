@@ -11,7 +11,7 @@ public class Vars {
     public static String myScouterName = "";
     public static String alliance = "";
     public static String tabNum = "";
-    public static Stack<Integer> universal = new Stack<Integer>();
+    public static Stack<String> universal = new Stack<String>();
 
     //sandstorm
     public static String ssPos;
@@ -23,13 +23,12 @@ public class Vars {
     public static int groundC, groundH;
     public static Stack<Integer> stackMovesSS = new Stack<Integer>();
     public static Stack<Integer> stackCSMovesSS = new Stack<Integer>();
-    public static Stack<Integer> stackUsedUpSS = new Stack<Integer>();
     public static String slots = "";
 
     //teleop
     public static int [] rocketScoredTO = new int[20];
     public static int [] CargoshipScoredTO = new int[2];
-    public static String robotMovesTO;
+//    public static String robotMovesTO;
     public static int penaltiesTO;
     public static Stack<Integer> stackMovesTO = new Stack<Integer>();
     public static Stack<Integer> stackCSMovesTO = new Stack<Integer>();

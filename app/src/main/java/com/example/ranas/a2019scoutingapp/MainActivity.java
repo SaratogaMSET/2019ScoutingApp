@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         for(int x = 0; x < 2; x++){
             Vars.CargoshipScoredTO[x] = 0;
         }
-        Vars.robotMovesTO = "Robot moves: ";
+//        Vars.robotMovesTO = "Robot moves: ";
         Vars.penaltiesTO = 0;
 
         //endgame

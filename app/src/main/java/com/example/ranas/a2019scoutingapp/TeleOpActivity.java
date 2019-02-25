@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -24,7 +25,7 @@ public class TeleOpActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             TextView moves = findViewById(R.id.moves);
-            Vars.robotMovesTO = moves.getText().toString();
+            Vars.robotMovesSS = moves.getText().toString();
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     Intent SS = new Intent();
@@ -70,7 +71,7 @@ public class TeleOpActivity extends AppCompatActivity {
         TextView P = findViewById(R.id.P);
 
         P.setText(Integer.toString(Vars.penaltiesSS + Vars.penaltiesTO));
-        moves.setText(Vars.robotMovesTO);
+        moves.setText(Vars.robotMovesSS);
 
         TextView C = findViewById(R.id.groundCcount);
         C.setText(Integer.toString(Vars.groundC));
@@ -137,8 +138,19 @@ public class TeleOpActivity extends AppCompatActivity {
 
     public void undo (View v){
         TextView moves = findViewById(R.id.moves);
-        if(!Vars.stackMovesTO.empty()) {
-            Vars.rocketScoredTO[Vars.stackMovesTO.pop()]--;
+        if(/**/!Vars.universal.empty()/**/ /*!Vars.stackMovesSS.empty()*/) {
+            String x = Vars.universal.pop();
+            Log.d("errors!?", "step 1");
+            if(x.charAt(0) == 'r'){
+                Vars.rocketScoredTO[Integer.valueOf(x.substring(1))]--;
+                Log.d("errors!?", "step 2");
+            }
+            else if(x.charAt(0) == 'c'){
+                int y = Integer.valueOf(x.substring(1));
+                Vars.CargoshipScoredTO[y]--;
+                Log.d("errors!?", "step 3");
+            }
+
             check();
         } else {
             return;
@@ -160,31 +172,31 @@ public class TeleOpActivity extends AppCompatActivity {
         }
     }
 
-    public void undo2 (View v){
-        TextView moves = findViewById(R.id.moves);
-        if(!Vars.stackCSMovesTO.empty()) {
-            int x = Vars.stackCSMovesTO.pop();
-            Vars.CargoshipScoredTO[x]--;
-            check();
-        } else {
-            return;
-        }
-
-        while(true){
-            if(moves.getText().toString().charAt(moves.getText().toString().length()-2) == ':'){
-                break;
-            }
-            String str = moves.getText().toString();
-            str = str.substring(0, str.length() - 1);
-            moves.setText(str);
-
-            int x = moves.getText().toString().length()-1;
-
-            if(moves.getText().toString().charAt(x) == ' ') {
-                break;
-            }
-        }
-    }
+//    public void undo2 (View v){
+//        TextView moves = findViewById(R.id.moves);
+//        if(!Vars.stackCSMovesTO.empty()) {
+//            int x = Vars.stackCSMovesTO.pop();
+//            Vars.CargoshipScoredTO[x]--;
+//            check();
+//        } else {
+//            return;
+//        }
+//
+//        while(true){
+//            if(moves.getText().toString().charAt(moves.getText().toString().length()-2) == ':'){
+//                break;
+//            }
+//            String str = moves.getText().toString();
+//            str = str.substring(0, str.length() - 1);
+//            moves.setText(str);
+//
+//            int x = moves.getText().toString().length()-1;
+//
+//            if(moves.getText().toString().charAt(x) == ' ') {
+//                break;
+//            }
+//        }
+//    }
 
     public void check(){
 
