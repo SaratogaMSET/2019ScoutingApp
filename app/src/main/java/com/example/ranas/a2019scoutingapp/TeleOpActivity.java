@@ -62,7 +62,7 @@ public class TeleOpActivity extends AppCompatActivity {
         if (Vars.alliance == "blue") {
             //int width = getWindowManager().getDefaultDisplay().getWidth();
             ImageView image = findViewById(R.id.imageView);
-            image.setImageResource(R.drawable.fieldblue);
+            image.setImageResource(R.drawable.fieldbluebetter);
 
         }
 
@@ -73,10 +73,6 @@ public class TeleOpActivity extends AppCompatActivity {
         P.setText(Integer.toString(Vars.penaltiesSS + Vars.penaltiesTO));
         moves.setText(Vars.robotMovesSS);
 
-        TextView C = findViewById(R.id.groundCcount);
-        C.setText(Integer.toString(Vars.groundC));
-        TextView H = findViewById(R.id.groundHcount);
-        H.setText(Integer.toString(Vars.groundH));
 
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -85,14 +81,16 @@ public class TeleOpActivity extends AppCompatActivity {
 
     public void ground (View v){
         if (v.getId() == R.id.groundC){
-            Vars.groundC++;
-            TextView C = findViewById(R.id.groundCcount);
-            C.setText(Integer.toString(Vars.groundC));
+            Vars.groundC = 1;
+            Vars.groundH = 0;
+            v.setBackgroundColor(Color.DKGRAY);
+            //findViewById(R.id.groundH).setBackgroundColor(Color.rgb(255,187,51));
         }
         if (v.getId() == R.id.groundH){
-            Vars.groundH++;
-            TextView H = findViewById(R.id.groundHcount);
-            H.setText(Integer.toString(Vars.groundH));
+            Vars.groundC = 0;
+            Vars.groundH = 1;
+            v.setBackgroundColor(Color.DKGRAY);
+            //findViewById(R.id.groundC).setBackgroundColor(Color.rgb(255,136,0));
         }
     }
 
@@ -149,6 +147,15 @@ public class TeleOpActivity extends AppCompatActivity {
                 int y = Integer.valueOf(x.substring(1));
                 Vars.CargoshipScoredTO[y]--;
                 Log.d("errors!?", "step 3");
+            } else {
+                Vars.slots = Vars.slots.substring(0, Vars.slots.length()-4);
+                Log.d("errors!?", "step 4");
+                String y = x.substring(1);
+                int z = Integer.valueOf(y);
+                Button b = findViewById(z);
+                b.setBackgroundColor(Color.parseColor("#ff33b5e5"));
+                Log.d("errors!?", "step 5");
+                return;
             }
 
             check();
@@ -199,6 +206,15 @@ public class TeleOpActivity extends AppCompatActivity {
 //    }
 
     public void check(){
+
+        if(Vars.groundC == 1){
+            findViewById(R.id.groundC).setBackgroundColor(Color.DKGRAY);
+            //findViewById(R.id.groundH).setBackgroundColor(Color.parseColor("#ffffbb33"));
+        }
+        if(Vars.groundH == 1){
+            findViewById(R.id.groundH).setBackgroundColor(Color.DKGRAY);
+            //findViewById(R.id.groundC).setBackgroundColor(Color.parseColor("#ffff8800"));
+        }
 
         if(Vars.CargoshipScoredSS[0] + Vars.CargoshipScoredTO[0] == 8){
             findViewById(R.id.CSC).setBackgroundColor(Color.DKGRAY);

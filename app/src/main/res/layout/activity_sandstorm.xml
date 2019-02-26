@@ -11,9 +11,9 @@
 
     <Button
         android:id="@+id/SS_C3R"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="400dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="250dp"
         android:layout_marginBottom="5dp"
         android:background="@android:color/holo_orange_dark"
         android:onClick="add"
@@ -33,10 +33,10 @@
 
     <Button
         android:id="@+id/SS_C3L"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="400dp"
-        android:layout_marginTop="160dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="250dp"
+        android:layout_marginTop="150dp"
         android:background="@android:color/holo_orange_dark"
         android:onClick="add"
         android:text="C3"
@@ -105,8 +105,8 @@
 
     <Button
         android:id="@+id/SS_C2L"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:layout_marginTop="5dp"
         android:background="@android:color/holo_orange_dark"
         android:onClick="add"
@@ -116,8 +116,8 @@
 
     <Button
         android:id="@+id/SS_C1L"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:layout_marginTop="5dp"
         android:background="@android:color/holo_orange_dark"
         android:onClick="add"
@@ -127,8 +127,8 @@
 
     <Button
         android:id="@+id/SS_C2R"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:layout_marginBottom="5dp"
         android:background="@android:color/holo_orange_dark"
         android:onClick="add"
@@ -138,9 +138,9 @@
 
     <Button
         android:id="@+id/SS_C1R"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="210dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="200dp"
         android:background="@android:color/holo_orange_dark"
         android:onClick="add"
         android:text="C1"
@@ -149,9 +149,9 @@
 
     <Button
         android:id="@+id/SS_H3RL"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="340dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="175dp"
         android:layout_marginBottom="5dp"
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
@@ -161,9 +161,9 @@
 
     <Button
         android:id="@+id/SS_H3RR"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="460dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="325dp"
         android:layout_marginBottom="5dp"
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
@@ -173,9 +173,9 @@
 
     <Button
         android:id="@+id/SS_H2RR"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="460dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="325dp"
         android:layout_marginBottom="5dp"
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
@@ -185,10 +185,10 @@
 
     <Button
         android:id="@+id/SS_H1RR"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="460dp"
-        android:layout_marginBottom="185dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="325dp"
+        android:layout_marginBottom="175dp"
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
         android:text="H1"
@@ -197,8 +197,8 @@
 
     <Button
         android:id="@+id/SS_H2RL"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:layout_marginBottom="5dp"
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
@@ -208,9 +208,9 @@
 
     <Button
         android:id="@+id/SS_H1RL"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="185dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="175dp"
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
         android:text="H1"
@@ -219,10 +219,10 @@
 
     <Button
         android:id="@+id/SS_H3LL"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="340dp"
-        android:layout_marginTop="140dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="175dp"
+        android:layout_marginTop="130dp"
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
         android:text="H3"
@@ -231,9 +231,9 @@
 
     <Button
         android:id="@+id/SS_H3LR"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="462dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="323dp"
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
         android:text="H3"
@@ -242,8 +242,8 @@
 
     <Button
         android:id="@+id/SS_H2LR"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:layout_marginTop="5dp"
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
@@ -253,8 +253,8 @@
 
     <Button
         android:id="@+id/SS_H2LL"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:layout_marginTop="5dp"
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
@@ -264,8 +264,8 @@
 
     <Button
         android:id="@+id/SS_H1LL"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:layout_marginTop="5dp"
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
@@ -275,8 +275,8 @@
 
     <Button
         android:id="@+id/SS_H1LR"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:layout_marginTop="5dp"
         android:background="@android:color/holo_orange_light"
         android:onClick="add"
@@ -332,10 +332,10 @@
 
     <Button
         android:id="@+id/CSC"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:layout_marginStart="460dp"
-        android:layout_marginTop="365dp"
+        android:layout_marginTop="358dp"
         android:background="@android:color/holo_orange_dark"
         android:onClick="CargoshipAdd"
         android:text="C"
@@ -344,8 +344,8 @@
 
     <Button
         android:id="@+id/CSH"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:background="@android:color/holo_orange_light"
         android:onClick="CargoshipAdd"
         android:text="H"
@@ -410,7 +410,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="100dp"
         android:background="@android:color/holo_orange_dark"
         android:onClick="ground"
         android:text="C"
@@ -450,30 +450,11 @@
         app:layout_constraintBottom_toTopOf="@+id/groundC"
         app:layout_constraintStart_toStartOf="@+id/groundC" />
 
-    <TextView
-        android:id="@+id/groundCcount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/groundC"
-        app:layout_constraintTop_toBottomOf="@+id/groundC" />
-
-    <TextView
-        android:id="@+id/groundHcount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/groundH"
-        app:layout_constraintTop_toBottomOf="@+id/groundH" />
-
     <Button
         android:id="@+id/undo"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
+        android:layout_marginEnd="32dp"
         android:background="@android:color/holo_green_dark"
         android:onClick="undo"
         android:text="Undo"
@@ -484,8 +465,8 @@
         android:id="@+id/R3"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="20dp"
         android:background="@android:color/holo_blue_light"
         android:onClick="side"
         android:text="S3"
@@ -516,7 +497,7 @@
         android:id="@+id/R4"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="15dp"
         android:background="@android:color/holo_blue_light"
         android:onClick="side"
@@ -539,7 +520,7 @@
         android:id="@+id/R6"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         android:background="@android:color/holo_blue_light"
         android:onClick="side"
         android:text="S6"

@@ -78,7 +78,7 @@ public class SandstormActivity extends AppCompatActivity {
         if (Vars.alliance == "blue") {
             //int width = getWindowManager().getDefaultDisplay().getWidth();
             ImageView image = findViewById(R.id.imageView);
-            image.setImageResource(R.drawable.fieldblue);
+            image.setImageResource(R.drawable.fieldbluebetter);
         }
 
         P.setText(Integer.toString(Vars.penaltiesSS + Vars.penaltiesTO));
@@ -112,12 +112,6 @@ public class SandstormActivity extends AppCompatActivity {
             Null.setBackgroundColor(Color.GREEN);
         }
 
-        TextView C1 = findViewById(R.id.groundCcount);
-        C1.setText(Integer.toString(Vars.groundC));
-        TextView H1 = findViewById(R.id.groundHcount);
-        H1.setText(Integer.toString(Vars.groundH));
-
-
 
 
 
@@ -149,6 +143,36 @@ public class SandstormActivity extends AppCompatActivity {
     }
 
     public void check(){
+        //S1, S3, s3, S7, s9,
+        for(int x = 0; x <= Vars.slots.length()-3; x += 4){
+            String s = Vars.slots.substring(x, x+2);
+            if(s.equals("S1")){
+                findViewById(R.id.R1).setBackgroundColor(Color.DKGRAY);
+            } else if(s.equals("S2")){
+                findViewById(R.id.R2).setBackgroundColor(Color.DKGRAY);
+            } else if(s.equals("S3")){
+                findViewById(R.id.R3).setBackgroundColor(Color.DKGRAY);
+            } else if(s.equals("S4")){
+                findViewById(R.id.R4).setBackgroundColor(Color.DKGRAY);
+            } else if(s.equals("S5")){
+                findViewById(R.id.R5).setBackgroundColor(Color.DKGRAY);
+            } else if(s.equals("S6")){
+                findViewById(R.id.R6).setBackgroundColor(Color.DKGRAY);
+            } else if(s.equals("S7")){
+                findViewById(R.id.R7).setBackgroundColor(Color.DKGRAY);
+            } else if(s.equals("S8")){
+                findViewById(R.id.R8).setBackgroundColor(Color.DKGRAY);
+            }
+        }
+        if(Vars.groundC == 1){
+            findViewById(R.id.groundC).setBackgroundColor(Color.DKGRAY);
+            //findViewById(R.id.groundH).setBackgroundColor(Color.parseColor("#ffffbb33"));
+        }
+        if(Vars.groundH == 1){
+            findViewById(R.id.groundH).setBackgroundColor(Color.DKGRAY);
+            //findViewById(R.id.groundC).setBackgroundColor(Color.parseColor("#ffff8800"));
+        }
+
         if(Vars.CargoshipScoredSS[0] + Vars.CargoshipScoredTO[0] == 8){
             findViewById(R.id.CSC).setBackgroundColor(Color.DKGRAY);
         } else {
@@ -540,14 +564,14 @@ public class SandstormActivity extends AppCompatActivity {
 
     public void ground (View v){
         if (v.getId() == R.id.groundC){
-            Vars.groundC++;
-            TextView C = findViewById(R.id.groundCcount);
-            C.setText(Integer.toString(Vars.groundC));
+            Vars.groundC = 1;
+            v.setBackgroundColor(Color.DKGRAY);
+            //findViewById(R.id.groundH).setBackgroundColor(Color.rgb(255,187,51));
         }
         if (v.getId() == R.id.groundH){
-            Vars.groundH++;
-            TextView H = findViewById(R.id.groundHcount);
-            H.setText(Integer.toString(Vars.groundH));
+            Vars.groundH = 1;
+            v.setBackgroundColor(Color.DKGRAY);
+            //findViewById(R.id.groundC).setBackgroundColor(Color.rgb(255,136,0));
         }
     }
 
@@ -648,12 +672,6 @@ public class SandstormActivity extends AppCompatActivity {
             m1.setBackgroundColor(Color.TRANSPARENT);
             r1.setBackgroundColor(Color.TRANSPARENT);
             r2.setBackgroundColor(Color.TRANSPARENT);
-//            H.setX(l1.getX()+ 140);
-//            H.setY(l1.getY());
-//            C.setX(H.getX() + 85);
-//            C.setY(H.getY());
-//            Null.setX(C.getX() + 85);
-//            Null.setY(C.getY());
             H.setVisibility(View.VISIBLE);
             C.setVisibility(View.VISIBLE);
             Null.setVisibility(View.VISIBLE);
@@ -663,12 +681,6 @@ public class SandstormActivity extends AppCompatActivity {
             m1.setBackgroundColor(Color.TRANSPARENT);
             r1.setBackgroundColor(Color.TRANSPARENT);
             r2.setBackgroundColor(Color.TRANSPARENT);
-//            H.setX(l1.getX()+140);
-//            H.setY(l1.getY());
-//            C.setX(H.getX() + 85);
-//            C.setY(H.getY());
-//            Null.setX(C.getX() + 85);
-//            Null.setY(C.getY());
             H.setVisibility(View.VISIBLE);
             C.setVisibility(View.VISIBLE);
             Null.setVisibility(View.VISIBLE);
@@ -678,12 +690,6 @@ public class SandstormActivity extends AppCompatActivity {
             m1.setBackgroundColor(Color.TRANSPARENT);
             r1.setBackgroundColor(Color.TRANSPARENT);
             l2.setBackgroundColor(Color.TRANSPARENT);
-//            H.setX(r1.getX()+140);
-//            H.setY(r1.getY());
-//            C.setX(H.getX() + 85);
-//            C.setY(H.getY());
-//            Null.setX(C.getX() + 85);
-//            Null.setY(C.getY());
             H.setVisibility(View.VISIBLE);
             C.setVisibility(View.VISIBLE);
             Null.setVisibility(View.VISIBLE);
@@ -694,12 +700,6 @@ public class SandstormActivity extends AppCompatActivity {
             m1.setBackgroundColor(Color.TRANSPARENT);
             l2.setBackgroundColor(Color.TRANSPARENT);
             r2.setBackgroundColor(Color.TRANSPARENT);
-//            H.setX(r1.getX()+140);
-//            H.setY(r1.getY());
-//            C.setX(H.getX() + 85);
-//            C.setY(H.getY());
-//            Null.setX(C.getX() + 85);
-//            Null.setY(C.getY());
             H.setVisibility(View.VISIBLE);
             C.setVisibility(View.VISIBLE);
             Null.setVisibility(View.VISIBLE);
@@ -709,12 +709,6 @@ public class SandstormActivity extends AppCompatActivity {
             r1.setBackgroundColor(Color.TRANSPARENT);
             l2.setBackgroundColor(Color.TRANSPARENT);
             r2.setBackgroundColor(Color.TRANSPARENT);
-//            H.setX(m1.getX()+140);
-//            H.setY(m1.getY());
-//            C.setX(H.getX() + 85);
-//            C.setY(H.getY());
-//            Null.setX(C.getX() + 85);
-//            Null.setY(C.getY());
             H.setVisibility(View.VISIBLE);
             C.setVisibility(View.VISIBLE);
             Null.setVisibility(View.VISIBLE);
