@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         }
         Vars.startedWithSS = "NaN";
         Vars.robotMovesSS = "Robot moves: ";
-        Vars.penaltiesSS = 0;
+        Vars.penalties = 0;
         Vars.groundC = 0;
         Vars.groundH = 0;
 
@@ -97,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
             Vars.CargoshipScoredTO[x] = 0;
         }
 //        Vars.robotMovesTO = "Robot moves: ";
-        Vars.penaltiesTO = 0;
 
         //endgame
 //        for(int x = 0; x < 20; x++){

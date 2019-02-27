@@ -228,38 +228,38 @@
         app:layout_constraintStart_toEndOf="@+id/noClimb"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="15dp"
-        android:text="Scored on both sides of a rocket?"
-        android:textColor="@android:color/black"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/noClimb" />
+    <!--<TextView-->
+        <!--android:id="@+id/textView10"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="16dp"-->
+        <!--android:layout_marginTop="15dp"-->
+        <!--android:text="Scored on both sides of a rocket?"-->
+        <!--android:textColor="@android:color/black"-->
+        <!--android:textSize="30sp"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/button5" />-->
 
-    <Button
-        android:id="@+id/rocketScoreNo"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:background="@android:color/darker_gray"
-        android:onClick="toggle"
-        android:text="No"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+    <!--<Button-->
+        <!--android:id="@+id/rocketScoreNo"-->
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_height="60dp"-->
+        <!--android:layout_marginStart="16dp"-->
+        <!--android:background="@android:color/darker_gray"-->
+        <!--android:onClick="toggle"-->
+        <!--android:text="No"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/textView10" />-->
 
-    <Button
-        android:id="@+id/rocketScoreYes"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:background="@android:color/darker_gray"
-        android:onClick="toggle"
-        android:text="Yes"
-        app:layout_constraintStart_toEndOf="@+id/rocketScoreNo"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+    <!--<Button-->
+        <!--android:id="@+id/rocketScoreYes"-->
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_height="60dp"-->
+        <!--android:background="@android:color/darker_gray"-->
+        <!--android:onClick="toggle"-->
+        <!--android:text="Yes"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/rocketScoreNo"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/textView10" />-->
 
     <EditText
         android:id="@+id/notes"
@@ -275,6 +275,80 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rocketScoreYes" />
+        app:layout_constraintTop_toBottomOf="@+id/button6" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Unsure about Ground Pickup?"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="@+id/noClimb"
+        app:layout_constraintTop_toBottomOf="@+id/noClimb" />
+
+    <Button
+        android:id="@+id/unsureNo"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:background="@android:color/darker_gray"
+        android:onClick="unsure"
+        android:text="no"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <Button
+        android:id="@+id/unsureYes"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:background="@android:color/darker_gray"
+        android:onClick="unsure"
+        android:text="yes"
+        app:layout_constraintStart_toEndOf="@+id/unsureNo"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:text="Penalties:"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/unsureNo" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:background="@android:color/darker_gray"
+        android:onClick="penalties"
+        android:text="-1"
+        app:layout_constraintStart_toStartOf="@+id/textView12"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:background="@android:color/darker_gray"
+        android:onClick="penalties"
+        android:text="+1"
+        app:layout_constraintStart_toEndOf="@+id/button5"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+    <TextView
+        android:id="@+id/penalty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:text="0"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        app:layout_constraintStart_toEndOf="@+id/textView12"
+        app:layout_constraintTop_toTopOf="@+id/textView12" />
 
 </android.support.constraint.ConstraintLayout>

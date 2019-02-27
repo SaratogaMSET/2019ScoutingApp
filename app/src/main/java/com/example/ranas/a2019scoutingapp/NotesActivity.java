@@ -74,6 +74,9 @@ public class NotesActivity extends AppCompatActivity {
         Button AveDrive = findViewById(R.id.AveDrive);
         Button GoodDrive = findViewById(R.id.GoodDrive);
 
+        TextView t = findViewById(R.id.penalty);
+        t.setText(Integer.toString(Vars.penalties));
+
         Button BadDep = findViewById(R.id.BadDep);
         Button AveDep = findViewById(R.id.AveDep);
         Button GoodDep = findViewById(R.id.GoodDep);
@@ -82,16 +85,16 @@ public class NotesActivity extends AppCompatActivity {
         Button AveDef = findViewById(R.id.AveDef);
         Button GoodDef = findViewById(R.id.GoodDef);
 
-        Button rocketScoreNo = findViewById(R.id.rocketScoreNo);
-        Button rocketScoreYes = findViewById(R.id.rocketScoreYes);
-        if(!Vars.checked){
-            rocketScoreYes.setBackgroundColor(Color.GRAY);
-            rocketScoreNo.setBackgroundColor(Color.GREEN);
-        } else {
-            Vars.checked = true;
-            rocketScoreYes.setBackgroundColor(Color.GREEN);
-            rocketScoreNo.setBackgroundColor(Color.GRAY);
-        }
+//        Button rocketScoreNo = findViewById(R.id.rocketScoreNo);
+//        Button rocketScoreYes = findViewById(R.id.rocketScoreYes);
+//        if(!Vars.checked){
+//            rocketScoreYes.setBackgroundColor(Color.GRAY);
+//            rocketScoreNo.setBackgroundColor(Color.GREEN);
+//        } else {
+//            Vars.checked = true;
+//            rocketScoreYes.setBackgroundColor(Color.GREEN);
+//            rocketScoreNo.setBackgroundColor(Color.GRAY);
+//        }
 
         if(Vars.driving.equals("Bad")){
             driving(badDrive);
@@ -107,6 +110,12 @@ public class NotesActivity extends AppCompatActivity {
             acc(AveDep);
         } else if(Vars.accuracy.equals("Good")){
             acc(GoodDep);
+        }
+
+        if(Vars.unsure.equals("no")){
+            findViewById(R.id.unsureNo).setBackgroundColor(Color.DKGRAY);
+        } else {
+            findViewById(R.id.unsureYes).setBackgroundColor(Color.DKGRAY);
         }
 
         if(Vars.defense.equals("Bad")){
@@ -244,18 +253,46 @@ public class NotesActivity extends AppCompatActivity {
         }
     }
 
-    public void toggle(View v){
-        Button rocketScoreNo = findViewById(R.id.rocketScoreNo);
-        Button rocketScoreYes = findViewById(R.id.rocketScoreYes);
-        if(v.getId() == rocketScoreNo.getId()){
-            Vars.checked = false;
-            rocketScoreYes.setBackgroundColor(Color.GRAY);
-            rocketScoreNo.setBackgroundColor(Color.GREEN);
-        } else {
-            Vars.checked = true;
-            rocketScoreYes.setBackgroundColor(Color.GREEN);
-            rocketScoreNo.setBackgroundColor(Color.GRAY);
+//    public void toggle(View v){
+//        Button rocketScoreNo = findViewById(R.id.rocketScoreNo);
+//        Button rocketScoreYes = findViewById(R.id.rocketScoreYes);
+//        if(v.getId() == rocketScoreNo.getId()){
+//            Vars.checked = false;
+//            rocketScoreYes.setBackgroundColor(Color.GRAY);
+//            rocketScoreNo.setBackgroundColor(Color.GREEN);
+//        } else {
+//            Vars.checked = true;
+//            rocketScoreYes.setBackgroundColor(Color.GREEN);
+//            rocketScoreNo.setBackgroundColor(Color.GRAY);
+//        }
+//    }
+
+    public void unsure (View v){
+        Button b = (Button) v;
+        if(b.getText() == "no"){
+            Vars.unsure = "no";
+            findViewById(R.id.unsureNo).setBackgroundColor(Color.GREEN);
+            findViewById(R.id.unsureYes).setBackgroundColor(Color.GRAY);
+        } else{
+            Vars.unsure = "yes";
+            findViewById(R.id.unsureNo).setBackgroundColor(Color.GRAY);
+            findViewById(R.id.unsureYes).setBackgroundColor(Color.GREEN);
         }
+
+
+    }
+
+    public void penalties(View v){
+        Button b = (Button) v;
+        if(b.getText().equals("-1")){
+            if(Vars.penalties > 0)
+                Vars.penalties--;
+        } else {
+            Vars.penalties++;
+        }
+
+        TextView t = findViewById(R.id.penalty);
+        t.setText(Integer.toString(Vars.penalties));
     }
 
     public void send (View v) throws IOException {
@@ -288,10 +325,19 @@ public class NotesActivity extends AppCompatActivity {
 
             item.put("Team_#", Integer.valueOf(Vars.myTeamNumber));
             item.put("Match_#", Integer.valueOf(Vars.myMatchNumber));
+
             item.put("Alliance", Vars.alliance);
+            item.put("Starting position", Vars.ssPos);
+            item.put("Preloaded game_piece", Vars.startedWithSS);
+            if(Vars.ssPos.charAt(1) == '2'){
+                item.put("Starting on HAB_lvl_2", 1);
+            } else {
+                item.put("Starting on HAB_lvl_2", 0);
+            }
+
             int temp = 0;
             int temp2 = 0;
-            for(int x = 0; x < 7; x++){
+            for(int x = 1; x < 7; x++){
                 temp += Vars.rocketScoredSS[x];
             }
             for(int x = 0; x < Vars.rocketScoredSS.length; x++){
@@ -299,9 +345,12 @@ public class NotesActivity extends AppCompatActivity {
             }
             item.put("Crg_scrd in SS in rkt", temp);
             item.put("Hch_scrd in SS on rkt", temp2 - temp);
-            //Toast.makeText(getApplicationContext(), "part 1a", Toast.LENGTH_LONG).show();
 
-            //Toast.makeText(getApplicationContext(), "part 1", Toast.LENGTH_LONG).show();
+            if(Vars.slots.length() != 0){
+                item.put("Crg_shp sctn scrd_in_SS", Vars.slots.substring(0, Vars.slots.length()-2));
+            } else {
+                item.put("Crg_shp sctn scrd_in_SS", "none");
+            }
 
             item.put("Crg_scrd in the rkt_lvl_1", (Vars.rocketScoredSS[1] + Vars.rocketScoredSS[2] +
                     Vars.rocketScoredTO[1] + Vars.rocketScoredTO[2]));
@@ -315,30 +364,36 @@ public class NotesActivity extends AppCompatActivity {
                     Vars.rocketScoredTO[5] + Vars.rocketScoredTO[6]));
             item.put("Hch_scrd on the rkt_lvl_3", (Vars.rocketScoredSS[17] + Vars.rocketScoredSS[18] + Vars.rocketScoredSS[19] + Vars.rocketScoredSS[0] +
                     Vars.rocketScoredTO[17] + Vars.rocketScoredTO[18] + Vars.rocketScoredTO[19] + Vars.rocketScoredTO[0]));
-            //TODO "Crg_shp sctn scrd_in_SS": "S1, S2",
-            if(Vars.slots.length() != 0){
-                item.put("Crg_shp sctn scrd_in_SS", Vars.slots.substring(0, Vars.slots.length()-2));
-            } else {
-                item.put("Crg_shp sctn scrd_in_SS", "none");
-            }
-
 
             item.put("Ttl_crg scrd in crg_shp", Vars.CargoshipScoredSS[0] + Vars.CargoshipScoredTO[0]);
             item.put("Ttl_hch scrd on crg_shp", Vars.CargoshipScoredSS[1] + Vars.CargoshipScoredTO[1]);
-            item.put("Ttl_# of grnd_pkups", Vars.groundC+Vars.groundH);
 
-            if(Vars.checked){
+            //ground pickup
+            if(Vars.unsure.equals("yes")){
+                item.put("Grnd_pkup hch", "unsure");
+                item.put("Grnd_pkup crg", "unsure");
+            }else{
+                if(Vars.groundH == 1)
+                    item.put("Grnd_pkup hch", "yes");
+                else
+                    item.put("Grnd_pkup hch", "no");
+                if(Vars.groundC == 1)
+                    item.put("Grnd_pkup crg", "yes");
+                else
+                    item.put("Grnd_pkup crg", "no");
+            }
+            //TODO use RocketScored for this not the Yes No button
+            if(Vars.rocketScoredSS[0] + Vars.rocketScoredTO[0] + Vars.rocketScoredSS[12] + Vars.rocketScoredTO[12] + Vars.rocketScoredSS[16] + Vars.rocketScoredTO[16] + Vars.rocketScoredSS[10] +
+                    Vars.rocketScoredTO[10] + Vars.rocketScoredSS[14] + Vars.rocketScoredTO[14] + Vars.rocketScoredSS[18] + Vars.rocketScoredTO[18] > 1){
                 item.put("Scrd_back side_of_rkt", 1);
             } else {
                 item.put("Scrd_back side_of_rkt", 0);
             }
-            item.put("Starting position", Vars.ssPos);
-            item.put("Preloaded game_piece", Vars.startedWithSS);
-            if(Vars.ssPos.charAt(1) == '2'){
-                item.put("Starting on HAB_lvl_2", 1);
-            } else {
-                item.put("Starting on HAB_lvl_2", 0);
-            }
+
+
+
+
+
 
 //            if(Vars.unsupportedClimb != 0){
 //                item.put("Performed an unsupported climb (0-No, 1-Yes)", 1);
@@ -374,12 +429,11 @@ public class NotesActivity extends AppCompatActivity {
                 item.put("Ended on HAB_lvl_3", 1);
             }
 
-
-            item.put("Penalties", (Vars.penaltiesSS + Vars.penaltiesTO));
             item.put("Driving", Vars.driving);
             item.put("Deployment Accuracy", Vars.accuracy);
             item.put("Defense", Vars.defense);
             item.put("Notes", Vars.myNotes);
+            item.put("Penalties", (Vars.penalties));
             item.put("Scouter", Vars.myScouterName);
             //Toast.makeText(getApplicationContext(), "part 2", Toast.LENGTH_LONG).show();
 

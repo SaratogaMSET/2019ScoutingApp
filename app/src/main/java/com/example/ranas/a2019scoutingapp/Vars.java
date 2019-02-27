@@ -19,7 +19,7 @@ public class Vars {
     public static int [] CargoshipScoredSS = new int[2];
     public static String startedWithSS;
     public static String robotMovesSS;
-    public static int penaltiesSS;
+    public static int penalties;
     public static int groundC, groundH;
     public static Stack<Integer> stackMovesSS = new Stack<Integer>();
     public static Stack<Integer> stackCSMovesSS = new Stack<Integer>();
@@ -29,7 +29,7 @@ public class Vars {
     public static int [] rocketScoredTO = new int[20];
     public static int [] CargoshipScoredTO = new int[2];
 //    public static String robotMovesTO;
-    public static int penaltiesTO;
+    //public static int penaltiesTO;
     public static Stack<Integer> stackMovesTO = new Stack<Integer>();
     public static Stack<Integer> stackCSMovesTO = new Stack<Integer>();
     public static Stack<Integer> stackUsedUpTO = new Stack<Integer>();
@@ -44,4 +44,5 @@ public class Vars {
     public static String myNotes;
     public static boolean checked;
     public static Spinner dropdown;
+    public static String unsure = "no";
 }

@@ -81,7 +81,7 @@ public class SandstormActivity extends AppCompatActivity {
             image.setImageResource(R.drawable.fieldbluebetter);
         }
 
-        P.setText(Integer.toString(Vars.penaltiesSS + Vars.penaltiesTO));
+        P.setText(Integer.toString(Vars.penalties));
         moves.setText(Vars.robotMovesSS);
         H.setVisibility(View.INVISIBLE);
         C.setVisibility(View.INVISIBLE);
@@ -133,13 +133,13 @@ public class SandstormActivity extends AppCompatActivity {
     public void penalty(View v){
         Button b = (Button) v;
         if(b.getId() == R.id.p1SS)
-            Vars.penaltiesSS++;
+            Vars.penalties++;
         else
-            if(Vars.penaltiesSS > 0)
-                Vars.penaltiesSS--;
+            if(Vars.penalties > 0)
+                Vars.penalties--;
 
         TextView P = findViewById(R.id.P);
-        P.setText(Integer.toString(Vars.penaltiesSS + Vars.penaltiesTO));
+        P.setText(Integer.toString(Vars.penalties));
     }
 
     public void check(){
@@ -564,13 +564,24 @@ public class SandstormActivity extends AppCompatActivity {
 
     public void ground (View v){
         if (v.getId() == R.id.groundC){
-            Vars.groundC = 1;
-            v.setBackgroundColor(Color.DKGRAY);
+            if(Vars.groundC == 1){
+                v.setBackgroundColor(Color.rgb(255,136,0));
+                Vars.groundC = 0;
+            } else {
+                v.setBackgroundColor(Color.DKGRAY);
+                Vars.groundC = 1;
+            }
+
             //findViewById(R.id.groundH).setBackgroundColor(Color.rgb(255,187,51));
         }
         if (v.getId() == R.id.groundH){
-            Vars.groundH = 1;
-            v.setBackgroundColor(Color.DKGRAY);
+            if(Vars.groundH == 1){
+                v.setBackgroundColor(Color.rgb(255,187,51));
+                Vars.groundH = 0;
+            } else {
+                v.setBackgroundColor(Color.DKGRAY);
+                Vars.groundH = 1;
+            }
             //findViewById(R.id.groundC).setBackgroundColor(Color.rgb(255,136,0));
         }
     }
