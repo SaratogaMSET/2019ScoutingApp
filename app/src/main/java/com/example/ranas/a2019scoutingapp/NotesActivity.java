@@ -113,9 +113,9 @@ public class NotesActivity extends AppCompatActivity {
         }
 
         if(Vars.unsure.equals("no")){
-            findViewById(R.id.unsureNo).setBackgroundColor(Color.DKGRAY);
+            findViewById(R.id.unsureNo).setBackgroundColor(Color.GREEN);
         } else {
-            findViewById(R.id.unsureYes).setBackgroundColor(Color.DKGRAY);
+            findViewById(R.id.unsureYes).setBackgroundColor(Color.GREEN);
         }
 
         if(Vars.defense.equals("Bad")){
@@ -269,7 +269,7 @@ public class NotesActivity extends AppCompatActivity {
 
     public void unsure (View v){
         Button b = (Button) v;
-        if(b.getText() == "no"){
+        if(b.getText().equals("no")){
             Vars.unsure = "no";
             findViewById(R.id.unsureNo).setBackgroundColor(Color.GREEN);
             findViewById(R.id.unsureYes).setBackgroundColor(Color.GRAY);
@@ -384,7 +384,7 @@ public class NotesActivity extends AppCompatActivity {
             }
             //TODO use RocketScored for this not the Yes No button
             if(Vars.rocketScoredSS[0] + Vars.rocketScoredTO[0] + Vars.rocketScoredSS[12] + Vars.rocketScoredTO[12] + Vars.rocketScoredSS[16] + Vars.rocketScoredTO[16] + Vars.rocketScoredSS[10] +
-                    Vars.rocketScoredTO[10] + Vars.rocketScoredSS[14] + Vars.rocketScoredTO[14] + Vars.rocketScoredSS[18] + Vars.rocketScoredTO[18] > 1){
+                    Vars.rocketScoredTO[10] + Vars.rocketScoredSS[14] + Vars.rocketScoredTO[14] + Vars.rocketScoredSS[18] + Vars.rocketScoredTO[18] > 0){
                 item.put("Scrd_back side_of_rkt", 1);
             } else {
                 item.put("Scrd_back side_of_rkt", 0);
