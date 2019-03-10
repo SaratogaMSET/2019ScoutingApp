@@ -15,7 +15,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import static com.example.ranas.a2019scoutingapp.Vars.slots;
 import static com.example.ranas.a2019scoutingapp.Vars.stackCSMovesSS;
 import static com.example.ranas.a2019scoutingapp.Vars.stackMovesSS;
 
@@ -74,6 +73,7 @@ public class SandstormActivity extends AppCompatActivity {
         Button r2 = findViewById(R.id.r2);
         Button m1 = findViewById(R.id.m1);
         TextView P = findViewById(R.id.P);
+        Button b = findViewById(R.id.button3);
 
         if (Vars.alliance == "blue") {
             //int width = getWindowManager().getDefaultDisplay().getWidth();
@@ -122,6 +122,9 @@ public class SandstormActivity extends AppCompatActivity {
 
     public void side (View v) {
         Button b = (Button) v;
+        if(Vars.exitHab == 0)
+            exit(findViewById(R.id.button3));
+
         if (((ColorDrawable) b.getBackground()).getColor() != Color.DKGRAY){
             b.setBackgroundColor(Color.DKGRAY);
             Vars.slots += b.getText() + ", ";
@@ -152,11 +155,13 @@ public class SandstormActivity extends AppCompatActivity {
                 findViewById(R.id.R2).setBackgroundColor(Color.DKGRAY);
             } else if(s.equals("S3")){
                 findViewById(R.id.R3).setBackgroundColor(Color.DKGRAY);
-            } else if(s.equals("S4")){
-                findViewById(R.id.R4).setBackgroundColor(Color.DKGRAY);
-            } else if(s.equals("S5")){
-                findViewById(R.id.R5).setBackgroundColor(Color.DKGRAY);
-            } else if(s.equals("S6")){
+            }
+//            else if(s.equals("S4")){
+//                findViewById(R.id.R4).setBackgroundColor(Color.DKGRAY);
+//            } else if(s.equals("S5")){
+//                findViewById(R.id.R5).setBackgroundColor(Color.DKGRAY);
+//            }
+            else if(s.equals("S6")){
                 findViewById(R.id.R6).setBackgroundColor(Color.DKGRAY);
             } else if(s.equals("S7")){
                 findViewById(R.id.R7).setBackgroundColor(Color.DKGRAY);
@@ -164,14 +169,21 @@ public class SandstormActivity extends AppCompatActivity {
                 findViewById(R.id.R8).setBackgroundColor(Color.DKGRAY);
             }
         }
-        if(Vars.groundC == 1){
-            findViewById(R.id.groundC).setBackgroundColor(Color.DKGRAY);
-            //findViewById(R.id.groundH).setBackgroundColor(Color.parseColor("#ffffbb33"));
+
+        if(Vars.exitHab == 0){
+            findViewById(R.id.button3).setBackgroundColor(Color.parseColor("#ff33b5e5"));
+        } else {
+            findViewById(R.id.button3).setBackgroundColor(Color.DKGRAY);
         }
-        if(Vars.groundH == 1){
-            findViewById(R.id.groundH).setBackgroundColor(Color.DKGRAY);
-            //findViewById(R.id.groundC).setBackgroundColor(Color.parseColor("#ffff8800"));
-        }
+
+//        if(Vars.groundC == 1){
+//            findViewById(R.id.groundC).setBackgroundColor(Color.DKGRAY);
+//            //findViewById(R.id.groundH).setBackgroundColor(Color.parseColor("#ffffbb33"));
+//        }
+//        if(Vars.groundH == 1){
+//            findViewById(R.id.groundH).setBackgroundColor(Color.DKGRAY);
+//            //findViewById(R.id.groundC).setBackgroundColor(Color.parseColor("#ffff8800"));
+//        }
 
         if(Vars.CargoshipScoredSS[0] + Vars.CargoshipScoredTO[0] == 8){
             findViewById(R.id.CSC).setBackgroundColor(Color.DKGRAY);
@@ -311,8 +323,8 @@ public class SandstormActivity extends AppCompatActivity {
 
         TextView moves = findViewById(R.id.moves);
         Button b = (Button) v;
-        int id = b.getId();
-
+        if(Vars.exitHab == 0)
+            exit(findViewById(R.id.button3));
         switch (b.getId()) {
             case R.id.SS_H3RR:
                 if ((Vars.rocketScoredSS[0] + Vars.rocketScoredTO[0]) < 1){
@@ -507,6 +519,16 @@ public class SandstormActivity extends AppCompatActivity {
         //moves.setText(moves.getText().toString() + Integer.toString((b.getId()%20)) + " ");
     }
 
+    public void exit (View v){
+        if(Vars.exitHab == 0){
+            findViewById(R.id.button3).setBackgroundColor(Color.DKGRAY);
+            Vars.exitHab = 1;
+        } else {
+            findViewById(R.id.button3).setBackgroundColor(Color.parseColor("#ff33b5e5"));
+            Vars.exitHab = 0;
+        }
+    }
+
     public void loaded (View v){
         Button b = (Button) v;
         Button H = findViewById(R.id.H);
@@ -538,6 +560,9 @@ public class SandstormActivity extends AppCompatActivity {
         Button CSH = findViewById(R.id.CSH);
         TextView moves = findViewById(R.id.moves);
 
+        if(Vars.exitHab == 0)
+            exit(findViewById(R.id.button3));
+
         if(b.getText().toString().equals("C")){
             if(Vars.CargoshipScoredSS[0] + Vars.CargoshipScoredTO[0] < 8) {
                 Vars.CargoshipScoredSS[0]++;
@@ -546,7 +571,7 @@ public class SandstormActivity extends AppCompatActivity {
                 moves.setText(moves.getText().toString() + b.getText().toString() + " ");
             }
         }
-        if(Vars.CargoshipScoredSS[0] + Vars.CargoshipScoredTO[0] == 8){
+        if(Vars.CargoshipScoredSS[0] + Vars.CargoshipScoredTO[0] ==8){
             CSC.setBackgroundColor(Color.DKGRAY);
         }
         if(b.getText().toString().equals("H")){
@@ -562,29 +587,29 @@ public class SandstormActivity extends AppCompatActivity {
         }
     }
 
-    public void ground (View v){
-        if (v.getId() == R.id.groundC){
-            if(Vars.groundC == 1){
-                v.setBackgroundColor(Color.rgb(255,136,0));
-                Vars.groundC = 0;
-            } else {
-                v.setBackgroundColor(Color.DKGRAY);
-                Vars.groundC = 1;
-            }
-
-            //findViewById(R.id.groundH).setBackgroundColor(Color.rgb(255,187,51));
-        }
-        if (v.getId() == R.id.groundH){
-            if(Vars.groundH == 1){
-                v.setBackgroundColor(Color.rgb(255,187,51));
-                Vars.groundH = 0;
-            } else {
-                v.setBackgroundColor(Color.DKGRAY);
-                Vars.groundH = 1;
-            }
-            //findViewById(R.id.groundC).setBackgroundColor(Color.rgb(255,136,0));
-        }
-    }
+//    public void ground (View v){
+//        if (v.getId() == R.id.groundC){
+//            if(Vars.groundC == 1){
+//                v.setBackgroundColor(Color.rgb(255,136,0));
+//                Vars.groundC = 0;
+//            } else {
+//                v.setBackgroundColor(Color.DKGRAY);
+//                Vars.groundC = 1;
+//            }
+//
+//            //findViewById(R.id.groundH).setBackgroundColor(Color.rgb(255,187,51));
+//        }
+//        if (v.getId() == R.id.groundH){
+//            if(Vars.groundH == 1){
+//                v.setBackgroundColor(Color.rgb(255,187,51));
+//                Vars.groundH = 0;
+//            } else {
+//                v.setBackgroundColor(Color.DKGRAY);
+//                Vars.groundH = 1;
+//            }
+//            //findViewById(R.id.groundC).setBackgroundColor(Color.rgb(255,136,0));
+//        }
+//    }
 
 //    public void undo2 (View v){
 //        TextView moves = findViewById(R.id.moves);

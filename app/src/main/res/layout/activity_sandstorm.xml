@@ -405,28 +405,28 @@
         app:layout_constraintStart_toEndOf="@+id/p1SS"
         app:layout_constraintTop_toTopOf="@+id/p1SS" />
 
-    <Button
-        android:id="@+id/groundC"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="100dp"
-        android:background="@android:color/holo_orange_dark"
-        android:onClick="ground"
-        android:text="C"
-        app:layout_constraintStart_toStartOf="@+id/H"
-        app:layout_constraintTop_toBottomOf="@+id/H" />
+    <!--<Button-->
+        <!--android:id="@+id/groundC"-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_marginStart="10dp"-->
+        <!--android:layout_marginTop="100dp"-->
+        <!--android:background="@android:color/holo_orange_dark"-->
+        <!--android:onClick="ground"-->
+        <!--android:text="C"-->
+        <!--app:layout_constraintStart_toStartOf="@+id/H"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/H" />-->
 
-    <Button
-        android:id="@+id/groundH"
-        android:layout_width="50dp"
-        android:layout_height="0dp"
-        android:background="@android:color/holo_orange_light"
-        android:onClick="ground"
-        android:text="H"
-        app:layout_constraintBottom_toBottomOf="@+id/groundC"
-        app:layout_constraintStart_toEndOf="@+id/groundC"
-        app:layout_constraintTop_toTopOf="@+id/groundC" />
+    <!--<Button-->
+        <!--android:id="@+id/groundH"-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:background="@android:color/holo_orange_light"-->
+        <!--android:onClick="ground"-->
+        <!--android:text="H"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/groundC"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/groundC"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/groundC" />-->
 
     <ImageView
         android:id="@+id/imageView"
@@ -440,26 +440,27 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/fieldredbetter" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ground Pickup"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/groundC"
-        app:layout_constraintStart_toStartOf="@+id/groundC" />
+    <!--<TextView-->
+        <!--android:id="@+id/textView2"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Ground Pickup"-->
+        <!--android:textColor="@android:color/black"-->
+        <!--android:textSize="18sp"-->
+        <!--app:layout_constraintBottom_toTopOf="@+id/groundC"-->
+        <!--app:layout_constraintStart_toStartOf="@+id/groundC" />-->
 
     <Button
         android:id="@+id/undo"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:layout_marginEnd="32dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="24dp"
         android:background="@android:color/holo_green_dark"
         android:onClick="undo"
         android:text="Undo"
-        app:layout_constraintBottom_toBottomOf="@+id/SS_H1RR"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CSC" />
 
     <Button
         android:id="@+id/R3"
@@ -546,5 +547,21 @@
         android:text="S8"
         app:layout_constraintStart_toEndOf="@+id/R7"
         app:layout_constraintTop_toTopOf="@+id/R7" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="8dp"
+        android:background="@android:color/holo_blue_light"
+        android:onClick="exit"
+        android:text="Exited HAB"
+        app:layout_constraintBottom_toBottomOf="@+id/SS_H1RL"
+        app:layout_constraintEnd_toStartOf="@+id/SS_H1RL"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/SS_H2RL" />
 
 </android.support.constraint.ConstraintLayout>

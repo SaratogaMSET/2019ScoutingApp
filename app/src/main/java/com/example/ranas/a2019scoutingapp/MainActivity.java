@@ -6,22 +6,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.Stack;
-
-import static com.example.ranas.a2019scoutingapp.Vars.CargoshipScoredSS;
-import static com.example.ranas.a2019scoutingapp.Vars.CargoshipScoredTO;
 import static com.example.ranas.a2019scoutingapp.Vars.myMatchNumber;
 import static com.example.ranas.a2019scoutingapp.Vars.myScouterName;
-import static com.example.ranas.a2019scoutingapp.Vars.rocketScoredSS;
-import static com.example.ranas.a2019scoutingapp.Vars.rocketScoredTO;
 import static com.example.ranas.a2019scoutingapp.Vars.tabNum;
 
 public class MainActivity extends AppCompatActivity {
@@ -40,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         final Button blue = findViewById(R.id.blue);
         final TextView Path = findViewById(R.id.Path);
         final Button button = findViewById(R.id.button);
+        File directory = getExternalFilesDir(null);
+        Path.setText("Path is: " + directory.getAbsolutePath());
 
         //get the spinner from the xml.
         Vars.dropdown = findViewById(R.id.spinner);
@@ -112,20 +108,34 @@ public class MainActivity extends AppCompatActivity {
         Vars.defense = "";
         Vars.unsupportedClimb = 0;
         Vars.myNotes = "";
-        Vars.checked = false;
 
 
-        Path.setText("Path is: " + getIntent().getStringExtra("path"));
+        //Path.setText("Path is: " + getIntent().getStringExtra("path"));
 
         scoutMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!Vars.alliance.matches("") && !scouterName.getText().toString().matches("") && !teamNumber.getText().toString().matches("") && !matchNumber.getText().toString().matches("") ){
-                    Intent goToAutonomous = new Intent();
-                    goToAutonomous.setClass(getApplicationContext(), SandstormActivity.class);
+                    CheckBox noshow = findViewById(R.id.noshow);
                     Vars.myTeamNumber = teamNumber.getText().toString();
                     myMatchNumber = matchNumber.getText().toString();
                     myScouterName = scouterName.getText().toString();
+
+                    if(noshow.isChecked()){
+                        Intent refresh = new Intent();
+                        refresh.setClass(getApplicationContext(), NotesActivity.class);
+                        refresh.putExtra("noShow", true);
+                        Vars.unsure = "yes";
+                        Vars.driving = "NA";
+                        Vars.accuracy = "NA";
+                        Vars.defense = "NA";
+                        Vars.myNotes = "no show";
+                        startActivity(refresh);
+                        return;
+                    }
+
+                    Intent goToAutonomous = new Intent();
+                    goToAutonomous.setClass(getApplicationContext(), SandstormActivity.class);
                     startActivity(goToAutonomous);
                 }
             }

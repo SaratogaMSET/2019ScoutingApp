@@ -60,12 +60,19 @@ public class NotesActivity extends AppCompatActivity {
         }
     };
 
+    public static Intent i;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
-
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
+        i = getIntent();
+
+        if(i.getBooleanExtra("noShow", false)){
+            send(findViewById(R.id.button18));
+        }
 
         EditText notes = findViewById(R.id.notes);
         notes.setText(Vars.myNotes);
@@ -102,6 +109,8 @@ public class NotesActivity extends AppCompatActivity {
             driving(AveDrive);
         } else if(Vars.driving.equals("Good")){
             driving(GoodDrive);
+        } else if(Vars.driving.equals("NA")){
+            driving(findViewById(R.id.naDrive));
         }
 
         if(Vars.accuracy.equals("Bad")){
@@ -110,12 +119,22 @@ public class NotesActivity extends AppCompatActivity {
             acc(AveDep);
         } else if(Vars.accuracy.equals("Good")){
             acc(GoodDep);
+        } else if(Vars.accuracy.equals("NA")){
+            acc(findViewById(R.id.naDep));
         }
 
         if(Vars.unsure.equals("no")){
-            findViewById(R.id.unsureNo).setBackgroundColor(Color.GREEN);
-        } else {
-            findViewById(R.id.unsureYes).setBackgroundColor(Color.GREEN);
+            findViewById(R.id.unsure).setBackgroundColor(Color.GRAY);
+        } else if(Vars.unsure.equals("yes")){
+            findViewById(R.id.unsure).setBackgroundColor(Color.DKGRAY);
+        }
+
+        if(Vars.groundC == 1){
+            findViewById(R.id.cargo).setBackgroundColor(Color.DKGRAY);
+        }
+
+        if(Vars.groundH == 1){
+            findViewById(R.id.hatch).setBackgroundColor(Color.DKGRAY);
         }
 
         if(Vars.defense.equals("Bad")){
@@ -124,6 +143,8 @@ public class NotesActivity extends AppCompatActivity {
             defense(AveDef);
         } else if(Vars.defense.equals("Good")){
             defense(GoodDef);
+        } else if(Vars.defense.equals("NA")){
+            defense(findViewById(R.id.naDef));
         }
 
         Button noClimb = findViewById(R.id.noClimb);
@@ -185,25 +206,35 @@ public class NotesActivity extends AppCompatActivity {
     }
 
     public void driving (View v){
+        Button naDrive = findViewById(R.id.naDrive);
         Button badDrive = findViewById(R.id.badDrive);
         Button AveDrive = findViewById(R.id.AveDrive);
         Button GoodDrive = findViewById(R.id.GoodDrive);
         Button b = (Button)v;
         Vars.driving = b.getText().toString();
-        if(v.getId() == R.id.badDrive){
+        if(b.getId() == R.id.badDrive){
             badDrive.setBackgroundColor(Color.GREEN);
             AveDrive.setBackgroundColor(Color.GRAY);
             GoodDrive.setBackgroundColor(Color.GRAY);
+            naDrive.setBackgroundColor(Color.GRAY);
         }
-        if(v.getId() == R.id.AveDrive){
+        if(b.getId() == R.id.AveDrive){
             badDrive.setBackgroundColor(Color.GRAY);
             AveDrive.setBackgroundColor(Color.GREEN);
             GoodDrive.setBackgroundColor(Color.GRAY);
+            naDrive.setBackgroundColor(Color.GRAY);
         }
-        if(v.getId() == R.id.GoodDrive){
+        if(b.getId() == R.id.GoodDrive){
             badDrive.setBackgroundColor(Color.GRAY);
             AveDrive.setBackgroundColor(Color.GRAY);
             GoodDrive.setBackgroundColor(Color.GREEN);
+            naDrive.setBackgroundColor(Color.GRAY);
+        }
+        if(b.getId() == R.id.naDrive){
+            badDrive.setBackgroundColor(Color.GRAY);
+            AveDrive.setBackgroundColor(Color.GRAY);
+            GoodDrive.setBackgroundColor(Color.GRAY);
+            naDrive.setBackgroundColor(Color.GREEN);
         }
     }
 
@@ -211,22 +242,32 @@ public class NotesActivity extends AppCompatActivity {
         Button BadDep = findViewById(R.id.BadDep);
         Button AveDep = findViewById(R.id.AveDep);
         Button GoodDep = findViewById(R.id.GoodDep);
+        Button naDep = findViewById(R.id.naDep);
         Button b = (Button)v;
         Vars.accuracy = b.getText().toString();
-        if(v.getId() == R.id.BadDep){
+        if(b.getId() == R.id.BadDep){
             BadDep.setBackgroundColor(Color.GREEN);
             AveDep.setBackgroundColor(Color.GRAY);
             GoodDep.setBackgroundColor(Color.GRAY);
+            naDep.setBackgroundColor(Color.GRAY);
         }
-        if(v.getId() == R.id.AveDep){
+        if(b.getId() == R.id.AveDep){
             BadDep.setBackgroundColor(Color.GRAY);
             AveDep.setBackgroundColor(Color.GREEN);
             GoodDep.setBackgroundColor(Color.GRAY);
+            naDep.setBackgroundColor(Color.GRAY);
         }
-        if(v.getId() == R.id.GoodDep){
+        if(b.getId() == R.id.GoodDep){
             BadDep.setBackgroundColor(Color.GRAY);
             AveDep.setBackgroundColor(Color.GRAY);
             GoodDep.setBackgroundColor(Color.GREEN);
+            naDep.setBackgroundColor(Color.GRAY);
+        }
+        if(b.getId() == R.id.naDep){
+            BadDep.setBackgroundColor(Color.GRAY);
+            AveDep.setBackgroundColor(Color.GRAY);
+            GoodDep.setBackgroundColor(Color.GRAY);
+            naDep.setBackgroundColor(Color.GREEN);
         }
     }
 
@@ -234,22 +275,32 @@ public class NotesActivity extends AppCompatActivity {
         Button BadDef = findViewById(R.id.BadDef);
         Button AveDef = findViewById(R.id.AveDef);
         Button GoodDef = findViewById(R.id.GoodDef);
+        Button naDef = findViewById(R.id.naDef);
         Button b = (Button)v;
         Vars.defense = b.getText().toString();
-        if(v.getId() == R.id.BadDef){
+        if(b.getId() == R.id.BadDef){
             BadDef.setBackgroundColor(Color.GREEN);
             AveDef.setBackgroundColor(Color.GRAY);
             GoodDef.setBackgroundColor(Color.GRAY);
+            naDef.setBackgroundColor(Color.GRAY);
         }
-        if(v.getId() == R.id.AveDef){
+        if(b.getId() == R.id.AveDef){
             BadDef.setBackgroundColor(Color.GRAY);
             AveDef.setBackgroundColor(Color.GREEN);
             GoodDef.setBackgroundColor(Color.GRAY);
+            naDef.setBackgroundColor(Color.GRAY);
         }
-        if(v.getId() == R.id.GoodDef){
+        if(b.getId() == R.id.GoodDef){
             BadDef.setBackgroundColor(Color.GRAY);
             AveDef.setBackgroundColor(Color.GRAY);
             GoodDef.setBackgroundColor(Color.GREEN);
+            naDef.setBackgroundColor(Color.GRAY);
+        }
+        if(b.getId() == R.id.naDef){
+            BadDef.setBackgroundColor(Color.GRAY);
+            AveDef.setBackgroundColor(Color.GRAY);
+            GoodDef.setBackgroundColor(Color.GRAY);
+            naDef.setBackgroundColor(Color.GREEN);
         }
     }
 
@@ -267,16 +318,37 @@ public class NotesActivity extends AppCompatActivity {
 //        }
 //    }
 
-    public void unsure (View v){
+    public void ground (View v){
         Button b = (Button) v;
-        if(b.getText().equals("no")){
+        if(b.getText().equals("Hatch")){
             Vars.unsure = "no";
-            findViewById(R.id.unsureNo).setBackgroundColor(Color.GREEN);
-            findViewById(R.id.unsureYes).setBackgroundColor(Color.GRAY);
-        } else{
+            if(Vars.groundH == 0){
+                Vars.groundH = 1;
+                findViewById(R.id.hatch).setBackgroundColor(Color.DKGRAY);
+                findViewById(R.id.unsure).setBackgroundColor(Color.GRAY);
+            } else {
+                Vars.groundH = 0;
+                findViewById(R.id.hatch).setBackgroundColor(Color.parseColor("#ffffbb33"));
+                findViewById(R.id.unsure).setBackgroundColor(Color.GRAY);
+            }
+        } else if(b.getText().equals("Cargo")) {
+            Vars.unsure = "no";
+            if(Vars.groundC == 0){
+                Vars.groundC = 1;
+                findViewById(R.id.cargo).setBackgroundColor(Color.DKGRAY);
+                findViewById(R.id.unsure).setBackgroundColor(Color.GRAY);
+            } else {
+                Vars.groundC = 0;
+                findViewById(R.id.cargo).setBackgroundColor(Color.parseColor("#ffff8800"));
+                findViewById(R.id.unsure).setBackgroundColor(Color.GRAY);
+            }
+        } else if(b.getText().equals("Unsure")){
             Vars.unsure = "yes";
-            findViewById(R.id.unsureNo).setBackgroundColor(Color.GRAY);
-            findViewById(R.id.unsureYes).setBackgroundColor(Color.GREEN);
+            Vars.groundC = 0;
+            Vars.groundH = 0;
+            findViewById(R.id.hatch).setBackgroundColor(Color.parseColor("#ffffbb33"));
+            findViewById(R.id.cargo).setBackgroundColor(Color.parseColor("#ffff8800"));
+            findViewById(R.id.unsure).setBackgroundColor(Color.DKGRAY);
         }
 
 
@@ -295,10 +367,11 @@ public class NotesActivity extends AppCompatActivity {
         t.setText(Integer.toString(Vars.penalties));
     }
 
-    public void send (View v) throws IOException {
+    public void send (View v) {
         // ready to put all the data
         EditText myNotes = findViewById(R.id.notes);
-        Vars.myNotes = myNotes.getText().toString();
+        if(!i.getBooleanExtra("noShow", false))
+            Vars.myNotes = myNotes.getText().toString();
 
         File directory = getExternalFilesDir(null);
         Log.d("sendScoutReports", "Directory is " + directory.getAbsolutePath());
@@ -306,8 +379,10 @@ public class NotesActivity extends AppCompatActivity {
                 Settings.Secure.ANDROID_ID);
 
         String filename = "ScoutingData_" + android_id + ".txt";
+        if(i.getBooleanExtra("noShow", false)){
 
-        if(Vars.driving.equals("") || Vars.accuracy.equals("") || Vars.defense.equals("") || myNotes.getText().toString().equals("")){
+        }
+        if(Vars.driving.equals("") || Vars.accuracy.equals("") || Vars.defense.equals("") || Vars.myNotes.equals("") || Vars.unsure.isEmpty()){
             Toast.makeText(getApplicationContext(), "Fill all fields!", Toast.LENGTH_LONG).show();
             return;
         }
@@ -345,6 +420,7 @@ public class NotesActivity extends AppCompatActivity {
             }
             item.put("Crg_scrd in SS in rkt", temp);
             item.put("Hch_scrd in SS on rkt", temp2 - temp);
+            item.put("Crossed HAB_line", Vars.exitHab);
 
             if(Vars.slots.length() != 0){
                 item.put("Crg_shp sctn scrd_in_SS", Vars.slots.substring(0, Vars.slots.length()-2));
@@ -382,7 +458,6 @@ public class NotesActivity extends AppCompatActivity {
                 else
                     item.put("Grnd_pkup crg", "no");
             }
-            //TODO use RocketScored for this not the Yes No button
             if(Vars.rocketScoredSS[0] + Vars.rocketScoredTO[0] + Vars.rocketScoredSS[12] + Vars.rocketScoredTO[12] + Vars.rocketScoredSS[16] + Vars.rocketScoredTO[16] + Vars.rocketScoredSS[10] +
                     Vars.rocketScoredTO[10] + Vars.rocketScoredSS[14] + Vars.rocketScoredTO[14] + Vars.rocketScoredSS[18] + Vars.rocketScoredTO[18] > 0){
                 item.put("Scrd_back side_of_rkt", 1);

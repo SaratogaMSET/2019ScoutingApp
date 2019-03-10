@@ -36,12 +36,11 @@
         android:id="@+id/badDrive"
         android:layout_width="100dp"
         android:layout_height="60dp"
-        android:layout_marginStart="16dp"
         android:background="@android:color/darker_gray"
         android:onClick="driving"
         android:text="Bad"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/naDrive"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Button
@@ -82,12 +81,11 @@
         android:id="@+id/BadDep"
         android:layout_width="100dp"
         android:layout_height="60dp"
-        android:layout_marginStart="16dp"
         android:background="@android:color/darker_gray"
         android:onClick="acc"
         android:text="Bad"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/naDep"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <Button
@@ -128,12 +126,11 @@
         android:id="@+id/BadDef"
         android:layout_width="100dp"
         android:layout_height="60dp"
-        android:layout_marginStart="16dp"
         android:background="@android:color/darker_gray"
         android:onClick="defense"
         android:text="Bad"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/naDef"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <Button
@@ -207,9 +204,9 @@
     <Button
         android:id="@+id/button18"
         android:layout_width="200dp"
-        android:layout_height="300dp"
-        android:layout_marginStart="360dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="180dp"
+        android:layout_marginStart="350dp"
+        android:layout_marginTop="500dp"
         android:background="@android:color/holo_green_light"
         android:onClick="send"
         android:text="Send!"
@@ -282,31 +279,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="Unsure about Ground Pickup?"
+        android:text="Ground Pickup"
         android:textColor="@android:color/black"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="@+id/noClimb"
         app:layout_constraintTop_toBottomOf="@+id/noClimb" />
-
-    <Button
-        android:id="@+id/unsureNo"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:background="@android:color/darker_gray"
-        android:onClick="unsure"
-        android:text="no"
-        app:layout_constraintStart_toStartOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-    <Button
-        android:id="@+id/unsureYes"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:background="@android:color/darker_gray"
-        android:onClick="unsure"
-        android:text="yes"
-        app:layout_constraintStart_toEndOf="@+id/unsureNo"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <TextView
         android:id="@+id/textView12"
@@ -318,7 +295,7 @@
         android:textColor="@android:color/black"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/unsureNo" />
+        app:layout_constraintTop_toBottomOf="@+id/hatch" />
 
     <Button
         android:id="@+id/button5"
@@ -350,5 +327,78 @@
         android:textSize="30sp"
         app:layout_constraintStart_toEndOf="@+id/textView12"
         app:layout_constraintTop_toTopOf="@+id/textView12" />
+
+    <Button
+        android:id="@+id/naDep"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:background="@android:color/darker_gray"
+        android:onClick="acc"
+        android:text="NA"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/BadDep"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <Button
+        android:id="@+id/naDef"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:background="@android:color/darker_gray"
+        android:onClick="defense"
+        android:text="NA"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/BadDef"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <Button
+        android:id="@+id/naDrive"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:background="@android:color/darker_gray"
+        android:onClick="driving"
+        android:text="NA"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/badDrive"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <Button
+        android:id="@+id/hatch"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:background="@android:color/holo_orange_light"
+        android:onClick="ground"
+        android:text="Hatch"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <Button
+        android:id="@+id/cargo"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:background="@android:color/holo_orange_dark"
+        android:onClick="ground"
+        android:text="Cargo"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/hatch"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <Button
+        android:id="@+id/unsure"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:background="@android:color/darker_gray"
+        android:onClick="ground"
+        android:text="Unsure"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/cargo"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
 </android.support.constraint.ConstraintLayout>

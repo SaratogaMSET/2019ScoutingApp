@@ -79,29 +79,29 @@ public class TeleOpActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
-    public void ground (View v){
-        if (v.getId() == R.id.groundC){
-            if(Vars.groundC == 1){
-                v.setBackgroundColor(Color.rgb(255,136,0));
-                Vars.groundC = 0;
-            } else {
-                v.setBackgroundColor(Color.DKGRAY);
-                Vars.groundC = 1;
-            }
-
-            //findViewById(R.id.groundH).setBackgroundColor(Color.rgb(255,187,51));
-        }
-        if (v.getId() == R.id.groundH){
-            if(Vars.groundH == 1){
-                v.setBackgroundColor(Color.rgb(255,187,51));
-                Vars.groundH = 0;
-            } else {
-                v.setBackgroundColor(Color.DKGRAY);
-                Vars.groundH = 1;
-            }
-            //findViewById(R.id.groundC).setBackgroundColor(Color.rgb(255,136,0));
-        }
-    }
+//    public void ground (View v){
+//        if (v.getId() == R.id.groundC){
+//            if(Vars.groundC == 1){
+//                v.setBackgroundColor(Color.rgb(255,136,0));
+//                Vars.groundC = 0;
+//            } else {
+//                v.setBackgroundColor(Color.DKGRAY);
+//                Vars.groundC = 1;
+//            }
+//
+//            //findViewById(R.id.groundH).setBackgroundColor(Color.rgb(255,187,51));
+//        }
+//        if (v.getId() == R.id.groundH){
+//            if(Vars.groundH == 1){
+//                v.setBackgroundColor(Color.rgb(255,187,51));
+//                Vars.groundH = 0;
+//            } else {
+//                v.setBackgroundColor(Color.DKGRAY);
+//                Vars.groundH = 1;
+//            }
+//            //findViewById(R.id.groundC).setBackgroundColor(Color.rgb(255,136,0));
+//        }
+//    }
 
     public void penalty(View v){
         Button b = (Button) v;
@@ -112,7 +112,7 @@ public class TeleOpActivity extends AppCompatActivity {
             Vars.penalties--;
 
         TextView P = findViewById(R.id.P);
-        P.setText(Integer.toString(Vars.penalties + Vars.penalties));
+        P.setText(Integer.toString(Vars.penalties));
     }
 
     public void CargoshipAdd(View v){
@@ -125,7 +125,7 @@ public class TeleOpActivity extends AppCompatActivity {
             if(Vars.CargoshipScoredSS[0] + Vars.CargoshipScoredTO[0] < 8) {
                 Vars.CargoshipScoredTO[0]++;
                 moves.setText(moves.getText().toString() + b.getText().toString() + " ");
-                Vars.stackCSMovesTO.add(0);
+                Vars.universal.add("c" + Integer.toString(0));
             }
         }
         if(Vars.CargoshipScoredSS[0] + Vars.CargoshipScoredTO[0] == 8){
@@ -135,7 +135,7 @@ public class TeleOpActivity extends AppCompatActivity {
             if(Vars.CargoshipScoredSS[1] + Vars.CargoshipScoredTO[1] < 8) {
                 Vars.CargoshipScoredTO[1]++;
                 moves.setText(moves.getText().toString() + b.getText().toString() + " ");
-                Vars.stackCSMovesTO.add(1);
+                Vars.universal.add("c" + Integer.toString(1));
             }
         }
         if(Vars.CargoshipScoredSS[1] + Vars.CargoshipScoredTO[1] == 8){
@@ -161,8 +161,8 @@ public class TeleOpActivity extends AppCompatActivity {
                 Log.d("errors!?", "step 4");
                 String y = x.substring(1);
                 int z = Integer.valueOf(y);
-                Button b = findViewById(z);
-                b.setBackgroundColor(Color.parseColor("#ff33b5e5"));
+//                Button b = findViewById(z);
+//                b.setBackgroundColor(Color.parseColor("#ff33b5e5"));
                 Log.d("errors!?", "step 5");
                 return;
             }
@@ -216,14 +216,14 @@ public class TeleOpActivity extends AppCompatActivity {
 
     public void check(){
 
-        if(Vars.groundC == 1){
-            findViewById(R.id.groundC).setBackgroundColor(Color.DKGRAY);
-            //findViewById(R.id.groundH).setBackgroundColor(Color.parseColor("#ffffbb33"));
-        }
-        if(Vars.groundH == 1){
-            findViewById(R.id.groundH).setBackgroundColor(Color.DKGRAY);
-            //findViewById(R.id.groundC).setBackgroundColor(Color.parseColor("#ffff8800"));
-        }
+//        if(Vars.groundC == 1){
+//            findViewById(R.id.groundC).setBackgroundColor(Color.DKGRAY);
+//            //findViewById(R.id.groundH).setBackgroundColor(Color.parseColor("#ffffbb33"));
+//        }
+//        if(Vars.groundH == 1){
+//            findViewById(R.id.groundH).setBackgroundColor(Color.DKGRAY);
+//            //findViewById(R.id.groundC).setBackgroundColor(Color.parseColor("#ffff8800"));
+//        }
 
         if(Vars.CargoshipScoredSS[0] + Vars.CargoshipScoredTO[0] == 8){
             findViewById(R.id.CSC).setBackgroundColor(Color.DKGRAY);
@@ -361,14 +361,12 @@ public class TeleOpActivity extends AppCompatActivity {
     public void add (View v){
         TextView moves = findViewById(R.id.moves);
         Button b = (Button) v;
-        int id = b.getId();
 
         if(b.getId() == R.id.TO_H3RR) {
             if ((Vars.rocketScoredSS[0] + Vars.rocketScoredTO[0]) < 1){
                 moves.setText(moves.getText().toString() + "H3RR ");
                 Vars.rocketScoredTO[0]++;
-                Vars.stackUsedUpTO.add(b.getId());
-                Vars.stackMovesTO.add(0);
+                Vars.universal.add("r" + Integer.toString(0));
             }
             b.setBackgroundColor(Color.DKGRAY);
         } else
@@ -376,8 +374,7 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((Vars.rocketScoredSS[1] + Vars.rocketScoredTO[1]) < 2) {
                 moves.setText(moves.getText().toString() + "C1L ");
                 Vars.rocketScoredTO[1]++;
-                Vars.stackUsedUpTO.add(b.getId());
-                Vars.stackMovesTO.add(1);
+                Vars.universal.add("r" + Integer.toString(1));
             }
             if((Vars.rocketScoredSS[1] + Vars.rocketScoredTO[1]) == 2){
                 b.setBackgroundColor(Color.DKGRAY);
@@ -389,8 +386,7 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((Vars.rocketScoredSS[2] + Vars.rocketScoredTO[2]) < 2){
                 moves.setText(moves.getText().toString() + "C1R ");
                 Vars.rocketScoredTO[2]++;
-                Vars.stackUsedUpTO.add(b.getId());
-                Vars.stackMovesTO.add(2);
+                Vars.universal.add("r" + Integer.toString(2));
             }
             if((Vars.rocketScoredSS[2] + Vars.rocketScoredTO[2]) == 2){
                 b.setBackgroundColor(Color.DKGRAY);
@@ -402,8 +398,7 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((Vars.rocketScoredSS[3] + Vars.rocketScoredTO[3]) < 2) {
                 moves.setText(moves.getText().toString() + "C2L ");
                 Vars.rocketScoredTO[3]++;
-                Vars.stackUsedUpTO.add(b.getId());
-                Vars.stackMovesTO.add(3);
+                Vars.universal.add("r" + Integer.toString(3));
             }
             if((Vars.rocketScoredSS[3] + Vars.rocketScoredTO[3]) == 2){
                 b.setBackgroundColor(Color.DKGRAY);
@@ -415,8 +410,7 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((Vars.rocketScoredSS[4] + Vars.rocketScoredTO[4]) < 2){
                 moves.setText(moves.getText().toString() + "C2R ");
                 Vars.rocketScoredTO[4]++;
-                Vars.stackUsedUpTO.add(b.getId());
-                Vars.stackMovesTO.add(4);
+                Vars.universal.add("r" + Integer.toString(4));
             }
             if((Vars.rocketScoredSS[4] + Vars.rocketScoredTO[4]) == 2){
                 b.setBackgroundColor(Color.DKGRAY);
@@ -428,8 +422,7 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((Vars.rocketScoredSS[5] + Vars.rocketScoredTO[5]) < 2){
                 moves.setText(moves.getText().toString() + "C3L ");
                 Vars.rocketScoredTO[5]++;
-                Vars.stackUsedUpTO.add(b.getId());
-                Vars.stackMovesTO.add(5);
+                Vars.universal.add("r" + Integer.toString(5));
             }
             if((Vars.rocketScoredSS[5] + Vars.rocketScoredTO[5]) == 2){
                 b.setBackgroundColor(Color.DKGRAY);
@@ -441,8 +434,7 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((Vars.rocketScoredSS[6] + Vars.rocketScoredTO[6]) < 2){
                 moves.setText(moves.getText().toString() + "C3R ");
                 Vars.rocketScoredTO[6]++;
-                Vars.stackUsedUpTO.add(b.getId());
-                Vars.stackMovesTO.add(6);
+                Vars.universal.add("r" + Integer.toString(6));
             }
             if((Vars.rocketScoredSS[6] + Vars.rocketScoredTO[6]) == 2){
                 b.setBackgroundColor(Color.DKGRAY);
@@ -454,8 +446,7 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((Vars.rocketScoredSS[9] + Vars.rocketScoredTO[9]) < 1){
                 moves.setText(moves.getText().toString() + "H1LL ");
                 Vars.rocketScoredTO[9]++;
-                Vars.stackUsedUpTO.add(b.getId());
-                Vars.stackMovesTO.add(9);
+                Vars.universal.add("r" + Integer.toString(9));
             }
             b.setBackgroundColor(Color.DKGRAY);
         } else
@@ -463,8 +454,7 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((Vars.rocketScoredSS[10] + Vars.rocketScoredTO[10]) < 1){
                 moves.setText(moves.getText().toString() + "H1LR ");
                 Vars.rocketScoredTO[10]++;
-                Vars.stackUsedUpTO.add(b.getId());
-                Vars.stackMovesTO.add(10);
+                Vars.universal.add("r" + Integer.toString(10));
             }
             b.setBackgroundColor(Color.DKGRAY);
         } else
@@ -472,8 +462,7 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((Vars.rocketScoredSS[11] + Vars.rocketScoredTO[11]) < 1){
                 moves.setText(moves.getText().toString() + "H1RL ");
                 Vars.rocketScoredTO[11]++;
-                Vars.stackUsedUpTO.add(b.getId());
-                Vars.stackMovesTO.add(11);
+                Vars.universal.add("r" + Integer.toString(11));
             }
             b.setBackgroundColor(Color.DKGRAY);
         } else
@@ -481,8 +470,7 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((Vars.rocketScoredSS[12] + Vars.rocketScoredTO[12]) < 1){
                 moves.setText(moves.getText().toString() + "H1RR ");
                 Vars.rocketScoredTO[12]++;
-                Vars.stackUsedUpTO.add(b.getId());
-                Vars.stackMovesTO.add(12);
+                Vars.universal.add("r" + Integer.toString(12));
             }
             b.setBackgroundColor(Color.DKGRAY);
         } else
@@ -490,8 +478,7 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((Vars.rocketScoredSS[13] + Vars.rocketScoredTO[13]) < 1){
                 moves.setText(moves.getText().toString() + "H2LL ");
                 Vars.rocketScoredTO[13]++;
-                Vars.stackUsedUpTO.add(b.getId());
-                Vars.stackMovesTO.add(13);
+                Vars.universal.add("r" + Integer.toString(13));
             }
             b.setBackgroundColor(Color.DKGRAY);
         } else
@@ -499,8 +486,7 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((Vars.rocketScoredSS[14] + Vars.rocketScoredTO[14]) < 1){
                 moves.setText(moves.getText().toString() + "H2LR ");
                 Vars.rocketScoredTO[14]++;
-                Vars.stackUsedUpTO.add(b.getId());
-                Vars.stackMovesTO.add(14);
+                Vars.universal.add("r" + Integer.toString(14));
             }
             b.setBackgroundColor(Color.DKGRAY);
         } else
@@ -508,8 +494,7 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((Vars.rocketScoredSS[15] + Vars.rocketScoredTO[15]) < 1){
                 moves.setText(moves.getText().toString() + "H2RL ");
                 Vars.rocketScoredTO[15]++;
-                Vars.stackUsedUpTO.add(b.getId());
-                Vars.stackMovesTO.add(15);
+                Vars.universal.add("r" + Integer.toString(15));
             }
             b.setBackgroundColor(Color.DKGRAY);
         } else
@@ -517,8 +502,7 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((Vars.rocketScoredSS[16] + Vars.rocketScoredTO[16]) < 1){
                 moves.setText(moves.getText().toString() + "H2RR ");
                 Vars.rocketScoredTO[16]++;
-                Vars.stackUsedUpTO.add(b.getId());
-                Vars.stackMovesTO.add(16);
+                Vars.universal.add("r" + Integer.toString(16));
             }
             b.setBackgroundColor(Color.DKGRAY);
         } else
@@ -526,8 +510,7 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((Vars.rocketScoredSS[17] + Vars.rocketScoredTO[17]) < 1){
                 moves.setText(moves.getText().toString() + "H3LL ");
                 Vars.rocketScoredTO[17]++;
-                Vars.stackUsedUpTO.add(b.getId());
-                Vars.stackMovesTO.add(17);
+                Vars.universal.add("r" + Integer.toString(17));
             }
             b.setBackgroundColor(Color.DKGRAY);
         } else
@@ -535,8 +518,7 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((Vars.rocketScoredSS[18] + Vars.rocketScoredTO[18]) < 1){
                 moves.setText(moves.getText().toString() + "H3LR ");
                 Vars.rocketScoredTO[18]++;
-                Vars.stackUsedUpTO.add(b.getId());
-                Vars.stackMovesTO.add(18);
+                Vars.universal.add("r" + Integer.toString(18));
             }
             b.setBackgroundColor(Color.DKGRAY);
         } else
@@ -544,8 +526,7 @@ public class TeleOpActivity extends AppCompatActivity {
             if ((Vars.rocketScoredSS[19] + Vars.rocketScoredTO[19]) < 1){
                 moves.setText(moves.getText().toString() + "H3RL ");
                 Vars.rocketScoredTO[19]++;
-                Vars.stackUsedUpTO.add(b.getId());
-                Vars.stackMovesTO.add(19);
+                Vars.universal.add("r" + Integer.toString(19));
             }
             b.setBackgroundColor(Color.DKGRAY);
         }
