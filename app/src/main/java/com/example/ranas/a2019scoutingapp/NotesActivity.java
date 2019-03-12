@@ -410,6 +410,8 @@ public class NotesActivity extends AppCompatActivity {
                 item.put("Starting on HAB_lvl_2", 0);
             }
 
+            item.put("Exited HAB?", Vars.exitHab);
+
             int temp = 0;
             int temp2 = 0;
             for(int x = 1; x < 7; x++){
@@ -420,7 +422,7 @@ public class NotesActivity extends AppCompatActivity {
             }
             item.put("Crg_scrd in SS in rkt", temp);
             item.put("Hch_scrd in SS on rkt", temp2 - temp);
-            item.put("Crossed HAB_line", Vars.exitHab);
+
 
             if(Vars.slots.length() != 0){
                 item.put("Crg_shp sctn scrd_in_SS", Vars.slots.substring(0, Vars.slots.length()-2));
@@ -458,12 +460,8 @@ public class NotesActivity extends AppCompatActivity {
                 else
                     item.put("Grnd_pkup crg", "no");
             }
-            if(Vars.rocketScoredSS[0] + Vars.rocketScoredTO[0] + Vars.rocketScoredSS[12] + Vars.rocketScoredTO[12] + Vars.rocketScoredSS[16] + Vars.rocketScoredTO[16] + Vars.rocketScoredSS[10] +
-                    Vars.rocketScoredTO[10] + Vars.rocketScoredSS[14] + Vars.rocketScoredTO[14] + Vars.rocketScoredSS[18] + Vars.rocketScoredTO[18] > 0){
-                item.put("Scrd_back side_of_rkt", 1);
-            } else {
-                item.put("Scrd_back side_of_rkt", 0);
-            }
+            item.put("#_hch_scrd back_side of_rckt", Vars.rocketScoredSS[0] + Vars.rocketScoredTO[0] + Vars.rocketScoredSS[12] + Vars.rocketScoredTO[12] + Vars.rocketScoredSS[16] + Vars.rocketScoredTO[16] + Vars.rocketScoredSS[10] +
+                        Vars.rocketScoredTO[10] + Vars.rocketScoredSS[14] + Vars.rocketScoredTO[14] + Vars.rocketScoredSS[18] + Vars.rocketScoredTO[18]);
 
 
 
@@ -507,7 +505,7 @@ public class NotesActivity extends AppCompatActivity {
             item.put("Driving", Vars.driving);
             item.put("Deployment Accuracy", Vars.accuracy);
             item.put("Defense", Vars.defense);
-            item.put("Notes", Vars.myNotes);
+            item.put("Notes____________", Vars.myNotes);
             item.put("Penalties", (Vars.penalties));
             item.put("Scouter", Vars.myScouterName);
             //Toast.makeText(getApplicationContext(), "part 2", Toast.LENGTH_LONG).show();
