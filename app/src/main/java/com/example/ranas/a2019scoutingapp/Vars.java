@@ -25,6 +25,7 @@ public class Vars {
     public static Stack<Integer> stackCSMovesSS = new Stack<Integer>();
     public static String slots = "";
     public static int exitHab = 0;
+    public static int counter = 0;
 
     //teleop
     public static int [] rocketScoredTO = new int[20];

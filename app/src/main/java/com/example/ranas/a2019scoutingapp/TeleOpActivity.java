@@ -59,22 +59,41 @@ public class TeleOpActivity extends AppCompatActivity {
 
         check();
 
-        if (Vars.alliance == "blue") {
-            //int width = getWindowManager().getDefaultDisplay().getWidth();
-            ImageView image = findViewById(R.id.imageView);
-            image.setImageResource(R.drawable.fieldbluebetter);
-
-        }
+//        if (Vars.alliance == "blue") {
+//            //int width = getWindowManager().getDefaultDisplay().getWidth();
+//            ImageView image = findViewById(R.id.imageView);
+//            image.setImageResource(R.drawable.fieldbluebetter);
+//
+//        }
 
 
         TextView moves = findViewById(R.id.moves);
         TextView P = findViewById(R.id.P);
+        ImageView i = findViewById(R.id.imageView);
+
+        if (Vars.alliance.equals("red")) {
+            if (Vars.counter % 2 == 1) {
+                i.setImageResource(R.drawable.fieldredbetterflipped);
+            } else {
+                i.setImageResource(R.drawable.fieldredbetter);
+            }
+        } else {
+            if (Vars.counter % 2 == 1) {
+                i.setImageResource(R.drawable.fieldbluebetterflipped);
+            } else {
+                i.setImageResource(R.drawable.fieldbluebetter);
+            }
+        }
+
+        if (Vars.counter % 2 == 1){
+            Vars.counter--;
+            flip(i);
+        }
 
         P.setText(Integer.toString(Vars.penalties));
         moves.setText(Vars.robotMovesSS);
 
 
-        mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
@@ -532,6 +551,55 @@ public class TeleOpActivity extends AppCompatActivity {
         }
 
         //moves.setText(moves.getText().toString() + Integer.toString((b.getId()%20)) + " ");
+    }
+
+    public void flip(View v){
+        findViewById(R.id.button4).post(new Runnable() {
+            @Override
+            public void run() {
+                Vars.counter++;
+                ImageView i = findViewById(R.id.imageView);
+
+                if(Vars.alliance.equals("red")){
+                    if(Vars.counter%2 == 1){
+                        i.setImageResource(R.drawable.fieldredbetterflipped);
+                    } else {
+                        i.setImageResource(R.drawable.fieldredbetter);
+                    }
+                } else {
+                    if(Vars.counter%2 == 1){
+                        i.setImageResource(R.drawable.fieldbluebetterflipped);
+                    } else {
+                        i.setImageResource(R.drawable.fieldbluebetter);
+                    }
+                }
+
+                findViewById(R.id.CSC).setX(1090-findViewById(R.id.CSC).getX());
+                findViewById(R.id.CSH).setX(1090-findViewById(R.id.CSH).getX());
+
+                findViewById(R.id.TO_C3R).setX(1090-findViewById(R.id.TO_C3R).getX());
+                findViewById(R.id.TO_C2R).setX(1090-findViewById(R.id.TO_C2R).getX());
+                findViewById(R.id.TO_C1R).setX(1090-findViewById(R.id.TO_C1R).getX());
+                findViewById(R.id.TO_C3L).setX(1090-findViewById(R.id.TO_C3L).getX());
+                findViewById(R.id.TO_C2L).setX(1090-findViewById(R.id.TO_C2L).getX());
+                findViewById(R.id.TO_C1L).setX(1090-findViewById(R.id.TO_C1L).getX());
+
+                findViewById(R.id.TO_H3RL).setX(1090-findViewById(R.id.TO_H3RL).getX());
+                findViewById(R.id.TO_H3RR).setX(1090-findViewById(R.id.TO_H3RR).getX());
+                findViewById(R.id.TO_H2RR).setX(1090-findViewById(R.id.TO_H2RR).getX());
+                findViewById(R.id.TO_H1RR).setX(1090-findViewById(R.id.TO_H1RR).getX());
+                findViewById(R.id.TO_H2RL).setX(1090-findViewById(R.id.TO_H2RL).getX());
+                findViewById(R.id.TO_H1RL).setX(1090-findViewById(R.id.TO_H1RL).getX());
+                findViewById(R.id.TO_H3LL).setX(1090-findViewById(R.id.TO_H3LL).getX());
+                findViewById(R.id.TO_H3LR).setX(1090-findViewById(R.id.TO_H3LR).getX());
+                findViewById(R.id.TO_H2LR).setX(1090-findViewById(R.id.TO_H2LR).getX());
+                findViewById(R.id.TO_H2LL).setX(1090-findViewById(R.id.TO_H2LL).getX());
+                findViewById(R.id.TO_H1LL).setX(1090-findViewById(R.id.TO_H1LL).getX());
+                findViewById(R.id.TO_H1LR).setX(1090-findViewById(R.id.TO_H1LR).getX());
+
+                findViewById(R.id.button2).setX(1090-findViewById(R.id.button2).getX()-170);
+            }
+        });
     }
 
 }

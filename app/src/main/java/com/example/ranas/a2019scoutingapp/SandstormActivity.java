@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import static com.example.ranas.a2019scoutingapp.Vars.stackCSMovesSS;
 import static com.example.ranas.a2019scoutingapp.Vars.stackMovesSS;
@@ -75,11 +77,27 @@ public class SandstormActivity extends AppCompatActivity {
         TextView P = findViewById(R.id.P);
         Button b = findViewById(R.id.button3);
 
-        if (Vars.alliance == "blue") {
-            //int width = getWindowManager().getDefaultDisplay().getWidth();
-            ImageView image = findViewById(R.id.imageView);
-            image.setImageResource(R.drawable.fieldbluebetter);
+        ImageView i = findViewById(R.id.imageView);
+
+        if (Vars.alliance.equals("red")) {
+            if (Vars.counter % 2 == 1) {
+                i.setImageResource(R.drawable.fieldredbetterflipped);
+            } else {
+                i.setImageResource(R.drawable.fieldredbetter);
+            }
+        } else {
+            if (Vars.counter % 2 == 1) {
+                i.setImageResource(R.drawable.fieldbluebetterflipped);
+            } else {
+                i.setImageResource(R.drawable.fieldbluebetter);
+            }
         }
+
+        if (Vars.counter % 2 == 1){
+            Vars.counter--;
+            flip(b);
+        }
+
 
         P.setText(Integer.toString(Vars.penalties));
         moves.setText(Vars.robotMovesSS);
@@ -111,8 +129,6 @@ public class SandstormActivity extends AppCompatActivity {
         } else if (Vars.startedWithSS == "NaN"){
             Null.setBackgroundColor(Color.GREEN);
         }
-
-
 
 
 
@@ -587,62 +603,6 @@ public class SandstormActivity extends AppCompatActivity {
         }
     }
 
-//    public void ground (View v){
-//        if (v.getId() == R.id.groundC){
-//            if(Vars.groundC == 1){
-//                v.setBackgroundColor(Color.rgb(255,136,0));
-//                Vars.groundC = 0;
-//            } else {
-//                v.setBackgroundColor(Color.DKGRAY);
-//                Vars.groundC = 1;
-//            }
-//
-//            //findViewById(R.id.groundH).setBackgroundColor(Color.rgb(255,187,51));
-//        }
-//        if (v.getId() == R.id.groundH){
-//            if(Vars.groundH == 1){
-//                v.setBackgroundColor(Color.rgb(255,187,51));
-//                Vars.groundH = 0;
-//            } else {
-//                v.setBackgroundColor(Color.DKGRAY);
-//                Vars.groundH = 1;
-//            }
-//            //findViewById(R.id.groundC).setBackgroundColor(Color.rgb(255,136,0));
-//        }
-//    }
-
-//    public void undo2 (View v){
-//        TextView moves = findViewById(R.id.moves);
-//        if(!Vars.stackCSMovesSS.empty()) {
-//            int x = Vars.stackCSMovesSS.pop();
-//            if(x == R.id.R1 || x == R.id.R2 || x == R.id.R3 || x == R.id.R4 || x == R.id.R5 || x == R.id.R6 || x == R.id.R7 || x == R.id.R8){
-//                Vars.slots = Vars.slots.substring(0, Vars.slots.length()-4);
-//                findViewById(x).setBackgroundColor(Color.parseColor("#ff33b5e5"));
-//                return;
-//            }
-//
-//            Vars.CargoshipScoredSS[x]--;
-//            check();
-//        } else {
-//            return;
-//        }
-//
-//        while(true){
-//            if(moves.getText().toString().charAt(moves.getText().toString().length()-2) == ':'){
-//                break;
-//            }
-//            String str = moves.getText().toString();
-//            str = str.substring(0, str.length() - 1);
-//            moves.setText(str);
-//
-//            int x = moves.getText().toString().length()-1;
-//
-//            if(moves.getText().toString().charAt(x) == ' ') {
-//                break;
-//            }
-//        }
-//    }
-
 
     public void undo (View v){
         TextView moves = findViewById(R.id.moves);
@@ -749,6 +709,71 @@ public class SandstormActivity extends AppCompatActivity {
             C.setVisibility(View.VISIBLE);
             Null.setVisibility(View.VISIBLE);
         }
+    }
+
+    public void flip(View v){
+        findViewById(R.id.button3).post(new Runnable() {
+            @Override
+            public void run() {
+                Vars.counter++;
+                ImageView i = findViewById(R.id.imageView);
+
+                if(Vars.alliance.equals("red")){
+                    if(Vars.counter%2 == 1){
+                        i.setImageResource(R.drawable.fieldredbetterflipped);
+                    } else {
+                        i.setImageResource(R.drawable.fieldredbetter);
+                    }
+                } else {
+                    if(Vars.counter%2 == 1){
+                        i.setImageResource(R.drawable.fieldbluebetterflipped);
+                    } else {
+                        i.setImageResource(R.drawable.fieldbluebetter);
+                    }
+                }
+
+                findViewById(R.id.l2).setX(1090-findViewById(R.id.l2).getX()-30);
+                findViewById(R.id.l1).setX(1090-findViewById(R.id.l1).getX());
+                findViewById(R.id.r2).setX(1090-findViewById(R.id.r2).getX()-30);
+                findViewById(R.id.r1).setX(1090-findViewById(R.id.r1).getX());
+                findViewById(R.id.m1).setX(1090-findViewById(R.id.m1).getX());
+
+                findViewById(R.id.R1).setX(1090-findViewById(R.id.R1).getX());
+                findViewById(R.id.R2).setX(1090-findViewById(R.id.R2).getX());
+                findViewById(R.id.R3).setX(1090-findViewById(R.id.R3).getX());
+                findViewById(R.id.R4).setX(1090-findViewById(R.id.R4).getX());
+                findViewById(R.id.R5).setX(1090-findViewById(R.id.R5).getX());
+                findViewById(R.id.R6).setX(1090-findViewById(R.id.R6).getX());
+                findViewById(R.id.R7).setX(1090-findViewById(R.id.R7).getX());
+                findViewById(R.id.R8).setX(1090-findViewById(R.id.R8).getX());
+
+                findViewById(R.id.CSC).setX(1090-findViewById(R.id.CSC).getX());
+                findViewById(R.id.CSH).setX(1090-findViewById(R.id.CSH).getX());
+
+                findViewById(R.id.SS_C3R).setX(1090-findViewById(R.id.SS_C3R).getX());
+                findViewById(R.id.SS_C2R).setX(1090-findViewById(R.id.SS_C2R).getX());
+                findViewById(R.id.SS_C1R).setX(1090-findViewById(R.id.SS_C1R).getX());
+                findViewById(R.id.SS_C3L).setX(1090-findViewById(R.id.SS_C3L).getX());
+                findViewById(R.id.SS_C2L).setX(1090-findViewById(R.id.SS_C2L).getX());
+                findViewById(R.id.SS_C1L).setX(1090-findViewById(R.id.SS_C1L).getX());
+
+                findViewById(R.id.SS_H3RL).setX(1090-findViewById(R.id.SS_H3RL).getX());
+                findViewById(R.id.SS_H3RR).setX(1090-findViewById(R.id.SS_H3RR).getX());
+                findViewById(R.id.SS_H2RR).setX(1090-findViewById(R.id.SS_H2RR).getX());
+                findViewById(R.id.SS_H1RR).setX(1090-findViewById(R.id.SS_H1RR).getX());
+                findViewById(R.id.SS_H2RL).setX(1090-findViewById(R.id.SS_H2RL).getX());
+                findViewById(R.id.SS_H1RL).setX(1090-findViewById(R.id.SS_H1RL).getX());
+                findViewById(R.id.SS_H3LL).setX(1090-findViewById(R.id.SS_H3LL).getX());
+                findViewById(R.id.SS_H3LR).setX(1090-findViewById(R.id.SS_H3LR).getX());
+                findViewById(R.id.SS_H2LR).setX(1090-findViewById(R.id.SS_H2LR).getX());
+                findViewById(R.id.SS_H2LL).setX(1090-findViewById(R.id.SS_H2LL).getX());
+                findViewById(R.id.SS_H1LL).setX(1090-findViewById(R.id.SS_H1LL).getX());
+                findViewById(R.id.SS_H1LR).setX(1090-findViewById(R.id.SS_H1LR).getX());
+
+                findViewById(R.id.undo).setX(1090-findViewById(R.id.undo).getX()-170);
+                findViewById(R.id.button3).setX(1090-findViewById(R.id.button3).getX()-170);
+            }
+        });
     }
 
 }

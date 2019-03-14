@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
@@ -69,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
         View v = (View) button;
         refresh(v);
         scouterName.setText(myScouterName);
-        //alliance = "";
 
         //sandstorm
         Vars.ssPos = "L1";

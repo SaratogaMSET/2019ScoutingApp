@@ -455,7 +455,6 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="140dp"
-        android:layout_marginEnd="24dp"
         android:background="@android:color/holo_green_dark"
         android:onClick="undo"
         android:text="Undo"
@@ -563,5 +562,17 @@
         app:layout_constraintEnd_toStartOf="@+id/SS_H1RL"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/SS_H2RL" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="90dp"
+        android:background="@android:color/holo_blue_light"
+        android:onClick="flip"
+        android:text="Flip Field"
+        app:layout_constraintBottom_toTopOf="@+id/CSC"
+        app:layout_constraintEnd_toEndOf="@+id/undo"
+        app:layout_constraintStart_toStartOf="@+id/undo" />
 
 </android.support.constraint.ConstraintLayout>
