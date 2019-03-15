@@ -402,12 +402,18 @@ public class NotesActivity extends AppCompatActivity {
             item.put("Match_#", Integer.valueOf(Vars.myMatchNumber));
 
             item.put("Alliance", Vars.alliance);
+
+            if(i.getBooleanExtra("noShow", false)){
+                item.put("No Show?", "yes");
+            } else {
+                item.put("No Show?", "no");
+            }
             item.put("Starting position", Vars.ssPos);
             item.put("Preloaded game_piece", Vars.startedWithSS);
             if(Vars.ssPos.charAt(1) == '2'){
-                item.put("Starting on HAB_lvl_2", 1);
+                item.put("Starts on HAB_lvl_2", 1);
             } else {
-                item.put("Starting on HAB_lvl_2", 0);
+                item.put("Starts on HAB_lvl_2", 0);
             }
 
             item.put("Exited HAB?", Vars.exitHab);
@@ -460,7 +466,7 @@ public class NotesActivity extends AppCompatActivity {
                 else
                     item.put("Grnd_pkup crg", "no");
             }
-            item.put("#_hch_scrd back_side of_rckt", Vars.rocketScoredSS[0] + Vars.rocketScoredTO[0] + Vars.rocketScoredSS[12] + Vars.rocketScoredTO[12] + Vars.rocketScoredSS[16] + Vars.rocketScoredTO[16] + Vars.rocketScoredSS[10] +
+            item.put("#_hch_scrd back_side of_rkt", Vars.rocketScoredSS[0] + Vars.rocketScoredTO[0] + Vars.rocketScoredSS[12] + Vars.rocketScoredTO[12] + Vars.rocketScoredSS[16] + Vars.rocketScoredTO[16] + Vars.rocketScoredSS[10] +
                         Vars.rocketScoredTO[10] + Vars.rocketScoredSS[14] + Vars.rocketScoredTO[14] + Vars.rocketScoredSS[18] + Vars.rocketScoredTO[18]);
 
 

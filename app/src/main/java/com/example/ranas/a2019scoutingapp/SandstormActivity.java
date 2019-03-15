@@ -189,7 +189,7 @@ public class SandstormActivity extends AppCompatActivity {
         if(Vars.exitHab == 0){
             findViewById(R.id.button3).setBackgroundColor(Color.parseColor("#ff33b5e5"));
         } else {
-            findViewById(R.id.button3).setBackgroundColor(Color.DKGRAY);
+            findViewById(R.id.button3).setBackgroundColor(Color.GREEN);
         }
 
 //        if(Vars.groundC == 1){
@@ -537,7 +537,7 @@ public class SandstormActivity extends AppCompatActivity {
 
     public void exit (View v){
         if(Vars.exitHab == 0){
-            findViewById(R.id.button3).setBackgroundColor(Color.DKGRAY);
+            findViewById(R.id.button3).setBackgroundColor(Color.GREEN);
             Vars.exitHab = 1;
         } else {
             findViewById(R.id.button3).setBackgroundColor(Color.parseColor("#ff33b5e5"));
