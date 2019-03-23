@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -15,7 +14,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import static com.example.ranas.a2019scoutingapp.Vars.stackCSMovesSS;
 import static com.example.ranas.a2019scoutingapp.Vars.stackMovesSS;
@@ -65,9 +63,9 @@ public class SandstormActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sandstorm);
         check();
 
-        Button H = findViewById(R.id.H);
-        Button C = findViewById(R.id.C);
-        Button Null = findViewById(R.id.Null);
+//        Button H = findViewById(R.id.H);
+//        Button C = findViewById(R.id.C);
+//        Button Null = findViewById(R.id.Null);
         final TextView moves = findViewById(R.id.moves);
         Button l1 = findViewById(R.id.l1);
         Button l2 = findViewById(R.id.l2);
@@ -101,9 +99,9 @@ public class SandstormActivity extends AppCompatActivity {
 
         P.setText(Integer.toString(Vars.penalties));
         moves.setText(Vars.robotMovesSS);
-        H.setVisibility(View.INVISIBLE);
-        C.setVisibility(View.INVISIBLE);
-        Null.setVisibility(View.INVISIBLE);
+//        H.setVisibility(View.INVISIBLE);
+//        C.setVisibility(View.INVISIBLE);
+//        Null.setVisibility(View.INVISIBLE);
 
         Log.d("Stuff", Vars.ssPos);
 
@@ -122,13 +120,13 @@ public class SandstormActivity extends AppCompatActivity {
         if(Vars.ssPos.equals("M1")){
             selectPos(m1);
         }
-        if(Vars.startedWithSS == "Cargo"){
-            C.setBackgroundColor(Color.GREEN);
-        }else if(Vars.startedWithSS == "Hatch"){
-            H.setBackgroundColor((Color.GREEN));
-        } else if (Vars.startedWithSS == "NaN"){
-            Null.setBackgroundColor(Color.GREEN);
-        }
+//        if(Vars.startedWithSS == "Cargo"){
+//            C.setBackgroundColor(Color.GREEN);
+//        }else if(Vars.startedWithSS == "Hatch"){
+//            H.setBackgroundColor((Color.GREEN));
+//        } else if (Vars.startedWithSS == "NaN"){
+//            Null.setBackgroundColor(Color.GREEN);
+//        }
 
 
 
@@ -170,20 +168,13 @@ public class SandstormActivity extends AppCompatActivity {
             } else if(s.equals("S2")){
                 findViewById(R.id.R2).setBackgroundColor(Color.DKGRAY);
             } else if(s.equals("S3")){
-                findViewById(R.id.R3).setBackgroundColor(Color.DKGRAY);
+                findViewById(R.id.R1).setBackgroundColor(Color.DKGRAY);
             }
 //            else if(s.equals("S4")){
 //                findViewById(R.id.R4).setBackgroundColor(Color.DKGRAY);
 //            } else if(s.equals("S5")){
 //                findViewById(R.id.R5).setBackgroundColor(Color.DKGRAY);
 //            }
-            else if(s.equals("S6")){
-                findViewById(R.id.R6).setBackgroundColor(Color.DKGRAY);
-            } else if(s.equals("S7")){
-                findViewById(R.id.R7).setBackgroundColor(Color.DKGRAY);
-            } else if(s.equals("S8")){
-                findViewById(R.id.R8).setBackgroundColor(Color.DKGRAY);
-            }
         }
 
         if(Vars.exitHab == 0){
@@ -204,12 +195,12 @@ public class SandstormActivity extends AppCompatActivity {
         if(Vars.CargoshipScoredSS[0] + Vars.CargoshipScoredTO[0] == 8){
             findViewById(R.id.CSC).setBackgroundColor(Color.DKGRAY);
         } else {
-            findViewById(R.id.CSC).setBackgroundColor(Color.parseColor("#ffffbb33"));
+            findViewById(R.id.CSC).setBackgroundColor(Color.parseColor("#ffff8800"));
         }
         if(Vars.CargoshipScoredSS[1] + Vars.CargoshipScoredTO[1] == 8){
             findViewById(R.id.CSH).setBackgroundColor(Color.DKGRAY);
         } else {
-            findViewById(R.id.CSH).setBackgroundColor(Color.parseColor("#ffff8800"));
+            findViewById(R.id.CSH).setBackgroundColor(Color.parseColor("#ffffbb33"));
         }
 
         if(Vars.rocketScoredTO[0] + Vars.rocketScoredSS[0]== 1) {
@@ -545,30 +536,30 @@ public class SandstormActivity extends AppCompatActivity {
         }
     }
 
-    public void loaded (View v){
-        Button b = (Button) v;
-        Button H = findViewById(R.id.H);
-        Button C = findViewById(R.id.C);
-        Button Null = findViewById(R.id.Null);
-        if(b.getId() == R.id.C){
-            b.setBackgroundColor(Color.GREEN);
-            H.setBackgroundColor(Color.rgb(255,187,51));
-            Null.setBackgroundColor(Color.rgb(192,192,192));
-            Vars.startedWithSS = "Cargo";
-        }
-        if(b.getId() == R.id.H){
-            b.setBackgroundColor(Color.GREEN);
-            C.setBackgroundColor(Color.rgb(255,136,0));
-            Null.setBackgroundColor(Color.rgb(192,192,192));
-            Vars.startedWithSS = "Hatch";
-        }
-        if(b.getId() == R.id.Null){
-            b.setBackgroundColor(Color.GREEN);
-            H.setBackgroundColor(Color.rgb(255,187,51));
-            C.setBackgroundColor(Color.rgb(255,136,0));
-            Vars.startedWithSS = "NaN";
-        }
-    }
+//    public void loaded (View v){
+//        Button b = (Button) v;
+//        Button H = findViewById(R.id.H);
+//        Button C = findViewById(R.id.C);
+//        Button Null = findViewById(R.id.Null);
+//        if(b.getId() == R.id.C){
+//            b.setBackgroundColor(Color.GREEN);
+//            H.setBackgroundColor(Color.rgb(255,187,51));
+//            Null.setBackgroundColor(Color.rgb(192,192,192));
+//            Vars.startedWithSS = "Cargo";
+//        }
+//        if(b.getId() == R.id.H){
+//            b.setBackgroundColor(Color.GREEN);
+//            C.setBackgroundColor(Color.rgb(255,136,0));
+//            Null.setBackgroundColor(Color.rgb(192,192,192));
+//            Vars.startedWithSS = "Hatch";
+//        }
+//        if(b.getId() == R.id.Null){
+//            b.setBackgroundColor(Color.GREEN);
+//            H.setBackgroundColor(Color.rgb(255,187,51));
+//            C.setBackgroundColor(Color.rgb(255,136,0));
+//            Vars.startedWithSS = "NaN";
+//        }
+//    }
 
     public void CargoshipAdd(View v){
         Button b = (Button) v;
@@ -656,9 +647,9 @@ public class SandstormActivity extends AppCompatActivity {
         Button r2 = findViewById(R.id.r2);
         Button m1 = findViewById(R.id.m1);
         v.setBackgroundColor(Color.GREEN);
-        Button H = findViewById(R.id.H);
-        Button C = findViewById(R.id.C);
-        Button Null = findViewById(R.id.Null);
+//        Button H = findViewById(R.id.H);
+//        Button C = findViewById(R.id.C);
+//        Button Null = findViewById(R.id.Null);
 
         Button b = (Button) v;
         Vars.ssPos = b.getText().toString();
@@ -668,27 +659,27 @@ public class SandstormActivity extends AppCompatActivity {
             m1.setBackgroundColor(Color.TRANSPARENT);
             r1.setBackgroundColor(Color.TRANSPARENT);
             r2.setBackgroundColor(Color.TRANSPARENT);
-            H.setVisibility(View.VISIBLE);
-            C.setVisibility(View.VISIBLE);
-            Null.setVisibility(View.VISIBLE);
+//            H.setVisibility(View.VISIBLE);
+//            C.setVisibility(View.VISIBLE);
+//            Null.setVisibility(View.VISIBLE);
         }
         if(v.getId() == R.id.l2){
             l1.setBackgroundColor(Color.TRANSPARENT);
             m1.setBackgroundColor(Color.TRANSPARENT);
             r1.setBackgroundColor(Color.TRANSPARENT);
             r2.setBackgroundColor(Color.TRANSPARENT);
-            H.setVisibility(View.VISIBLE);
-            C.setVisibility(View.VISIBLE);
-            Null.setVisibility(View.VISIBLE);
+//            H.setVisibility(View.VISIBLE);
+//            C.setVisibility(View.VISIBLE);
+//            Null.setVisibility(View.VISIBLE);
         }
         if(v.getId() == R.id.r2){
             l1.setBackgroundColor(Color.TRANSPARENT);
             m1.setBackgroundColor(Color.TRANSPARENT);
             r1.setBackgroundColor(Color.TRANSPARENT);
             l2.setBackgroundColor(Color.TRANSPARENT);
-            H.setVisibility(View.VISIBLE);
-            C.setVisibility(View.VISIBLE);
-            Null.setVisibility(View.VISIBLE);
+//            H.setVisibility(View.VISIBLE);
+//            C.setVisibility(View.VISIBLE);
+//            Null.setVisibility(View.VISIBLE);
 
         }
         if(v.getId() == R.id.r1){
@@ -696,18 +687,18 @@ public class SandstormActivity extends AppCompatActivity {
             m1.setBackgroundColor(Color.TRANSPARENT);
             l2.setBackgroundColor(Color.TRANSPARENT);
             r2.setBackgroundColor(Color.TRANSPARENT);
-            H.setVisibility(View.VISIBLE);
-            C.setVisibility(View.VISIBLE);
-            Null.setVisibility(View.VISIBLE);
+//            H.setVisibility(View.VISIBLE);
+//            C.setVisibility(View.VISIBLE);
+//            Null.setVisibility(View.VISIBLE);
         }
         if(v.getId() == R.id.m1){
             l1.setBackgroundColor(Color.TRANSPARENT);
             r1.setBackgroundColor(Color.TRANSPARENT);
             l2.setBackgroundColor(Color.TRANSPARENT);
             r2.setBackgroundColor(Color.TRANSPARENT);
-            H.setVisibility(View.VISIBLE);
-            C.setVisibility(View.VISIBLE);
-            Null.setVisibility(View.VISIBLE);
+//            H.setVisibility(View.VISIBLE);
+//            C.setVisibility(View.VISIBLE);
+//            Null.setVisibility(View.VISIBLE);
         }
     }
 
@@ -740,12 +731,7 @@ public class SandstormActivity extends AppCompatActivity {
 
                 findViewById(R.id.R1).setX(1090-findViewById(R.id.R1).getX());
                 findViewById(R.id.R2).setX(1090-findViewById(R.id.R2).getX());
-                findViewById(R.id.R3).setX(1090-findViewById(R.id.R3).getX());
-                findViewById(R.id.R4).setX(1090-findViewById(R.id.R4).getX());
-                findViewById(R.id.R5).setX(1090-findViewById(R.id.R5).getX());
-                findViewById(R.id.R6).setX(1090-findViewById(R.id.R6).getX());
-                findViewById(R.id.R7).setX(1090-findViewById(R.id.R7).getX());
-                findViewById(R.id.R8).setX(1090-findViewById(R.id.R8).getX());
+                findViewById(R.id.R1).setX(1090-findViewById(R.id.R1).getX());
 
                 findViewById(R.id.CSC).setX(1090-findViewById(R.id.CSC).getX());
                 findViewById(R.id.CSH).setX(1090-findViewById(R.id.CSH).getX());

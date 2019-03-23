@@ -17,7 +17,7 @@ public class Vars {
     public static String ssPos;
     public static int [] rocketScoredSS = new int[20];
     public static int [] CargoshipScoredSS = new int[2];
-    public static String startedWithSS = "NaN";
+//    public static String startedWithSS = "NaN";
     public static String robotMovesSS = "";
     public static int penalties = 0;
     public static int groundC = 0, groundH = 0;

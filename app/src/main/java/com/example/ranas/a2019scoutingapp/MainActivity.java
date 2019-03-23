@@ -79,11 +79,12 @@ public class MainActivity extends AppCompatActivity {
         for(int x = 0; x < 2; x++){
             Vars.CargoshipScoredSS[x] = 0;
         }
-        Vars.startedWithSS = "NaN";
+        //Vars.startedWithSS = "NaN";
         Vars.robotMovesSS = "Robot moves: ";
         Vars.penalties = 0;
         Vars.groundC = 0;
         Vars.groundH = 0;
+        Vars.exitHab = 0;
 
         //teleop
         for(int x = 0; x < 20; x++){
@@ -108,6 +109,9 @@ public class MainActivity extends AppCompatActivity {
         Vars.defense = "";
         Vars.unsupportedClimb = 0;
         Vars.myNotes = "";
+        Vars.groundH = 0;
+        Vars.groundC = 0;
+        Vars.unsure = "blah";
 
 
         //Path.setText("Path is: " + getIntent().getStringExtra("path"));

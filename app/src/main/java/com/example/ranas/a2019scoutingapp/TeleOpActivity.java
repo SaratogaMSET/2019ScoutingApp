@@ -247,12 +247,12 @@ public class TeleOpActivity extends AppCompatActivity {
         if(Vars.CargoshipScoredSS[0] + Vars.CargoshipScoredTO[0] == 8){
             findViewById(R.id.CSC).setBackgroundColor(Color.DKGRAY);
         } else {
-            findViewById(R.id.CSC).setBackgroundColor(Color.parseColor("#ffffbb33"));
+            findViewById(R.id.CSC).setBackgroundColor(Color.parseColor("#ffff8800"));
         }
         if(Vars.CargoshipScoredSS[1] + Vars.CargoshipScoredTO[1] == 8){
             findViewById(R.id.CSH).setBackgroundColor(Color.DKGRAY);
         } else {
-            findViewById(R.id.CSH).setBackgroundColor(Color.parseColor("#ffff8800"));
+            findViewById(R.id.CSH).setBackgroundColor(Color.parseColor("#ffffbb33"));
         }
 
         if(Vars.rocketScoredTO[0] + Vars.rocketScoredSS[0]== 1) {

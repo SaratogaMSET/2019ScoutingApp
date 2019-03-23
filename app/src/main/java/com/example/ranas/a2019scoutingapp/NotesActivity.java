@@ -126,15 +126,15 @@ public class NotesActivity extends AppCompatActivity {
         if(Vars.unsure.equals("no")){
             findViewById(R.id.unsure).setBackgroundColor(Color.GRAY);
         } else if(Vars.unsure.equals("yes")){
-            findViewById(R.id.unsure).setBackgroundColor(Color.DKGRAY);
+            findViewById(R.id.unsure).setBackgroundColor(Color.GREEN);
         }
 
         if(Vars.groundC == 1){
-            findViewById(R.id.cargo).setBackgroundColor(Color.DKGRAY);
+            findViewById(R.id.cargo).setBackgroundColor(Color.GREEN);
         }
 
         if(Vars.groundH == 1){
-            findViewById(R.id.hatch).setBackgroundColor(Color.DKGRAY);
+            findViewById(R.id.hatch).setBackgroundColor(Color.GREEN);
         }
 
         if(Vars.defense.equals("Bad")){
@@ -324,31 +324,31 @@ public class NotesActivity extends AppCompatActivity {
             Vars.unsure = "no";
             if(Vars.groundH == 0){
                 Vars.groundH = 1;
-                findViewById(R.id.hatch).setBackgroundColor(Color.DKGRAY);
+                findViewById(R.id.hatch).setBackgroundColor(Color.GREEN);
                 findViewById(R.id.unsure).setBackgroundColor(Color.GRAY);
             } else {
                 Vars.groundH = 0;
-                findViewById(R.id.hatch).setBackgroundColor(Color.parseColor("#ffffbb33"));
+                findViewById(R.id.hatch).setBackgroundColor(Color.GRAY);
                 findViewById(R.id.unsure).setBackgroundColor(Color.GRAY);
             }
         } else if(b.getText().equals("Cargo")) {
             Vars.unsure = "no";
             if(Vars.groundC == 0){
                 Vars.groundC = 1;
-                findViewById(R.id.cargo).setBackgroundColor(Color.DKGRAY);
+                findViewById(R.id.cargo).setBackgroundColor(Color.GREEN);
                 findViewById(R.id.unsure).setBackgroundColor(Color.GRAY);
             } else {
                 Vars.groundC = 0;
-                findViewById(R.id.cargo).setBackgroundColor(Color.parseColor("#ffff8800"));
+                findViewById(R.id.cargo).setBackgroundColor(Color.GRAY);
                 findViewById(R.id.unsure).setBackgroundColor(Color.GRAY);
             }
         } else if(b.getText().equals("Unsure")){
             Vars.unsure = "yes";
             Vars.groundC = 0;
             Vars.groundH = 0;
-            findViewById(R.id.hatch).setBackgroundColor(Color.parseColor("#ffffbb33"));
-            findViewById(R.id.cargo).setBackgroundColor(Color.parseColor("#ffff8800"));
-            findViewById(R.id.unsure).setBackgroundColor(Color.DKGRAY);
+            findViewById(R.id.hatch).setBackgroundColor(Color.GRAY);
+            findViewById(R.id.cargo).setBackgroundColor(Color.GRAY);
+            findViewById(R.id.unsure).setBackgroundColor(Color.GREEN);
         }
 
 
@@ -409,7 +409,7 @@ public class NotesActivity extends AppCompatActivity {
                 item.put("No Show?", "no");
             }
             item.put("Starting position", Vars.ssPos);
-            item.put("Preloaded game_piece", Vars.startedWithSS);
+            //item.put("Preloaded game_piece", Vars.startedWithSS);
             if(Vars.ssPos.charAt(1) == '2'){
                 item.put("Starts on HAB_lvl_2", 1);
             } else {
