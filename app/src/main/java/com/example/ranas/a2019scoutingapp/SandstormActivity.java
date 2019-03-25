@@ -15,9 +15,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import static com.example.ranas.a2019scoutingapp.Vars.stackCSMovesSS;
-import static com.example.ranas.a2019scoutingapp.Vars.stackMovesSS;
-
 public class SandstormActivity extends AppCompatActivity {
 
 
@@ -26,8 +23,16 @@ public class SandstormActivity extends AppCompatActivity {
 
 
         @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        public boolean onNavigationItemSelected(@NonNull MenuItem item){
             TextView moves = findViewById(R.id.moves);
+
+//            MenuItem m = (MenuItem) findViewById(R.id.navigation_home);
+//            m.setChecked(false);
+            //item.setChecked(true);
+            BottomNavigationView nav = findViewById(R.id.navigation);
+//            Log.d("navigation", Boolean.toString(nav.getMenu().getItem(0).isChecked()) + ", " +
+//                    Boolean.toString(nav.getMenu().getItem(1).isChecked()) + ", " +
+//                    Boolean.toString(nav.getMenu().getItem(2).isChecked()));
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     Vars.robotMovesSS = moves.getText().toString();
@@ -128,10 +133,17 @@ public class SandstormActivity extends AppCompatActivity {
 //            Null.setBackgroundColor(Color.GREEN);
 //        }
 
-
-
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+//        for (int x = 0; x < 3; x++) {
+//            navigation.getMenu().getItem(x).setChecked(navigation.getMenu().getItem(x).getItemId() == R.id.navigation_home);
+//        }
+
+//        navigation.getMenu().getItem(0).setChecked(true);
+//        navigation.getMenu().getItem(1).setChecked(false);
+//        navigation.getMenu().getItem(2).setChecked(false);
     }
 
     public void side (View v) {
@@ -139,11 +151,24 @@ public class SandstormActivity extends AppCompatActivity {
         if(Vars.exitHab == 0)
             exit(findViewById(R.id.button3));
 
-        if (((ColorDrawable) b.getBackground()).getColor() != Color.DKGRAY){
-            b.setBackgroundColor(Color.DKGRAY);
-            Vars.slots += b.getText() + ", ";
-            Vars.stackCSMovesSS.add(b.getId());
-            Vars.universal.add("s" + Integer.toString(b.getId()));
+        if(b.getId() == R.id.R1){
+            Vars.s1 = (Vars.s1+1)%2;
+        }
+        if(b.getId() == R.id.R2){
+            Vars.s2= (Vars.s2+1)%2;
+        }
+        if(b.getId() == R.id.R3){
+            Vars.s3 = (Vars.s3+1)%2;
+        }
+
+        if (((ColorDrawable) b.getBackground()).getColor() != Color.GREEN){
+            b.setBackgroundColor(Color.GREEN);
+            //Vars.slots += b.getText() + ", ";
+            //Vars.universal.add("s" + Integer.toString(b.getId()));
+        } else {
+            b.setBackgroundColor(Color.parseColor("#AAAAAA"));
+            //Vars.slots += b.getText() + ", ";
+            //Vars.universal.add("s" + Integer.toString(b.getId()));
         }
     }
 
@@ -161,24 +186,34 @@ public class SandstormActivity extends AppCompatActivity {
 
     public void check(){
         //S1, S3, s3, S7, s9,
-        for(int x = 0; x <= Vars.slots.length()-3; x += 4){
-            String s = Vars.slots.substring(x, x+2);
-            if(s.equals("S1")){
-                findViewById(R.id.R1).setBackgroundColor(Color.DKGRAY);
-            } else if(s.equals("S2")){
-                findViewById(R.id.R2).setBackgroundColor(Color.DKGRAY);
-            } else if(s.equals("S3")){
-                findViewById(R.id.R1).setBackgroundColor(Color.DKGRAY);
-            }
-//            else if(s.equals("S4")){
-//                findViewById(R.id.R4).setBackgroundColor(Color.DKGRAY);
-//            } else if(s.equals("S5")){
-//                findViewById(R.id.R5).setBackgroundColor(Color.DKGRAY);
+//        for(int x = 0; x <= Vars.slots.length()-3; x += 4){
+//            String s = Vars.slots.substring(x, x+2);
+//            if(s.equals("S1")){
+//                findViewById(R.id.R1).setBackgroundColor(Color.DKGRAY);
+//            } else if(s.equals("S2")){
+//                findViewById(R.id.R2).setBackgroundColor(Color.DKGRAY);
+//            } else if(s.equals("S3")){
+//                findViewById(R.id.R1).setBackgroundColor(Color.DKGRAY);
 //            }
+////            else if(s.equals("S4")){
+////                findViewById(R.id.R4).setBackgroundColor(Color.DKGRAY);
+////            } else if(s.equals("S5")){
+////                findViewById(R.id.R5).setBackgroundColor(Color.DKGRAY);
+////            }
+//        }
+
+        if(Vars.s1 == 1){
+            findViewById(R.id.R1).setBackgroundColor(Color.GREEN);
+        }
+        if(Vars.s2 == 1){
+            findViewById(R.id.R2).setBackgroundColor(Color.GREEN);
+        }
+        if(Vars.s3 == 1){
+            findViewById(R.id.R3).setBackgroundColor(Color.GREEN);
         }
 
         if(Vars.exitHab == 0){
-            findViewById(R.id.button3).setBackgroundColor(Color.parseColor("#ff33b5e5"));
+            findViewById(R.id.button3).setBackgroundColor(Color.parseColor("#AAAAAA"));
         } else {
             findViewById(R.id.button3).setBackgroundColor(Color.GREEN);
         }
@@ -332,12 +367,26 @@ public class SandstormActivity extends AppCompatActivity {
         Button b = (Button) v;
         if(Vars.exitHab == 0)
             exit(findViewById(R.id.button3));
+
+        if(b.getText().charAt(1) == '1'){
+            if(Vars.scorable < 1)
+                Vars.scorable = 1;
+        }
+        if(b.getText().charAt(1) == '2'){
+            if(Vars.scorable < 2)
+                Vars.scorable = 2;
+        }
+        if(b.getText().charAt(1) == '3'){
+            if(Vars.scorable < 3)
+                Vars.scorable = 3;
+        }
+
         switch (b.getId()) {
             case R.id.SS_H3RR:
                 if ((Vars.rocketScoredSS[0] + Vars.rocketScoredTO[0]) < 1){
                     moves.setText(moves.getText().toString() + "H3RR ");
                     Vars.rocketScoredSS[0]++;
-                    Vars.stackMovesSS.add(0);
+//                    Vars.stackMovesSS.add(0);
                     Vars.universal.add("r" + Integer.toString(0));
                 }
                 b.setBackgroundColor(Color.DKGRAY);
@@ -347,7 +396,7 @@ public class SandstormActivity extends AppCompatActivity {
                 if ((Vars.rocketScoredSS[1] + Vars.rocketScoredTO[1]) < 2) {
                     moves.setText(moves.getText().toString() + "C1L ");
                     Vars.rocketScoredSS[1]++;
-                    Vars.stackMovesSS.add(1);
+//                    Vars.stackMovesSS.add(1);
                     Vars.universal.add("r" + Integer.toString(1));
                 }
                 if((Vars.rocketScoredSS[1] + Vars.rocketScoredTO[1]) == 2){
@@ -361,7 +410,7 @@ public class SandstormActivity extends AppCompatActivity {
                     moves.setText(moves.getText().toString() + "C1R ");
                     Vars.rocketScoredSS[2]++;
                     Vars.universal.add("r" + Integer.toString(2));
-                    stackMovesSS.add(2);
+//                    stackMovesSS.add(2);
                 }
                 if((Vars.rocketScoredSS[2] + Vars.rocketScoredTO[2]) == 2){
                     b.setBackgroundColor(Color.DKGRAY);
@@ -374,7 +423,7 @@ public class SandstormActivity extends AppCompatActivity {
                     moves.setText(moves.getText().toString() + "C2L ");
                     Vars.rocketScoredSS[3]++;
                     Vars.universal.add("r" + Integer.toString(3));
-                    stackMovesSS.add(3);
+//                    stackMovesSS.add(3);
                 }
                 if((Vars.rocketScoredSS[3] + Vars.rocketScoredTO[3]) == 2){
                     b.setBackgroundColor(Color.DKGRAY);
@@ -387,7 +436,7 @@ public class SandstormActivity extends AppCompatActivity {
                     moves.setText(moves.getText().toString() + "C2R ");
                     Vars.rocketScoredSS[4]++;
                     Vars.universal.add("r" + Integer.toString(4));
-                    stackMovesSS.add(4);
+//                    stackMovesSS.add(4);
                 }
                 if((Vars.rocketScoredSS[4] + Vars.rocketScoredTO[4]) == 2){
                     b.setBackgroundColor(Color.DKGRAY);
@@ -400,7 +449,7 @@ public class SandstormActivity extends AppCompatActivity {
                     moves.setText(moves.getText().toString() + "C3L ");
                     Vars.rocketScoredSS[5]++;
                     Vars.universal.add("r" + Integer.toString(5));
-                    stackMovesSS.add(5);
+//                    stackMovesSS.add(5);
                 }
                 if((Vars.rocketScoredSS[5] + Vars.rocketScoredTO[5]) == 2){
                     b.setBackgroundColor(Color.DKGRAY);
@@ -413,7 +462,7 @@ public class SandstormActivity extends AppCompatActivity {
                     moves.setText(moves.getText().toString() + "C3R ");
                     Vars.rocketScoredSS[6]++;
                     Vars.universal.add("r" + Integer.toString(6));
-                    stackMovesSS.add(6);
+//                    stackMovesSS.add(6);
                 }
                 if((Vars.rocketScoredSS[6] + Vars.rocketScoredTO[6]) == 2){
                     b.setBackgroundColor(Color.DKGRAY);
@@ -426,7 +475,7 @@ public class SandstormActivity extends AppCompatActivity {
                     moves.setText(moves.getText().toString() + "H1LL ");
                     Vars.rocketScoredSS[9]++;
                     Vars.universal.add("r" + Integer.toString(9));
-                    stackMovesSS.add(9);
+//                    stackMovesSS.add(9);
                 }
                 b.setBackgroundColor(Color.DKGRAY);
                 break;
@@ -435,7 +484,7 @@ public class SandstormActivity extends AppCompatActivity {
                     moves.setText(moves.getText().toString() + "H1LR ");
                     Vars.rocketScoredSS[10]++;
                     Vars.universal.add("r" + Integer.toString(10));
-                    stackMovesSS.add(10);
+//                    stackMovesSS.add(10);
                 }
                 b.setBackgroundColor(Color.DKGRAY);
                 break;
@@ -444,7 +493,7 @@ public class SandstormActivity extends AppCompatActivity {
                     moves.setText(moves.getText().toString() + "H1RL ");
                     Vars.rocketScoredSS[11]++;
                     Vars.universal.add("r" + Integer.toString(11));
-                    stackMovesSS.add(11);
+//                    stackMovesSS.add(11);
                 }
                 b.setBackgroundColor(Color.DKGRAY);
                 break;
@@ -453,7 +502,7 @@ public class SandstormActivity extends AppCompatActivity {
                     moves.setText(moves.getText().toString() + "H1RR ");
                     Vars.rocketScoredSS[12]++;
                     Vars.universal.add("r" + Integer.toString(12));
-                    stackMovesSS.add(12);
+//                    stackMovesSS.add(12);
                 }
                 b.setBackgroundColor(Color.DKGRAY);
                 break;
@@ -462,7 +511,7 @@ public class SandstormActivity extends AppCompatActivity {
                     moves.setText(moves.getText().toString() + "H2LL ");
                     Vars.rocketScoredSS[13]++;
                     Vars.universal.add("r" + Integer.toString(13));
-                    stackMovesSS.add(13);
+//                    stackMovesSS.add(13);
                 }
                 b.setBackgroundColor(Color.DKGRAY);
                 break;
@@ -471,7 +520,7 @@ public class SandstormActivity extends AppCompatActivity {
                     moves.setText(moves.getText().toString() + "H2LR ");
                     Vars.rocketScoredSS[14]++;
                     Vars.universal.add("r" + Integer.toString(14));
-                    stackMovesSS.add(14);
+//                    stackMovesSS.add(14);
                 }
                 b.setBackgroundColor(Color.DKGRAY);
                 break;
@@ -480,7 +529,7 @@ public class SandstormActivity extends AppCompatActivity {
                     moves.setText(moves.getText().toString() + "H2RL ");
                     Vars.rocketScoredSS[15]++;
                     Vars.universal.add("r" + Integer.toString(15));
-                    stackMovesSS.add(15);
+//                    stackMovesSS.add(15);
                 }
                 b.setBackgroundColor(Color.DKGRAY);
                 break;
@@ -489,7 +538,7 @@ public class SandstormActivity extends AppCompatActivity {
                     moves.setText(moves.getText().toString() + "H2RR ");
                     Vars.rocketScoredSS[16]++;
                     Vars.universal.add("r" + Integer.toString(16));
-                    stackMovesSS.add(16);
+//                    stackMovesSS.add(16);
 
                 }
                 b.setBackgroundColor(Color.DKGRAY);
@@ -499,7 +548,7 @@ public class SandstormActivity extends AppCompatActivity {
                     moves.setText(moves.getText().toString() + "H3LL ");
                     Vars.rocketScoredSS[17]++;
                     Vars.universal.add("r" + Integer.toString(17));
-                    stackMovesSS.add(17);
+//                    stackMovesSS.add(17);
                 }
                 b.setBackgroundColor(Color.DKGRAY);
                 break;
@@ -508,7 +557,7 @@ public class SandstormActivity extends AppCompatActivity {
                     moves.setText(moves.getText().toString() + "H3LR ");
                     Vars.rocketScoredSS[18]++;
                     Vars.universal.add("r" + Integer.toString(18));
-                    stackMovesSS.add(18);
+//                    stackMovesSS.add(18);
                 }
                 b.setBackgroundColor(Color.DKGRAY);
                 break;
@@ -517,7 +566,7 @@ public class SandstormActivity extends AppCompatActivity {
                     moves.setText(moves.getText().toString() + "H3RL ");
                     Vars.rocketScoredSS[19]++;
                     Vars.universal.add("r" + Integer.toString(19));
-                    stackMovesSS.add(19);
+//                    stackMovesSS.add(19);
                 }
                 b.setBackgroundColor(Color.DKGRAY);
                 break;
@@ -531,7 +580,7 @@ public class SandstormActivity extends AppCompatActivity {
             findViewById(R.id.button3).setBackgroundColor(Color.GREEN);
             Vars.exitHab = 1;
         } else {
-            findViewById(R.id.button3).setBackgroundColor(Color.parseColor("#ff33b5e5"));
+            findViewById(R.id.button3).setBackgroundColor(Color.parseColor("#AAAAAA"));
             Vars.exitHab = 0;
         }
     }
@@ -573,7 +622,7 @@ public class SandstormActivity extends AppCompatActivity {
         if(b.getText().toString().equals("C")){
             if(Vars.CargoshipScoredSS[0] + Vars.CargoshipScoredTO[0] < 8) {
                 Vars.CargoshipScoredSS[0]++;
-                stackCSMovesSS.add(0);
+//                stackCSMovesSS.add(0);
                 Vars.universal.add("c" + Integer.toString(0));
                 moves.setText(moves.getText().toString() + b.getText().toString() + " ");
             }
@@ -584,7 +633,7 @@ public class SandstormActivity extends AppCompatActivity {
         if(b.getText().toString().equals("H")){
             if(Vars.CargoshipScoredSS[1] + Vars.CargoshipScoredTO[1] < 8) {
                 Vars.CargoshipScoredSS[1]++;
-                stackCSMovesSS.add(1);
+//                stackCSMovesSS.add(1);
                 Vars.universal.add("c" + Integer.toString(1));
                 moves.setText(moves.getText().toString() + b.getText().toString() + " ");
             }
@@ -608,16 +657,17 @@ public class SandstormActivity extends AppCompatActivity {
                 int y = Integer.valueOf(x.substring(1));
                 Vars.CargoshipScoredSS[y]--;
                 Log.d("errors!?", "step 3");
-            } else {
-                Vars.slots = Vars.slots.substring(0, Vars.slots.length()-4);
-                Log.d("errors!?", "step 4");
-                String y = x.substring(1);
-                int z = Integer.valueOf(y);
-                Button b = findViewById(z);
-                b.setBackgroundColor(Color.parseColor("#ff33b5e5"));
-                Log.d("errors!?", "step 5");
-                return;
             }
+//            else {
+//                Vars.slots = Vars.slots.substring(0, Vars.slots.length()-4);
+//                Log.d("errors!?", "step 4");
+//                String y = x.substring(1);
+//                int z = Integer.valueOf(y);
+//                Button b = findViewById(z);
+//                b.setBackgroundColor(Color.parseColor("#ff33b5e5"));
+//                Log.d("errors!?", "step 5");
+//                return;
+//            }
 
             check();
         } else {
@@ -731,7 +781,7 @@ public class SandstormActivity extends AppCompatActivity {
 
                 findViewById(R.id.R1).setX(1090-findViewById(R.id.R1).getX());
                 findViewById(R.id.R2).setX(1090-findViewById(R.id.R2).getX());
-                findViewById(R.id.R1).setX(1090-findViewById(R.id.R1).getX());
+                findViewById(R.id.R3).setX(1090-findViewById(R.id.R3).getX());
 
                 findViewById(R.id.CSC).setX(1090-findViewById(R.id.CSC).getX());
                 findViewById(R.id.CSH).setX(1090-findViewById(R.id.CSH).getX());

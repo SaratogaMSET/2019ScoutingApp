@@ -95,12 +95,12 @@ public class NotesActivity extends AppCompatActivity {
 //        Button rocketScoreNo = findViewById(R.id.rocketScoreNo);
 //        Button rocketScoreYes = findViewById(R.id.rocketScoreYes);
 //        if(!Vars.checked){
-//            rocketScoreYes.setBackgroundColor(Color.GRAY);
+//            rocketScoreYes.setBackgroundColor(Color.parseColor("#AAAAAA"));
 //            rocketScoreNo.setBackgroundColor(Color.GREEN);
 //        } else {
 //            Vars.checked = true;
 //            rocketScoreYes.setBackgroundColor(Color.GREEN);
-//            rocketScoreNo.setBackgroundColor(Color.GRAY);
+//            rocketScoreNo.setBackgroundColor(Color.parseColor("#AAAAAA"));
 //        }
 
         if(Vars.driving.equals("Bad")){
@@ -124,17 +124,13 @@ public class NotesActivity extends AppCompatActivity {
         }
 
         if(Vars.unsure.equals("no")){
-            findViewById(R.id.unsure).setBackgroundColor(Color.GRAY);
+            findViewById(R.id.unsure).setBackgroundColor(Color.parseColor("#AAAAAA"));
         } else if(Vars.unsure.equals("yes")){
             findViewById(R.id.unsure).setBackgroundColor(Color.GREEN);
         }
 
         if(Vars.groundC == 1){
             findViewById(R.id.cargo).setBackgroundColor(Color.GREEN);
-        }
-
-        if(Vars.groundH == 1){
-            findViewById(R.id.hatch).setBackgroundColor(Color.GREEN);
         }
 
         if(Vars.defense.equals("Bad")){
@@ -165,7 +161,16 @@ public class NotesActivity extends AppCompatActivity {
 
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+
+//        navigation.getMenu().getItem(0).setChecked(false);
+//        navigation.getMenu().getItem(1).setChecked(false);
+//        navigation.getMenu().getItem(2).setChecked(true);
+
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+//        for (int x = 0; x < 3; x++) {
+//            navigation.getMenu().getItem(x).setChecked(navigation.getMenu().getItem(x).getItemId() == R.id.navigation_header_container);
+//        }
     }
 
     public void unsupportedClimb (View v){
@@ -177,29 +182,29 @@ public class NotesActivity extends AppCompatActivity {
 
         if(v.getId() == R.id.noClimb){
             noClimb.setBackgroundColor(Color.GREEN);
-            climb1.setBackgroundColor(Color.GRAY);
-            climb2.setBackgroundColor(Color.GRAY);
-            climb3.setBackgroundColor(Color.GRAY);
+            climb1.setBackgroundColor(Color.parseColor("#AAAAAA"));
+            climb2.setBackgroundColor(Color.parseColor("#AAAAAA"));
+            climb3.setBackgroundColor(Color.parseColor("#AAAAAA"));
             Vars.unsupportedClimb = 0;
         }
         if(v.getId() == R.id.climb1){
-            noClimb.setBackgroundColor(Color.GRAY);
+            noClimb.setBackgroundColor(Color.parseColor("#AAAAAA"));
             climb1.setBackgroundColor(Color.GREEN);
-            climb2.setBackgroundColor(Color.GRAY);
-            climb3.setBackgroundColor(Color.GRAY);
+            climb2.setBackgroundColor(Color.parseColor("#AAAAAA"));
+            climb3.setBackgroundColor(Color.parseColor("#AAAAAA"));
             Vars.unsupportedClimb = 1;
         }
         if(v.getId() == R.id.climb2){
-            noClimb.setBackgroundColor(Color.GRAY);
-            climb1.setBackgroundColor(Color.GRAY);
+            noClimb.setBackgroundColor(Color.parseColor("#AAAAAA"));
+            climb1.setBackgroundColor(Color.parseColor("#AAAAAA"));
             climb2.setBackgroundColor(Color.GREEN);
-            climb3.setBackgroundColor(Color.GRAY);
+            climb3.setBackgroundColor(Color.parseColor("#AAAAAA"));
             Vars.unsupportedClimb = 2;
         }
         if(v.getId() == R.id.climb3){
-            noClimb.setBackgroundColor(Color.GRAY);
-            climb1.setBackgroundColor(Color.GRAY);
-            climb2.setBackgroundColor(Color.GRAY);
+            noClimb.setBackgroundColor(Color.parseColor("#AAAAAA"));
+            climb1.setBackgroundColor(Color.parseColor("#AAAAAA"));
+            climb2.setBackgroundColor(Color.parseColor("#AAAAAA"));
             climb3.setBackgroundColor(Color.GREEN);
             Vars.unsupportedClimb = 3;
         }
@@ -214,26 +219,26 @@ public class NotesActivity extends AppCompatActivity {
         Vars.driving = b.getText().toString();
         if(b.getId() == R.id.badDrive){
             badDrive.setBackgroundColor(Color.GREEN);
-            AveDrive.setBackgroundColor(Color.GRAY);
-            GoodDrive.setBackgroundColor(Color.GRAY);
-            naDrive.setBackgroundColor(Color.GRAY);
+            AveDrive.setBackgroundColor(Color.parseColor("#AAAAAA"));
+            GoodDrive.setBackgroundColor(Color.parseColor("#AAAAAA"));
+            naDrive.setBackgroundColor(Color.parseColor("#AAAAAA"));
         }
         if(b.getId() == R.id.AveDrive){
-            badDrive.setBackgroundColor(Color.GRAY);
+            badDrive.setBackgroundColor(Color.parseColor("#AAAAAA"));
             AveDrive.setBackgroundColor(Color.GREEN);
-            GoodDrive.setBackgroundColor(Color.GRAY);
-            naDrive.setBackgroundColor(Color.GRAY);
+            GoodDrive.setBackgroundColor(Color.parseColor("#AAAAAA"));
+            naDrive.setBackgroundColor(Color.parseColor("#AAAAAA"));
         }
         if(b.getId() == R.id.GoodDrive){
-            badDrive.setBackgroundColor(Color.GRAY);
-            AveDrive.setBackgroundColor(Color.GRAY);
+            badDrive.setBackgroundColor(Color.parseColor("#AAAAAA"));
+            AveDrive.setBackgroundColor(Color.parseColor("#AAAAAA"));
             GoodDrive.setBackgroundColor(Color.GREEN);
-            naDrive.setBackgroundColor(Color.GRAY);
+            naDrive.setBackgroundColor(Color.parseColor("#AAAAAA"));
         }
         if(b.getId() == R.id.naDrive){
-            badDrive.setBackgroundColor(Color.GRAY);
-            AveDrive.setBackgroundColor(Color.GRAY);
-            GoodDrive.setBackgroundColor(Color.GRAY);
+            badDrive.setBackgroundColor(Color.parseColor("#AAAAAA"));
+            AveDrive.setBackgroundColor(Color.parseColor("#AAAAAA"));
+            GoodDrive.setBackgroundColor(Color.parseColor("#AAAAAA"));
             naDrive.setBackgroundColor(Color.GREEN);
         }
     }
@@ -247,26 +252,26 @@ public class NotesActivity extends AppCompatActivity {
         Vars.accuracy = b.getText().toString();
         if(b.getId() == R.id.BadDep){
             BadDep.setBackgroundColor(Color.GREEN);
-            AveDep.setBackgroundColor(Color.GRAY);
-            GoodDep.setBackgroundColor(Color.GRAY);
-            naDep.setBackgroundColor(Color.GRAY);
+            AveDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
+            GoodDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
+            naDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
         }
         if(b.getId() == R.id.AveDep){
-            BadDep.setBackgroundColor(Color.GRAY);
+            BadDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
             AveDep.setBackgroundColor(Color.GREEN);
-            GoodDep.setBackgroundColor(Color.GRAY);
-            naDep.setBackgroundColor(Color.GRAY);
+            GoodDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
+            naDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
         }
         if(b.getId() == R.id.GoodDep){
-            BadDep.setBackgroundColor(Color.GRAY);
-            AveDep.setBackgroundColor(Color.GRAY);
+            BadDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
+            AveDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
             GoodDep.setBackgroundColor(Color.GREEN);
-            naDep.setBackgroundColor(Color.GRAY);
+            naDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
         }
         if(b.getId() == R.id.naDep){
-            BadDep.setBackgroundColor(Color.GRAY);
-            AveDep.setBackgroundColor(Color.GRAY);
-            GoodDep.setBackgroundColor(Color.GRAY);
+            BadDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
+            AveDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
+            GoodDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
             naDep.setBackgroundColor(Color.GREEN);
         }
     }
@@ -280,26 +285,26 @@ public class NotesActivity extends AppCompatActivity {
         Vars.defense = b.getText().toString();
         if(b.getId() == R.id.BadDef){
             BadDef.setBackgroundColor(Color.GREEN);
-            AveDef.setBackgroundColor(Color.GRAY);
-            GoodDef.setBackgroundColor(Color.GRAY);
-            naDef.setBackgroundColor(Color.GRAY);
+            AveDef.setBackgroundColor(Color.parseColor("#AAAAAA"));
+            GoodDef.setBackgroundColor(Color.parseColor("#AAAAAA"));
+            naDef.setBackgroundColor(Color.parseColor("#AAAAAA"));
         }
         if(b.getId() == R.id.AveDef){
-            BadDef.setBackgroundColor(Color.GRAY);
+            BadDef.setBackgroundColor(Color.parseColor("#AAAAAA"));
             AveDef.setBackgroundColor(Color.GREEN);
-            GoodDef.setBackgroundColor(Color.GRAY);
-            naDef.setBackgroundColor(Color.GRAY);
+            GoodDef.setBackgroundColor(Color.parseColor("#AAAAAA"));
+            naDef.setBackgroundColor(Color.parseColor("#AAAAAA"));
         }
         if(b.getId() == R.id.GoodDef){
-            BadDef.setBackgroundColor(Color.GRAY);
-            AveDef.setBackgroundColor(Color.GRAY);
+            BadDef.setBackgroundColor(Color.parseColor("#AAAAAA"));
+            AveDef.setBackgroundColor(Color.parseColor("#AAAAAA"));
             GoodDef.setBackgroundColor(Color.GREEN);
-            naDef.setBackgroundColor(Color.GRAY);
+            naDef.setBackgroundColor(Color.parseColor("#AAAAAA"));
         }
         if(b.getId() == R.id.naDef){
-            BadDef.setBackgroundColor(Color.GRAY);
-            AveDef.setBackgroundColor(Color.GRAY);
-            GoodDef.setBackgroundColor(Color.GRAY);
+            BadDef.setBackgroundColor(Color.parseColor("#AAAAAA"));
+            AveDef.setBackgroundColor(Color.parseColor("#AAAAAA"));
+            GoodDef.setBackgroundColor(Color.parseColor("#AAAAAA"));
             naDef.setBackgroundColor(Color.GREEN);
         }
     }
@@ -309,12 +314,12 @@ public class NotesActivity extends AppCompatActivity {
 //        Button rocketScoreYes = findViewById(R.id.rocketScoreYes);
 //        if(v.getId() == rocketScoreNo.getId()){
 //            Vars.checked = false;
-//            rocketScoreYes.setBackgroundColor(Color.GRAY);
+//            rocketScoreYes.setBackgroundColor(Color.parseColor("#AAAAAA"));
 //            rocketScoreNo.setBackgroundColor(Color.GREEN);
 //        } else {
 //            Vars.checked = true;
 //            rocketScoreYes.setBackgroundColor(Color.GREEN);
-//            rocketScoreNo.setBackgroundColor(Color.GRAY);
+//            rocketScoreNo.setBackgroundColor(Color.parseColor("#AAAAAA"));
 //        }
 //    }
 
@@ -324,30 +329,27 @@ public class NotesActivity extends AppCompatActivity {
             Vars.unsure = "no";
             if(Vars.groundH == 0){
                 Vars.groundH = 1;
-                findViewById(R.id.hatch).setBackgroundColor(Color.GREEN);
-                findViewById(R.id.unsure).setBackgroundColor(Color.GRAY);
+                findViewById(R.id.unsure).setBackgroundColor(Color.parseColor("#AAAAAA"));
             } else {
                 Vars.groundH = 0;
-                findViewById(R.id.hatch).setBackgroundColor(Color.GRAY);
-                findViewById(R.id.unsure).setBackgroundColor(Color.GRAY);
+                findViewById(R.id.unsure).setBackgroundColor(Color.parseColor("#AAAAAA"));
             }
         } else if(b.getText().equals("Cargo")) {
             Vars.unsure = "no";
             if(Vars.groundC == 0){
                 Vars.groundC = 1;
                 findViewById(R.id.cargo).setBackgroundColor(Color.GREEN);
-                findViewById(R.id.unsure).setBackgroundColor(Color.GRAY);
+                findViewById(R.id.unsure).setBackgroundColor(Color.parseColor("#AAAAAA"));
             } else {
                 Vars.groundC = 0;
-                findViewById(R.id.cargo).setBackgroundColor(Color.GRAY);
-                findViewById(R.id.unsure).setBackgroundColor(Color.GRAY);
+                findViewById(R.id.cargo).setBackgroundColor(Color.parseColor("#AAAAAA"));
+                findViewById(R.id.unsure).setBackgroundColor(Color.parseColor("#AAAAAA"));
             }
         } else if(b.getText().equals("Unsure")){
             Vars.unsure = "yes";
             Vars.groundC = 0;
             Vars.groundH = 0;
-            findViewById(R.id.hatch).setBackgroundColor(Color.GRAY);
-            findViewById(R.id.cargo).setBackgroundColor(Color.GRAY);
+            findViewById(R.id.cargo).setBackgroundColor(Color.parseColor("#AAAAAA"));
             findViewById(R.id.unsure).setBackgroundColor(Color.GREEN);
         }
 
@@ -430,24 +432,37 @@ public class NotesActivity extends AppCompatActivity {
             item.put("Hch_scrd in SS on rkt", temp2 - temp);
 
 
-            if(Vars.slots.length() != 0){
-                item.put("Crg_shp sctn scrd_in_SS", Vars.slots.substring(0, Vars.slots.length()-2));
+            String s = "";
+            if(Vars.s1 == 1){
+                s += "S1, ";
+            }
+            if(Vars.s2 == 1){
+                s += "S2, ";
+            }
+            if(Vars.s3 == 1){
+                s += "S3, ";
+            }
+            if(s.length() != 0){
+                item.put("Crg_shp sctn scrd_in_SS", s.substring(0, s.length()-2));
             } else {
                 item.put("Crg_shp sctn scrd_in_SS", "none");
             }
 
-            item.put("Crg_scrd in the rkt_lvl_1", (Vars.rocketScoredSS[1] + Vars.rocketScoredSS[2] +
-                    Vars.rocketScoredTO[1] + Vars.rocketScoredTO[2]));
-            item.put("Hch_scrd on the rkt_lvl_1", (Vars.rocketScoredSS[9] + Vars.rocketScoredSS[10] + Vars.rocketScoredSS[11] + Vars.rocketScoredSS[12] +
-                    Vars.rocketScoredTO[9] + Vars.rocketScoredTO[10] + Vars.rocketScoredTO[11] + Vars.rocketScoredTO[12]));
-            item.put("Crg_scrd in the rkt_lvl_2", (Vars.rocketScoredSS[3] + Vars.rocketScoredSS[4] +
-                    Vars.rocketScoredTO[3] + Vars.rocketScoredTO[4]));
-            item.put("Hch_scrd on the rkt_lvl_2", (Vars.rocketScoredSS[13] + Vars.rocketScoredSS[14] + Vars.rocketScoredSS[15] + Vars.rocketScoredSS[16] +
-                    Vars.rocketScoredTO[13] + Vars.rocketScoredTO[14] + Vars.rocketScoredTO[15] + Vars.rocketScoredTO[16]));
-            item.put("Crg_scrd in the rkt_lvl_3", (Vars.rocketScoredSS[5] + Vars.rocketScoredSS[6] +
+            item.put("Crg_scrd in the rkt", (Vars.rocketScoredSS[1] + Vars.rocketScoredSS[2] +
+                    Vars.rocketScoredTO[1] + Vars.rocketScoredTO[2]) + (Vars.rocketScoredSS[3] + Vars.rocketScoredSS[4] +
+                    Vars.rocketScoredTO[3] + Vars.rocketScoredTO[4]) + (Vars.rocketScoredSS[5] + Vars.rocketScoredSS[6] +
                     Vars.rocketScoredTO[5] + Vars.rocketScoredTO[6]));
-            item.put("Hch_scrd on the rkt_lvl_3", (Vars.rocketScoredSS[17] + Vars.rocketScoredSS[18] + Vars.rocketScoredSS[19] + Vars.rocketScoredSS[0] +
+
+            item.put("Hch_scrd on the rkt", (Vars.rocketScoredSS[9] + Vars.rocketScoredSS[10] + Vars.rocketScoredSS[11] + Vars.rocketScoredSS[12] +
+                    Vars.rocketScoredTO[9] + Vars.rocketScoredTO[10] + Vars.rocketScoredTO[11] + Vars.rocketScoredTO[12]) + (Vars.rocketScoredSS[13] + Vars.rocketScoredSS[14] + Vars.rocketScoredSS[15] + Vars.rocketScoredSS[16] +
+                    Vars.rocketScoredTO[13] + Vars.rocketScoredTO[14] + Vars.rocketScoredTO[15] + Vars.rocketScoredTO[16]) + (Vars.rocketScoredSS[17] + Vars.rocketScoredSS[18] + Vars.rocketScoredSS[19] + Vars.rocketScoredSS[0] +
                     Vars.rocketScoredTO[17] + Vars.rocketScoredTO[18] + Vars.rocketScoredTO[19] + Vars.rocketScoredTO[0]));
+//            item.put("Crg_scrd in the rkt_lvl_2", );
+//            item.put("Hch_scrd on the rkt_lvl_2", );
+//            item.put("Crg_scrd in the rkt_lvl_3", );
+//            item.put("Hch_scrd on the rkt_lvl_3", );
+
+            item.put("Rkt_lvl scorable", Vars.scorable);
 
             item.put("Ttl_crg scrd in crg_shp", Vars.CargoshipScoredSS[0] + Vars.CargoshipScoredTO[0]);
             item.put("Ttl_hch scrd on crg_shp", Vars.CargoshipScoredSS[1] + Vars.CargoshipScoredTO[1]);

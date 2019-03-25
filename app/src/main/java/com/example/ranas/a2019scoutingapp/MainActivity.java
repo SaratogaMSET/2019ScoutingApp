@@ -48,7 +48,9 @@ public class MainActivity extends AppCompatActivity {
         //set the spinners adapter to the previously created one.
         Vars.dropdown.setAdapter(adapter);
 
-        Vars.slots = "";
+        Vars.s1 = 0;
+        Vars.s2 = 0;
+        Vars.s3 = 0;
 
         if(tabNum.equals("R1"))
             Vars.dropdown.setSelection(0);
@@ -107,11 +109,12 @@ public class MainActivity extends AppCompatActivity {
         Vars.driving = "";
         Vars.accuracy = "";
         Vars.defense = "";
-        Vars.unsupportedClimb = 0;
+        Vars.unsupportedClimb = 5;
         Vars.myNotes = "";
         Vars.groundH = 0;
         Vars.groundC = 0;
         Vars.unsure = "blah";
+        Vars.scorable = 0;
 
 
         //Path.setText("Path is: " + getIntent().getStringExtra("path"));

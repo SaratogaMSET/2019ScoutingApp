@@ -161,7 +161,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="15dp"
-        android:text="Can it do an unsupported climb?"
+        android:text="Did it do an unsupported climb?"
         android:textColor="@android:color/black"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -295,7 +295,7 @@
         android:textColor="@android:color/black"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hatch" />
+        app:layout_constraintTop_toBottomOf="@+id/cargo" />
 
     <Button
         android:id="@+id/button5"
@@ -368,26 +368,15 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Button
-        android:id="@+id/hatch"
+        android:id="@+id/cargo"
         android:layout_width="100dp"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:background="@android:color/darker_gray"
         android:onClick="ground"
-        android:text="Hatch"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-    <Button
-        android:id="@+id/cargo"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:background="@android:color/darker_gray"
-        android:onClick="ground"
         android:text="Cargo"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/hatch"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <Button

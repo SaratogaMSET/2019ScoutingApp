@@ -95,7 +95,16 @@ public class TeleOpActivity extends AppCompatActivity {
 
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+
+//        navigation.getMenu().getItem(0).setChecked(false);
+//        navigation.getMenu().getItem(1).setChecked(true);
+//        navigation.getMenu().getItem(2).setChecked(false);
+
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+//        for (int x = 0; x < 3; x++) {
+//            navigation.getMenu().getItem(x).setChecked(navigation.getMenu().getItem(x).getItemId() == R.id.navigation_dashboard);
+//        }
     }
 
 //    public void ground (View v){
@@ -175,16 +184,17 @@ public class TeleOpActivity extends AppCompatActivity {
                 int y = Integer.valueOf(x.substring(1));
                 Vars.CargoshipScoredTO[y]--;
                 Log.d("errors!?", "step 3");
-            } else {
-                Vars.slots = Vars.slots.substring(0, Vars.slots.length()-4);
-                Log.d("errors!?", "step 4");
-                String y = x.substring(1);
-                int z = Integer.valueOf(y);
-//                Button b = findViewById(z);
-//                b.setBackgroundColor(Color.parseColor("#ff33b5e5"));
-                Log.d("errors!?", "step 5");
-                return;
             }
+//            else {
+//                Vars.slots = Vars.slots.substring(0, Vars.slots.length()-4);
+//                Log.d("errors!?", "step 4");
+//                String y = x.substring(1);
+//                int z = Integer.valueOf(y);
+////                Button b = findViewById(z);
+////                b.setBackgroundColor(Color.parseColor("#ff33b5e5"));
+//                Log.d("errors!?", "step 5");
+//                return;
+//            }
 
             check();
         } else {
@@ -380,6 +390,19 @@ public class TeleOpActivity extends AppCompatActivity {
     public void add (View v){
         TextView moves = findViewById(R.id.moves);
         Button b = (Button) v;
+
+        if(b.getText().charAt(1) == '1'){
+            if(Vars.scorable < 1)
+                Vars.scorable = 1;
+        }
+        if(b.getText().charAt(1) == '2'){
+            if(Vars.scorable < 2)
+                Vars.scorable = 2;
+        }
+        if(b.getText().charAt(1) == '3'){
+            if(Vars.scorable < 3)
+                Vars.scorable = 3;
+        }
 
         if(b.getId() == R.id.TO_H3RR) {
             if ((Vars.rocketScoredSS[0] + Vars.rocketScoredTO[0]) < 1){

@@ -13,6 +13,8 @@ public class Vars {
     public static String tabNum = "";
     public static Stack<String> universal = new Stack<String>();
 
+    public static int scorable = 0;
+
     //sandstorm
     public static String ssPos;
     public static int [] rocketScoredSS = new int[20];
@@ -21,11 +23,14 @@ public class Vars {
     public static String robotMovesSS = "";
     public static int penalties = 0;
     public static int groundC = 0, groundH = 0;
-    public static Stack<Integer> stackMovesSS = new Stack<Integer>();
-    public static Stack<Integer> stackCSMovesSS = new Stack<Integer>();
-    public static String slots = "";
+//    public static Stack<Integer> stackMovesSS = new Stack<Integer>();
+//    public static Stack<Integer> stackCSMovesSS = new Stack<Integer>();
+    //public static String slots = "";
     public static int exitHab = 0;
     public static int counter = 0;
+    public static int s1 = 0;
+    public static int s2 = 0;
+    public static int s3 = 0;
 
     //teleop
     public static int [] rocketScoredTO = new int[20];
@@ -41,7 +46,7 @@ public class Vars {
     public static String driving = new String("NA");
     public static String accuracy = new String("NA");
     public static String defense = new String("NA");
-    public static int unsupportedClimb = 0;
+    public static int unsupportedClimb = 5;
     //public static int support = 0;
     public static String myNotes = "";
     public static Spinner dropdown;
