@@ -442,6 +442,9 @@ public class NotesActivity extends AppCompatActivity {
             if(Vars.s3 == 1){
                 s += "S3, ";
             }
+            if(Vars.s4 == 1){
+                s += "S4, ";
+            }
             if(s.length() != 0){
                 item.put("Crg_shp sctn scrd_in_SS", s.substring(0, s.length()-2));
             } else {
@@ -469,13 +472,8 @@ public class NotesActivity extends AppCompatActivity {
 
             //ground pickup
             if(Vars.unsure.equals("yes")){
-                item.put("Grnd_pkup hch", "unsure");
                 item.put("Grnd_pkup crg", "unsure");
             }else{
-                if(Vars.groundH == 1)
-                    item.put("Grnd_pkup hch", "yes");
-                else
-                    item.put("Grnd_pkup hch", "no");
                 if(Vars.groundC == 1)
                     item.put("Grnd_pkup crg", "yes");
                 else

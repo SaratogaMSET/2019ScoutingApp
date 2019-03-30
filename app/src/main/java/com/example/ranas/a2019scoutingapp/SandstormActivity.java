@@ -151,13 +151,16 @@ public class SandstormActivity extends AppCompatActivity {
         if(Vars.exitHab == 0)
             exit(findViewById(R.id.button3));
 
-        if(b.getId() == R.id.R1){
+        if(b.getText().equals("S1")){
             Vars.s1 = (Vars.s1+1)%2;
         }
-        if(b.getId() == R.id.R2){
+        if(b.getText().equals("S4")){
+            Vars.s4 = (Vars.s4+1)%2;
+        }
+        if(b.getText().equals("S2")){
             Vars.s2= (Vars.s2+1)%2;
         }
-        if(b.getId() == R.id.R3){
+        if(b.getText().equals("S3")){
             Vars.s3 = (Vars.s3+1)%2;
         }
 
@@ -210,6 +213,9 @@ public class SandstormActivity extends AppCompatActivity {
         }
         if(Vars.s3 == 1){
             findViewById(R.id.R3).setBackgroundColor(Color.GREEN);
+        }
+        if(Vars.s4 == 1){
+            findViewById(R.id.R4).setBackgroundColor(Color.GREEN);
         }
 
         if(Vars.exitHab == 0){
@@ -782,6 +788,7 @@ public class SandstormActivity extends AppCompatActivity {
                 findViewById(R.id.R1).setX(1090-findViewById(R.id.R1).getX());
                 findViewById(R.id.R2).setX(1090-findViewById(R.id.R2).getX());
                 findViewById(R.id.R3).setX(1090-findViewById(R.id.R3).getX());
+                findViewById(R.id.R4).setX(1090-findViewById(R.id.R4).getX());
 
                 findViewById(R.id.CSC).setX(1090-findViewById(R.id.CSC).getX());
                 findViewById(R.id.CSH).setX(1090-findViewById(R.id.CSH).getX());

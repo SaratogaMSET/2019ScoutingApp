@@ -464,19 +464,18 @@
         android:id="@+id/R1"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="24dp"
         android:background="@android:color/darker_gray"
         android:onClick="side"
         android:text="S1"
-        app:layout_constraintBottom_toTopOf="@+id/CSC"
-        app:layout_constraintEnd_toStartOf="@+id/CSH" />
+        app:layout_constraintBottom_toTopOf="@+id/CSH"
+        app:layout_constraintEnd_toEndOf="@+id/CSH" />
 
     <Button
         android:id="@+id/R2"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginEnd="39dp"
+        android:layout_marginEnd="3dp"
         android:background="@android:color/darker_gray"
         android:onClick="side"
         android:text="S2"
@@ -487,12 +486,12 @@
         android:id="@+id/R3"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginEnd="3dp"
         android:background="@android:color/darker_gray"
         android:onClick="side"
         android:text="S3"
-        app:layout_constraintStart_toStartOf="@+id/R1"
-        app:layout_constraintTop_toBottomOf="@+id/CSC" />
+        app:layout_constraintEnd_toStartOf="@+id/R2"
+        app:layout_constraintTop_toTopOf="@+id/R1" />
 
     <Button
         android:id="@+id/button3"
@@ -521,5 +520,17 @@
         app:layout_constraintBottom_toTopOf="@+id/CSC"
         app:layout_constraintEnd_toEndOf="@+id/undo"
         app:layout_constraintStart_toStartOf="@+id/undo" />
+
+    <Button
+        android:id="@+id/R4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="58dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/darker_gray"
+        android:onClick="side"
+        android:text="S4"
+        app:layout_constraintEnd_toStartOf="@+id/R3"
+        app:layout_constraintTop_toTopOf="@+id/R3" />
 
 </android.support.constraint.ConstraintLayout>

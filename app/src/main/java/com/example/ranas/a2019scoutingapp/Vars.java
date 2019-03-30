@@ -31,6 +31,7 @@ public class Vars {
     public static int s1 = 0;
     public static int s2 = 0;
     public static int s3 = 0;
+    public static int s4 = 0;
 
     //teleop
     public static int [] rocketScoredTO = new int[20];
