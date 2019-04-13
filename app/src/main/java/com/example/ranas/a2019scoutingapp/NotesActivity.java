@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -81,12 +82,12 @@ public class NotesActivity extends AppCompatActivity {
         Button AveDrive = findViewById(R.id.AveDrive);
         Button GoodDrive = findViewById(R.id.GoodDrive);
 
-        TextView t = findViewById(R.id.penalty);
-        t.setText(Integer.toString(Vars.penalties));
+        //TextView t = findViewById(R.id.penalty);
+        //t.setText(Integer.toString(Vars.penalties));
 
-        Button BadDep = findViewById(R.id.BadDep);
-        Button AveDep = findViewById(R.id.AveDep);
-        Button GoodDep = findViewById(R.id.GoodDep);
+//        Button BadDep = findViewById(R.id.BadDep);
+//        Button AveDep = findViewById(R.id.AveDep);
+//        Button GoodDep = findViewById(R.id.GoodDep);
 
         Button BadDef = findViewById(R.id.BadDef);
         Button AveDef = findViewById(R.id.AveDef);
@@ -113,15 +114,15 @@ public class NotesActivity extends AppCompatActivity {
             driving(findViewById(R.id.naDrive));
         }
 
-        if(Vars.accuracy.equals("Bad")){
-            acc(BadDep);
-        } else if(Vars.accuracy.equals("Average")){
-            acc(AveDep);
-        } else if(Vars.accuracy.equals("Good")){
-            acc(GoodDep);
-        } else if(Vars.accuracy.equals("NA")){
-            acc(findViewById(R.id.naDep));
-        }
+//        if(Vars.accuracy.equals("Bad")){
+//            acc(BadDep);
+//        } else if(Vars.accuracy.equals("Average")){
+//            acc(AveDep);
+//        } else if(Vars.accuracy.equals("Good")){
+//            acc(GoodDep);
+//        } else if(Vars.accuracy.equals("NA")){
+//            acc(findViewById(R.id.naDep));
+//        }
 
         if(Vars.unsure.equals("no")){
             findViewById(R.id.unsure).setBackgroundColor(Color.parseColor("#AAAAAA"));
@@ -129,15 +130,23 @@ public class NotesActivity extends AppCompatActivity {
             findViewById(R.id.unsure).setBackgroundColor(Color.GREEN);
         }
 
-        if(Vars.groundC == 1){
-            findViewById(R.id.cargo).setBackgroundColor(Color.GREEN);
+        Button n = findViewById(R.id.n);
+        Button y = findViewById(R.id.y);
+        Button unsure = findViewById(R.id.unsure);
+
+        if(Vars.ground.equals(n.getText())){
+            ground(n);
+        } else if(Vars.ground.equals(y.getText())){
+            ground(y);
+        } else if(Vars.ground.equals(unsure.getText())){
+            ground(unsure);
         }
 
-        if(Vars.defense.equals("Bad")){
+        if(Vars.defense.equals(BadDef.getText().toString())){
             defense(BadDef);
-        } else if(Vars.defense.equals("Average")){
+        } else if(Vars.defense.equals("Good Defense")){
             defense(AveDef);
-        } else if(Vars.defense.equals("Good")){
+        } else if(Vars.defense.equals("Faced Defense")){
             defense(GoodDef);
         } else if(Vars.defense.equals("NA")){
             defense(findViewById(R.id.naDef));
@@ -243,38 +252,38 @@ public class NotesActivity extends AppCompatActivity {
         }
     }
 
-    public void acc (View v){
-        Button BadDep = findViewById(R.id.BadDep);
-        Button AveDep = findViewById(R.id.AveDep);
-        Button GoodDep = findViewById(R.id.GoodDep);
-        Button naDep = findViewById(R.id.naDep);
-        Button b = (Button)v;
-        Vars.accuracy = b.getText().toString();
-        if(b.getId() == R.id.BadDep){
-            BadDep.setBackgroundColor(Color.GREEN);
-            AveDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
-            GoodDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
-            naDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
-        }
-        if(b.getId() == R.id.AveDep){
-            BadDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
-            AveDep.setBackgroundColor(Color.GREEN);
-            GoodDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
-            naDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
-        }
-        if(b.getId() == R.id.GoodDep){
-            BadDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
-            AveDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
-            GoodDep.setBackgroundColor(Color.GREEN);
-            naDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
-        }
-        if(b.getId() == R.id.naDep){
-            BadDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
-            AveDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
-            GoodDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
-            naDep.setBackgroundColor(Color.GREEN);
-        }
-    }
+//    public void acc (View v){
+//        Button BadDep = findViewById(R.id.BadDep);
+//        Button AveDep = findViewById(R.id.AveDep);
+//        Button GoodDep = findViewById(R.id.GoodDep);
+//        Button naDep = findViewById(R.id.naDep);
+//        Button b = (Button)v;
+//        Vars.accuracy = b.getText().toString();
+//        if(b.getId() == R.id.BadDep){
+//            BadDep.setBackgroundColor(Color.GREEN);
+//            AveDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
+//            GoodDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
+//            naDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
+//        }
+//        if(b.getId() == R.id.AveDep){
+//            BadDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
+//            AveDep.setBackgroundColor(Color.GREEN);
+//            GoodDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
+//            naDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
+//        }
+//        if(b.getId() == R.id.GoodDep){
+//            BadDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
+//            AveDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
+//            GoodDep.setBackgroundColor(Color.GREEN);
+//            naDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
+//        }
+//        if(b.getId() == R.id.naDep){
+//            BadDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
+//            AveDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
+//            GoodDep.setBackgroundColor(Color.parseColor("#AAAAAA"));
+//            naDep.setBackgroundColor(Color.GREEN);
+//        }
+//    }
 
     public void defense (View v){
         Button BadDef = findViewById(R.id.BadDef);
@@ -283,29 +292,42 @@ public class NotesActivity extends AppCompatActivity {
         Button naDef = findViewById(R.id.naDef);
         Button b = (Button)v;
         Vars.defense = b.getText().toString();
+        TextView t = findViewById(R.id.text);
+
         if(b.getId() == R.id.BadDef){
             BadDef.setBackgroundColor(Color.GREEN);
             AveDef.setBackgroundColor(Color.parseColor("#AAAAAA"));
             GoodDef.setBackgroundColor(Color.parseColor("#AAAAAA"));
             naDef.setBackgroundColor(Color.parseColor("#AAAAAA"));
+            findViewById(R.id.text).setVisibility(View.INVISIBLE);
+            findViewById(R.id.defendedBy).setVisibility(View.INVISIBLE);
         }
         if(b.getId() == R.id.AveDef){
             BadDef.setBackgroundColor(Color.parseColor("#AAAAAA"));
             AveDef.setBackgroundColor(Color.GREEN);
             GoodDef.setBackgroundColor(Color.parseColor("#AAAAAA"));
             naDef.setBackgroundColor(Color.parseColor("#AAAAAA"));
+            findViewById(R.id.text).setVisibility(View.VISIBLE);
+            t.setText("Mostly Defended:");
+            findViewById(R.id.defendedBy).setVisibility(View.VISIBLE);
         }
         if(b.getId() == R.id.GoodDef){
             BadDef.setBackgroundColor(Color.parseColor("#AAAAAA"));
             AveDef.setBackgroundColor(Color.parseColor("#AAAAAA"));
             GoodDef.setBackgroundColor(Color.GREEN);
             naDef.setBackgroundColor(Color.parseColor("#AAAAAA"));
+            t.setText("Defended by:");
+            findViewById(R.id.text).setVisibility(View.VISIBLE);
+            findViewById(R.id.defendedBy).setVisibility(View.VISIBLE);
+
         }
         if(b.getId() == R.id.naDef){
             BadDef.setBackgroundColor(Color.parseColor("#AAAAAA"));
             AveDef.setBackgroundColor(Color.parseColor("#AAAAAA"));
             GoodDef.setBackgroundColor(Color.parseColor("#AAAAAA"));
             naDef.setBackgroundColor(Color.GREEN);
+            findViewById(R.id.text).setVisibility(View.INVISIBLE);
+            findViewById(R.id.defendedBy).setVisibility(View.INVISIBLE);
         }
     }
 
@@ -325,49 +347,36 @@ public class NotesActivity extends AppCompatActivity {
 
     public void ground (View v){
         Button b = (Button) v;
-        if(b.getText().equals("Hatch")){
-            Vars.unsure = "no";
-            if(Vars.groundH == 0){
-                Vars.groundH = 1;
-                findViewById(R.id.unsure).setBackgroundColor(Color.parseColor("#AAAAAA"));
-            } else {
-                Vars.groundH = 0;
-                findViewById(R.id.unsure).setBackgroundColor(Color.parseColor("#AAAAAA"));
-            }
-        } else if(b.getText().equals("Cargo")) {
-            Vars.unsure = "no";
-            if(Vars.groundC == 0){
-                Vars.groundC = 1;
-                findViewById(R.id.cargo).setBackgroundColor(Color.GREEN);
-                findViewById(R.id.unsure).setBackgroundColor(Color.parseColor("#AAAAAA"));
-            } else {
-                Vars.groundC = 0;
-                findViewById(R.id.cargo).setBackgroundColor(Color.parseColor("#AAAAAA"));
-                findViewById(R.id.unsure).setBackgroundColor(Color.parseColor("#AAAAAA"));
-            }
-        } else if(b.getText().equals("Unsure")){
-            Vars.unsure = "yes";
-            Vars.groundC = 0;
-            Vars.groundH = 0;
-            findViewById(R.id.cargo).setBackgroundColor(Color.parseColor("#AAAAAA"));
+        Vars.ground = b.getText().toString();
+        if(b.equals(findViewById(R.id.y))){
+            findViewById(R.id.y).setBackgroundColor(Color.GREEN);
+            findViewById(R.id.n).setBackgroundColor(Color.parseColor("#AAAAAA"));
+            findViewById(R.id.unsure).setBackgroundColor(Color.parseColor("#AAAAAA"));
+        }
+        if(b.equals(findViewById(R.id.n))){
+            findViewById(R.id.y).setBackgroundColor(Color.parseColor("#AAAAAA"));
+            findViewById(R.id.n).setBackgroundColor(Color.GREEN);
+            findViewById(R.id.unsure).setBackgroundColor(Color.parseColor("#AAAAAA"));
+        }
+        if(b.equals(findViewById(R.id.unsure))){
+            findViewById(R.id.y).setBackgroundColor(Color.parseColor("#AAAAAA"));
+            findViewById(R.id.n).setBackgroundColor(Color.parseColor("#AAAAAA"));
             findViewById(R.id.unsure).setBackgroundColor(Color.GREEN);
         }
-
-
     }
 
-    public void penalties(View v){
-        Button b = (Button) v;
-        if(b.getText().equals("-1")){
-            if(Vars.penalties > 0)
-                Vars.penalties--;
-        } else {
-            Vars.penalties++;
-        }
-
-        TextView t = findViewById(R.id.penalty);
-        t.setText(Integer.toString(Vars.penalties));
-    }
+//    public void penalties(View v){
+//        Button b = (Button) v;
+//        if(b.getText().equals("-1")){
+//            if(Vars.penalties > 0)
+//                Vars.penalties--;
+//        } else {
+//            Vars.penalties++;
+//        }
+//
+//        TextView t = findViewById(R.id.penalty);
+//        t.setText(Integer.toString(Vars.penalties));
+//    }
 
     public void send (View v) {
         // ready to put all the data
@@ -384,7 +393,10 @@ public class NotesActivity extends AppCompatActivity {
         if(i.getBooleanExtra("noShow", false)){
 
         }
-        if(Vars.driving.equals("") || Vars.accuracy.equals("") || Vars.defense.equals("") || Vars.myNotes.equals("") || Vars.unsure.isEmpty()){
+
+        TextView t = findViewById(R.id.text);
+        if(Vars.driving.equals("") /*|| Vars.accuracy.equals("")*/ || Vars.defense.equals("") || Vars.myNotes.equals("") || Vars.unsure.isEmpty() ||
+                ((Vars.defense.equals("Good Defense") || Vars.defense.equals("Faced Defense")) && t.getText().toString().equals(""))){
             Toast.makeText(getApplicationContext(), "Fill all fields!", Toast.LENGTH_LONG).show();
             return;
         }
@@ -471,14 +483,8 @@ public class NotesActivity extends AppCompatActivity {
             item.put("Ttl_hch scrd on crg_shp", Vars.CargoshipScoredSS[1] + Vars.CargoshipScoredTO[1]);
 
             //ground pickup
-            if(Vars.unsure.equals("yes")){
-                item.put("Grnd_pkup crg", "unsure");
-            }else{
-                if(Vars.groundC == 1)
-                    item.put("Grnd_pkup crg", "yes");
-                else
-                    item.put("Grnd_pkup crg", "no");
-            }
+            item.put("Grnd_pkup crg", Vars.ground);
+
             item.put("#_hch_scrd back_side of_rkt", Vars.rocketScoredSS[0] + Vars.rocketScoredTO[0] + Vars.rocketScoredSS[12] + Vars.rocketScoredTO[12] + Vars.rocketScoredSS[16] + Vars.rocketScoredTO[16] + Vars.rocketScoredSS[10] +
                         Vars.rocketScoredTO[10] + Vars.rocketScoredSS[14] + Vars.rocketScoredTO[14] + Vars.rocketScoredSS[18] + Vars.rocketScoredTO[18]);
 
@@ -521,11 +527,31 @@ public class NotesActivity extends AppCompatActivity {
                 item.put("Ended on HAB_lvl_3", 1);
             }
 
+            EditText e = findViewById(R.id.defendedBy);
             item.put("Driving", Vars.driving);
-            item.put("Deployment Accuracy", Vars.accuracy);
+            //item.put("Deployment Accuracy", Vars.accuracy);
             item.put("Defense", Vars.defense);
+            if(Vars.defense.equals("Faced Defense"))
+                if(e.getText().length()<1){
+                    item.put("Defended by", "None");
+                    item.put("Defended", "None");
+                }
+                else{
+                    item.put("Defended by", e.getText().toString());
+                    item.put("Defended", "None");
+                }
+            else if(Vars.defense.equals("Good Defense"))
+                if(e.getText().length()<1){
+                    item.put("Defended by", "None");
+                    item.put("Defended", "None");
+                }
+                else{
+                    item.put("Defended by", "None");
+                    item.put("Defended", e.getText().toString());
+                }
+
             item.put("Notes____________", Vars.myNotes);
-            item.put("Penalties", (Vars.penalties));
+            //item.put("Penalties", (Vars.penalties));
             item.put("Scouter", Vars.myScouterName);
             //Toast.makeText(getApplicationContext(), "part 2", Toast.LENGTH_LONG).show();
 

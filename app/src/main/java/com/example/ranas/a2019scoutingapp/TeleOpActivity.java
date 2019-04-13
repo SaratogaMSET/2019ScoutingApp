@@ -68,7 +68,7 @@ public class TeleOpActivity extends AppCompatActivity {
 
 
         TextView moves = findViewById(R.id.moves);
-        TextView P = findViewById(R.id.P);
+        //TextView P = findViewById(R.id.P);
         ImageView i = findViewById(R.id.imageView);
 
         if (Vars.alliance.equals("red")) {
@@ -90,15 +90,15 @@ public class TeleOpActivity extends AppCompatActivity {
             flip(i);
         }
 
-        P.setText(Integer.toString(Vars.penalties));
+        //P.setText(Integer.toString(Vars.penalties));
         moves.setText(Vars.robotMovesSS);
 
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
 
-//        navigation.getMenu().getItem(0).setChecked(false);
-//        navigation.getMenu().getItem(1).setChecked(true);
-//        navigation.getMenu().getItem(2).setChecked(false);
+        navigation.getMenu().getItem(0).setChecked(false);
+        navigation.getMenu().getItem(1).setChecked(true);
+        navigation.getMenu().getItem(2).setChecked(false);
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
@@ -131,17 +131,17 @@ public class TeleOpActivity extends AppCompatActivity {
 //        }
 //    }
 
-    public void penalty(View v){
-        Button b = (Button) v;
-        if(b.getId() == R.id.p1TO)
-            Vars.penalties++;
-        else
-        if(Vars.penalties > 0)
-            Vars.penalties--;
-
-        TextView P = findViewById(R.id.P);
-        P.setText(Integer.toString(Vars.penalties));
-    }
+//    public void penalty(View v){
+//        Button b = (Button) v;
+//        if(b.getId() == R.id.p1TO)
+//            Vars.penalties++;
+//        else
+//        if(Vars.penalties > 0)
+//            Vars.penalties--;
+//
+//        TextView P = findViewById(R.id.P);
+//        P.setText(Integer.toString(Vars.penalties));
+//    }
 
     public void CargoshipAdd(View v){
         Button b = (Button) v;

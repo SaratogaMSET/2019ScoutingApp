@@ -8,49 +8,49 @@
     android:background="#aae8ff"
     tools:context=".TeleOpActivity">
 
-    <TextView
-        android:id="@+id/P"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="-1dp"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/p1TO"
-        app:layout_constraintTop_toTopOf="@+id/m1TO" />
+    <!--<TextView-->
+        <!--android:id="@+id/P"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginTop="-1dp"-->
+        <!--android:textColor="@android:color/black"-->
+        <!--android:textSize="18sp"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/p1TO"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/m1TO" />-->
 
-    <Button
-        android:id="@+id/p1TO"
-        android:layout_width="60dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="-1dp"
-        android:onClick="penalty"
-        android:text="+1"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/m1TO"
-        app:layout_constraintTop_toTopOf="@+id/textView3" />
+    <!--<Button-->
+        <!--android:id="@+id/p1TO"-->
+        <!--android:layout_width="60dp"-->
+        <!--android:layout_height="53dp"-->
+        <!--android:layout_marginTop="-1dp"-->
+        <!--android:onClick="penalty"-->
+        <!--android:text="+1"-->
+        <!--android:textSize="18sp"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/m1TO"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/textView3" />-->
 
-    <Button
-        android:id="@+id/m1TO"
-        android:layout_width="60dp"
-        android:layout_height="53dp"
-        android:onClick="penalty"
-        android:text="-1"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="@+id/textView3" />
+    <!--<Button-->
+        <!--android:id="@+id/m1TO"-->
+        <!--android:layout_width="60dp"-->
+        <!--android:layout_height="53dp"-->
+        <!--android:onClick="penalty"-->
+        <!--android:text="-1"-->
+        <!--android:textSize="18sp"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/textView3"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/textView3" />-->
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="10dp"
-        android:text="Penalties:"
-        android:textColor="@android:color/holo_red_dark"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!--<TextView-->
+        <!--android:id="@+id/textView3"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="200dp"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:text="Penalties:"-->
+        <!--android:textColor="@android:color/holo_red_dark"-->
+        <!--android:textSize="30sp"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
 
     <Button
         android:id="@+id/TO_C3R"
@@ -74,6 +74,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:itemTextColor="@color/colorPrimary"
+        app:itemIconTint="@color/colorPrimary"
         app:menu="@menu/navigation" />
 
     <ImageView

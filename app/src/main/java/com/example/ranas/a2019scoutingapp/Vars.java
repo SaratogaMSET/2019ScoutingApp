@@ -21,8 +21,8 @@ public class Vars {
     public static int [] CargoshipScoredSS = new int[2];
 //    public static String startedWithSS = "NaN";
     public static String robotMovesSS = "";
-    public static int penalties = 0;
-    public static int groundC = 0, groundH = 0;
+    //public static int penalties = 0;
+    public static String ground = "";
 //    public static Stack<Integer> stackMovesSS = new Stack<Integer>();
 //    public static Stack<Integer> stackCSMovesSS = new Stack<Integer>();
     //public static String slots = "";
@@ -45,7 +45,7 @@ public class Vars {
 
     //endgame/notes
     public static String driving = new String("NA");
-    public static String accuracy = new String("NA");
+    //public static String accuracy = new String("NA");
     public static String defense = new String("NA");
     public static int unsupportedClimb = 5;
     //public static int support = 0;

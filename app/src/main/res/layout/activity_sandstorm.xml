@@ -29,6 +29,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:itemTextColor="@color/colorPrimary"
+        app:itemIconTint="@color/colorPrimary"
         app:menu="@menu/navigation" />
 
     <Button
@@ -362,70 +364,47 @@
         <!--app:layout_constraintBottom_toBottomOf="parent"-->
         <!--app:layout_constraintEnd_toEndOf="parent" />-->
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="15dp"
-        android:text="Penalties:"
-        android:textColor="@android:color/holo_red_dark"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/m1SS"
-        android:layout_width="60dp"
-        android:layout_height="53dp"
-        android:onClick="penalty"
-        android:text="-1"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="@+id/textView" />
-
-    <Button
-        android:id="@+id/p1SS"
-        android:layout_width="60dp"
-        android:layout_height="53dp"
-        android:onClick="penalty"
-        android:text="+1"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/m1SS"
-        app:layout_constraintTop_toTopOf="@+id/m1SS" />
-
-    <TextView
-        android:id="@+id/P"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/p1SS"
-        app:layout_constraintTop_toTopOf="@+id/p1SS" />
+    <!--<TextView-->
+        <!--android:id="@+id/textView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="200dp"-->
+        <!--android:layout_marginTop="15dp"-->
+        <!--android:text="Penalties:"-->
+        <!--android:textColor="@android:color/holo_red_dark"-->
+        <!--android:textSize="30sp"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
 
     <!--<Button-->
-        <!--android:id="@+id/groundC"-->
-        <!--android:layout_width="50dp"-->
-        <!--android:layout_height="50dp"-->
-        <!--android:layout_marginStart="10dp"-->
-        <!--android:layout_marginTop="100dp"-->
-        <!--android:background="@android:color/holo_orange_dark"-->
-        <!--android:onClick="ground"-->
-        <!--android:text="C"-->
-        <!--app:layout_constraintStart_toStartOf="@+id/H"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/H" />-->
+        <!--android:id="@+id/m1SS"-->
+        <!--android:layout_width="60dp"-->
+        <!--android:layout_height="53dp"-->
+        <!--android:onClick="penalty"-->
+        <!--android:text="-1"-->
+        <!--android:textSize="18sp"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/textView"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/textView" />-->
 
     <!--<Button-->
-        <!--android:id="@+id/groundH"-->
-        <!--android:layout_width="50dp"-->
-        <!--android:layout_height="0dp"-->
-        <!--android:background="@android:color/holo_orange_light"-->
-        <!--android:onClick="ground"-->
-        <!--android:text="H"-->
-        <!--app:layout_constraintBottom_toBottomOf="@+id/groundC"-->
-        <!--app:layout_constraintStart_toEndOf="@+id/groundC"-->
-        <!--app:layout_constraintTop_toTopOf="@+id/groundC" />-->
+        <!--android:id="@+id/p1SS"-->
+        <!--android:layout_width="60dp"-->
+        <!--android:layout_height="53dp"-->
+        <!--android:onClick="penalty"-->
+        <!--android:text="+1"-->
+        <!--android:textSize="18sp"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/m1SS"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/m1SS" />-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/P"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:textColor="@android:color/black"-->
+        <!--android:textSize="18sp"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/p1SS"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/p1SS" />-->
 
     <ImageView
         android:id="@+id/imageView"

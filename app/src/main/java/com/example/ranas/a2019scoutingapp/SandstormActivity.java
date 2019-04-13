@@ -77,7 +77,7 @@ public class SandstormActivity extends AppCompatActivity {
         Button r1 = findViewById(R.id.r1);
         Button r2 = findViewById(R.id.r2);
         Button m1 = findViewById(R.id.m1);
-        TextView P = findViewById(R.id.P);
+        //TextView P = findViewById(R.id.P);
         Button b = findViewById(R.id.button3);
 
         ImageView i = findViewById(R.id.imageView);
@@ -102,7 +102,7 @@ public class SandstormActivity extends AppCompatActivity {
         }
 
 
-        P.setText(Integer.toString(Vars.penalties));
+        //P.setText(Integer.toString(Vars.penalties));
         moves.setText(Vars.robotMovesSS);
 //        H.setVisibility(View.INVISIBLE);
 //        C.setVisibility(View.INVISIBLE);
@@ -175,17 +175,17 @@ public class SandstormActivity extends AppCompatActivity {
         }
     }
 
-    public void penalty(View v){
-        Button b = (Button) v;
-        if(b.getId() == R.id.p1SS)
-            Vars.penalties++;
-        else
-            if(Vars.penalties > 0)
-                Vars.penalties--;
-
-        TextView P = findViewById(R.id.P);
-        P.setText(Integer.toString(Vars.penalties));
-    }
+//    public void penalty(View v){
+//        Button b = (Button) v;
+//        if(b.getId() == R.id.p1SS)
+//            Vars.penalties++;
+//        else
+//            if(Vars.penalties > 0)
+//                Vars.penalties--;
+//
+//        TextView P = findViewById(R.id.P);
+//        P.setText(Integer.toString(Vars.penalties));
+//    }
 
     public void check(){
         //S1, S3, s3, S7, s9,

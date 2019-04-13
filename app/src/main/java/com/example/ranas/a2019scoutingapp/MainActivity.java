@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         Vars.s1 = 0;
         Vars.s2 = 0;
         Vars.s3 = 0;
+        Vars.s4 = 0;
 
         if(tabNum.equals("R1"))
             Vars.dropdown.setSelection(0);
@@ -83,9 +84,9 @@ public class MainActivity extends AppCompatActivity {
         }
         //Vars.startedWithSS = "NaN";
         Vars.robotMovesSS = "Robot moves: ";
-        Vars.penalties = 0;
-        Vars.groundC = 0;
-        Vars.groundH = 0;
+        //Vars.penalties = 0;
+//        Vars.groundC = 0;
+//        Vars.groundH = 0;
         Vars.exitHab = 0;
 
         //teleop
@@ -107,12 +108,12 @@ public class MainActivity extends AppCompatActivity {
 //        robotMovesEG = "Robot moves: ";
 //        penaltiesEG = 0;
         Vars.driving = "";
-        Vars.accuracy = "";
+        //Vars.accuracy = "";
         Vars.defense = "";
         Vars.unsupportedClimb = 5;
         Vars.myNotes = "";
-        Vars.groundH = 0;
-        Vars.groundC = 0;
+//        Vars.groundH = 0;
+//        Vars.groundC = 0;
         Vars.unsure = "blah";
         Vars.scorable = 0;
 
@@ -134,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
                         refresh.putExtra("noShow", true);
                         Vars.unsure = "yes";
                         Vars.driving = "NA";
-                        Vars.accuracy = "NA";
+                        //Vars.accuracy = "NA";
                         Vars.defense = "NA";
                         Vars.myNotes = "no show";
                         startActivity(refresh);
